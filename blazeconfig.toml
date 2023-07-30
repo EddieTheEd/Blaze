@@ -1,0 +1,28 @@
+[build]
+
+# this is the folder that will be built from.
+input = 'content'
+
+# this is the output folder (i.e. where the compiled html will go)
+# (DO NOT CHANGE THIS unless you know what you are doing)
+output = 'output'
+
+# these folders / files will be ignored
+ignore = [
+  'content/templates',
+  'content/.obsidian',
+  'content/private',
+]
+
+# leaving it as 'default' makes all pages the 'default' theme.
+# if you want a custom theme for ALL pages, switch here. 
+# custom themes for specific pages will be setup else where!
+theme = 'default'
+
+# uncomment if you want a baseurl
+# base_url = 'https://example.com/'
+
+[settings]
+
+# enable site graph at the bottom of page
+graph = true

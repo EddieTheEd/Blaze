@@ -1,0 +1,50 @@
+name: Cargo Run and Output to Branch
+
+on:
+  push:
+    branches:
+      - main 
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Rust
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+
+      - name: Cache build artifacts
+        uses: actions/cache@v2
+        with:
+          path: |
+           ~/.cargo/registry
+           ~/.cargo/git
+           target
+          key: ${{ runner.os }}-rust-${{ hashFiles('src/**')}}-${{ hashFiles('**/Cargo.lock') }}
+
+      # sorry ossac, this is screwing things when deploying
+
+      - name: Build and run Blaze
+        run: |
+          cargo run --release
+
+      - name: Create output branch
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git checkout --orphan master
+          git rm -rf .
+          mkdir temp
+          git add -A
+          git commit -m "Clear branch"
+          git push origin master --force
+          mv /home/runner/work/Blaze/Blaze/output/* .
+          touch .nojekyll
+          git add -A
+          git commit -m "Master branch update"
+          git push origin master

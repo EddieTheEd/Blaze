@@ -127,7 +127,8 @@ img:not(.calloutimage) {
 
 #toc {
     max-height: 370px;
-    overflow: clip;
+    overflow-y: scroll;
+    scrollbar-color: var(--lighttext) var(--background);
 }
 
 
@@ -308,4 +309,24 @@ mjx-container {
 #description {
     padding-left: 5%;
     margin-top: 20px;
+    margin-bottom: 20px;
 }
+
+/* toc scrollbar */
+
+::-webkit-scrollbar {
+    width: 10px;
+    }
+    
+    ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px var(--background); 
+    border-radius: 10px;
+    }
+    
+    ::-webkit-scrollbar-thumb {
+    background: var(--lighttext); 
+    border-radius: 10px;
+    }
+    
+    ::-webkit-scrollbar-thumb:hover {
+    background:var(--secondary); 

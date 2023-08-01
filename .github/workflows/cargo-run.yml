@@ -51,15 +51,8 @@ jobs:
         run: |
           mv /home/runner/work/Blaze/Blaze/output/* .
           touch .nojekyll
-          touch CNAME
+          touch 'CNAME'
+          cat echo "blaze.toomwn.xyz" > 'CNAME'
           git add -A
           git commit -m "Master branch update"
           git push origin master
-
-      - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./public
-          cname: blaze.toomwn.xyz
-          publish_branch: master

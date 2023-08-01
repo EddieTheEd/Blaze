@@ -108,7 +108,7 @@ img:not(.calloutimage) {
 
 #page {
     display: grid;
-    grid-template-columns: 0.18fr 0.62fr;
+    grid-template-columns: 0.28fr 0.52fr;
     column-gap: 3%;
     margin: 0;
     padding-left: 5%;
@@ -117,13 +117,18 @@ img:not(.calloutimage) {
 }
 
 
-
 #leftside {
     display: grid;
     grid-template-rows: auto;
     height: max-content;
+    position: sticky;
+    top: 10px;
 }
 
+#toc {
+    max-height: 420px;
+    overflow: clip;
+}
 
 
 #backlinks{
@@ -135,16 +140,16 @@ img:not(.calloutimage) {
 #graph {
     border: 3px solid var(--text);
     border-radius: 10px;
-    width: auto;
-    height: auto;
+    width: 350px;
+    height: 350px;
+    margin: auto;
+    overflow: clip;
 }
 
 #graphcontainer {
-    padding-left: 5%;
     padding-right: 5%;
     margin: auto;
     width: 90%;
-    min-height: 100px;
 }
 
 /* tufte rubbish */
@@ -206,7 +211,7 @@ hr:after {
     color: var(--text);
     padding: 0 4px;
     position: relative;
-    top: -13px;
+    top: -9px;
 }
 
 #sidenotetitle {

@@ -126,9 +126,17 @@ img:not(.calloutimage) {
 }
 
 #toc {
+    margin-top: 5%;
     max-height: 370px;
     overflow-y: scroll;
     scrollbar-color: var(--lighttext) var(--background);
+    border: 2px var(--text) solid;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+#toctitle {
+    margin-top: 0;
 }
 
 

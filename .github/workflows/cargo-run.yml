@@ -33,16 +33,23 @@ jobs:
         run: |
           cargo run --release
 
-      - name: Create output branch
+      - name: Git config
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git checkout --orphan master
+
+      - name: Clear output branch
+        run: |
           git rm -rf .
+          git checkout HEAD -- CNAME
           mkdir temp
           git add -A
           git commit -m "Clear branch"
           git push origin master --force
+
+      - name: Move output
+        run: |
           mv /home/runner/work/Blaze/Blaze/output/* .
           touch .nojekyll
           git add -A

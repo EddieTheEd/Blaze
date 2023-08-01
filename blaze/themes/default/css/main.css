@@ -102,13 +102,17 @@ td, th {
 
 #page {
     display: grid;
-    grid-template-columns: 0.18fr 0.62fr;
+    grid-template-columns: 0.18fr 1.5fr;
     column-gap: 3%;
     margin: auto;
     padding-left: 5%;
     padding-right: 5%;
 }
 
+
+#body {
+    width: 100%;
+}
 
 #leftside {
     display: grid;

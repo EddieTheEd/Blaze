@@ -7,7 +7,13 @@
     
     {{content}}
     {{ partial "sidenotes.html" .}}
-    <!--{{ partial "nosidenotes.html ."}}-->
+
+    <!--
+        If you disable the sidenotes.html partial, turn on this partial!
+        {{ partial "nosidenotes.html" .}}
+    -->
+
+    {{ partial "callouts.html" .}}
     
 
 </div>

@@ -399,7 +399,7 @@ fn compile_markdown (
                                     // ossac can you make it so that the callout title has the callout type, i.e. "todo-title", literally same as the class
                                     // todo: make the theme dependent on the theme selected
                                     // the blaze.png is temporary
-                                    format!("<blockquote id=\"callout\" class=\"{}-callout\"><div id='callout-header'><img src='./static/{}-callout.png' height='30px' width='30px'><h3 id='callout-title'>{}</h3></div><p>{}</p></blockquote>", 
+                                    format!("<blockquote id=\"callout\" class=\"{}-callout\"><div id='callout-header'><div id='{}' class='calloutimage'></div><h3 id='callout-title'>{}</h3></div><p>{}</p></blockquote>", 
                                         caps.get(1).unwrap().as_str(), 
                                         caps.get(1).unwrap().as_str(),
                                         caps.get(2).unwrap().as_str(),

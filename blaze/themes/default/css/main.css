@@ -75,6 +75,13 @@ td, th {
     padding: 4px;
 }
 
+img:not(.calloutimage) {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+
 /* header stuff */
 
 #header{
@@ -143,30 +150,6 @@ td, th {
 
 /* misc */
 
-#callout {
-    padding: 8px;
-    border-radius: 5px;
-}
-
-.info-callout {
-    background-color: var(--lightblue);
-}
-
-.quote-callout {
-    background-color: var(--peach);
-}
-
-#callout-header {
-    display: flex;
-    border-bottom: 1.5px solid var(--text);
-    padding-bottom: 3px;
-}
-
-#callout-title {
-    margin: 0;
-    margin-left: 2%;
-    font-size: 26px;
-}
 
 
 /* tufte rubbish */
@@ -240,4 +223,76 @@ hr:after {
     line-height: 1.3;
     vertical-align: baseline;
     position: relative;
+}
+
+/* callouts */
+
+#callout {
+    padding: 8px;
+    border-radius: 5px;
+}
+
+.info-callout {
+    background-color: var(--lightblue);
+}
+
+.quote-callout {
+    background-color: var(--peach);
+}
+
+.note-callout {
+    background-color: var(--darkerlightblue);
+}
+
+.abstract-callout {
+    background-color: var(--lightestblue);
+}
+
+.example-callout {
+    background-color: var(--peach);
+}
+
+.todo-callout {
+    background-color: var(--lightblue);
+}
+
+.tip-callout {
+    background-color: var(--lightestblue);
+}
+
+.success-callout {
+    background-color: var(--green);
+}
+
+.question-callout {
+    background-color: var(--yellow);
+}
+
+.warning-callout {
+    background-color: var(--orange);
+}
+
+.failure-callout {
+    background-color: var(--red);
+}
+
+.danger-callout {
+    background-color: var(--red);
+}
+
+.bug-callout {
+    background-color: var(--red);
+}
+
+
+#callout-header {
+    display: flex;
+    border-bottom: 1.5px solid var(--text);
+    padding-bottom: 3px;
+}
+
+#callout-title {
+    margin: 0;
+    margin-left: 2%;
+    font-size: 26px;
 }

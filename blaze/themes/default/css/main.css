@@ -7,7 +7,7 @@ html {
     font-size: 150%;
 }
 
-h1,h2,h3,h4,h5,h6,p,li,mjx-container, table, code {
+h1,h2,h3,h4,h5,h6,p,li,mjx-container, table, code, i {
     color: var(--text);
 }
 
@@ -126,7 +126,7 @@ img:not(.calloutimage) {
 }
 
 #toc {
-    max-height: 420px;
+    max-height: 370px;
     overflow: clip;
 }
 
@@ -249,7 +249,7 @@ hr:after {
 }
 
 .example-callout {
-    background-color: var(--peach);
+    background-color: var(--purple);
 }
 
 .todo-callout {
@@ -302,4 +302,9 @@ hr:after {
 
 mjx-container {
     font-size: 100% !important;
+}
+
+#description {
+    padding-left: 5%;
+    margin-top: 20px;
 }

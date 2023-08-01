@@ -1,3 +1,9 @@
+---
+title: Showcase
+description: This is a description. You can edit this in the frontmatter!
+---
+
+
 this is some basic text.
 
 *this is italicised text*

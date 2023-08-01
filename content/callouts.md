@@ -1,5 +1,7 @@
-
-## callouts
+---
+title: Callouts
+description: All the currently supported callouts. Feel free to fork and add your own!
+---
 
 > [!note] Title
 > Contents

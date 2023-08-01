@@ -1,4 +1,7 @@
-*Written by Ed (with edits by ossac :) )*
+---
+title: Whitepaper
+description: Written by Ed (with edits by ossac) 
+---
 
 
 ![](assets/blaze.png)

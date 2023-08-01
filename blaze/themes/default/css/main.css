@@ -92,15 +92,15 @@ img:not(.calloutimage) {
 }
 
 #headericon {
-    margin-top: 11.5px;
     margin-bottom: 10.5px;
 }
 
 #pageh1{
     margin-left: 5%;
     margin-bottom: 0;
-    margin-top: 0;
+    margin-top: 10px;
     border-bottom: 3px var(--text) solid;
+    height: 55px;
 }
 
 

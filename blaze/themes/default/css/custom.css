@@ -5,10 +5,10 @@ e.g. @import url('https://fonts.googleapis.com/css2?family=Lumanosimo&display=sw
 /* by default, we use the dante font because its cool */
 @font-face {
     font-family: 'Dante MT Std';
-    src: url('../static/DanteMTStd-Regular.eot?#iefix') format('embedded-opentype'),
-        url('../static/DanteMTStd-Regular.woff2') format('woff2'),
-        url('../static/DanteMTStd-Regular.woff') format('woff'),
-        url('../static/DanteMTStd-Regular.ttf') format('truetype');
+    src: url('../fonts/DanteMTStd-Regular.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/DanteMTStd-Regular.woff2') format('woff2'),
+        url('../fonts/DanteMTStd-Regular.woff') format('woff'),
+        url('../fonts/DanteMTStd-Regular.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
     font-display: swap;

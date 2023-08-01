@@ -52,7 +52,7 @@ jobs:
           mv /home/runner/work/Blaze/Blaze/output/* .
           touch .nojekyll
           touch 'CNAME'
-          cat echo "blaze.toomwn.xyz" > 'CNAME'
+          echo "blaze.toomwn.xyz" > 'CNAME'
           git add -A
           git commit -m "Master branch update"
           git push origin master

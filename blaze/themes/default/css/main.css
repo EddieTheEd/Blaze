@@ -147,10 +147,6 @@ img:not(.calloutimage) {
     min-height: 100px;
 }
 
-/* misc */
-
-
-
 /* tufte rubbish */
 
 body {
@@ -294,4 +290,11 @@ hr:after {
     margin: 0;
     margin-left: 2%;
     font-size: 26px;
+}
+
+
+/* misc */
+
+mjx-container {
+    font-size: 100% !important;
 }

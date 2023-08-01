@@ -1,6 +1,7 @@
 <script>
 
     try {
+        document.getElementById("sidenotetitle").innerHTML = "Sidenotes";
         document.getElementById("rightside").appendChild(document.querySelector(".footnotes"));
 
         let rightside = document.getElementById("rightside");
@@ -53,9 +54,12 @@
             console.log("no footnotes");
             sidenotetitle = document.getElementById("sidenotetitle");
             sidenotetitle.remove();
+            page = document.getElementById("page");
+            page.style.gridTemplateColumns = "0.18fr 1.5fr"
 
-            
+            body = document.body;
+            body.style.marginRight = "0px !important";
+            body.style.maxWidth = "90%";
     }
-
 
 </script>

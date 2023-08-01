@@ -228,8 +228,9 @@ hr:after {
 /* callouts */
 
 #callout {
-    padding: 8px;
+    padding: 12px;
     border-radius: 5px;
+    width: fit-content;
 }
 
 .info-callout {

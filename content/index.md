@@ -19,7 +19,7 @@ Officially releasing soon. See the [repository](https://github.com/EddieTheEd/Bl
 
 [see callouts in action!](callouts)
 
-> [!quote] Theogony
+> [!quote] Theogony, Hesiod
 >
 > He hid fire. But that fine son of Iapetos stole it
 >

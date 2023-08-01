@@ -42,7 +42,6 @@ jobs:
       - name: Clear output branch
         run: |
           git rm -rf .
-          git checkout HEAD -- CNAME
           mkdir temp
           git add -A
           git commit -m "Clear branch"
@@ -52,6 +51,15 @@ jobs:
         run: |
           mv /home/runner/work/Blaze/Blaze/output/* .
           touch .nojekyll
+          touch CNAME
           git add -A
           git commit -m "Master branch update"
           git push origin master
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./
+          cname: blaze.toomwn.xyz
+          publish_branch: master

@@ -5,8 +5,7 @@ description: An implementation of Latex that uses MathJax.
 
 Latex works thanks to the general implementation of [MathJax](https://www.mathjax.org/), with block latex being rendered by [Rust's Markdown parser](https://docs.rs/markdown/1.0.0-alpha.11/markdown/struct.Constructs.html#structfield.math_flow).
 
-Here is some $\text{inline latex: } e^{i\pi} - 1 = 0$
-- "\\ \\ \\" is ignored. (imagine the slashes are together, no spaces)
+Here is some $\text{inline latex: } e^{i\pi} - 1 = -2$, which can still be used within a normal line. For example, $\text{this text is rendered by MathJax}$, while this text isnt.
 
 Below is a block of latex.
 $$

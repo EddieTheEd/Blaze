@@ -84,6 +84,7 @@ Blaze is built under the following principles:
 - ~~Light dark mode~~ never, dark mode is superior
 - Search for pathing
 	- Breadth-first search :(
+- Multi-device layouts
 
 ## Miscellaneous
 ### Donating

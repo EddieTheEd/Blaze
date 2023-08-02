@@ -41,7 +41,7 @@ a {
 
 a:hover {
     background-color: var(--lightbackground) !important;
-    
+    transition: 0.2s;
     border-radius: 5px !important;
 }
 

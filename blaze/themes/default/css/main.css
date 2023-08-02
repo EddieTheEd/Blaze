@@ -35,14 +35,16 @@ pre{
 a {
     color: var(--textlink);
     text-decoration: none;
-    padding: 2px;
+    padding-left: 1px;
+    padding-right: 1px;
+    padding-top: 3px;
     
 }
 
 a:hover {
     background-color: var(--lightbackground) !important;
-    transition: 0.2s;
-    border-radius: 5px !important;
+    transition: 0.1s;
+    border-radius: 4px !important;
 }
 
 a:visited{

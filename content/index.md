@@ -15,10 +15,6 @@ Officially releasing soon. See the [repository](https://github.com/EddieTheEd/Bl
 
 [consider reading the white paper!](whitepaper)
 
-[see sidenotes in action!](testingsidenotes)
-
-[see callouts in action!](callouts)
-
 > [!quote] Theogony, Hesiod
 >
 > He hid fire. But that fine son of Iapetos stole it
@@ -26,5 +22,3 @@ Officially releasing soon. See the [repository](https://github.com/EddieTheEd/Bl
 > Right back out from under Zeus’ nose, hiding
 >
 > The flame in a fennel stalk.
-
-(lol callouts wrong formatting fix later)

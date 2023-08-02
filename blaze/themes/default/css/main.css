@@ -35,6 +35,14 @@ pre{
 a {
     color: var(--textlink);
     text-decoration: none;
+    padding: 2px;
+    
+}
+
+a:hover {
+    background-color: var(--lightbackground) !important;
+    
+    border-radius: 5px !important;
 }
 
 a:visited{
@@ -322,6 +330,7 @@ mjx-container {
     margin-top: 20px;
     margin-bottom: 20px;
 }
+
 
 /* toc scrollbar */
 

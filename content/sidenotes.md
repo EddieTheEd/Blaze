@@ -3,7 +3,7 @@ title: Thylacine
 description: the thy is lacinging
 ---
 
-
+[index](index)
 
 In the Australian bush at night, you could find a lost sixpence or the feldspar in a piece of quartz; you could find the buckle from a dog's collar or a sooty owl in a tree. But you'd never find a pound note or an ant, and you'd never find an old sepia photograph, or **why things are the way they are, although men will look for it there, some of them all of their lives.**[^1]
 

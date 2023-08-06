@@ -22,3 +22,5 @@ Officially releasing soon. See the [repository](https://github.com/EddieTheEd/Bl
 > Right back out from under Zeus’ nose, hiding
 >
 > The flame in a fennel stalk.
+
+Soon releasing!

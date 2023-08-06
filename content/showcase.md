@@ -20,3 +20,5 @@ Here are the essential features of Blaze.
 [Sidenotes](sidenotes)
 
 [Folders example](subfolder/subsubfolder/subsubfile)
+
+[Line breaks](linebreaks)

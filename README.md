@@ -7,3 +7,5 @@ A simple static site generator for Github Pages.
 
 
 the reasoning: quartz == igneous == ignite == fire == blazingly fast™
+
+Coming soon!

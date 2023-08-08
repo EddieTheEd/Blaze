@@ -229,8 +229,8 @@ fn compile_markdown (
                     //modifying backlink content to account for links with .md
                     //temporary solution, this replaces all instances of .md, not
                     //[something](somethingelse.md)
-                    let mut content = content.clone().replace(".md","");
-                    let old_content = &content.clone().replace(".md","");
+                    let mut content = content.clone().replace(".md)",")");
+                    let old_content = &content.clone().replace(".md)",")");
 
                     let crlfregex = Regex::new(r#"([^\r])\n"#).unwrap();
 
@@ -559,7 +559,7 @@ fn generate_backlinks<'a> (things: &Vec<FsThing>, cfg: &Config,
                     //modifying backlink content to account for links with .md
                     //temporary solution, this replaces all instances of .md, not
                     //[something](somethingelse.md)
-                    let content = &content.clone().replace(".md","");
+                    let content = &content.clone().replace(".md)",")");
                     let link_regex = Regex::new(r"[^!]\[([^\[\]]*)\]\(([^\(\)]*)\)").unwrap();
 
                     let path = if path.ends_with(".md") {

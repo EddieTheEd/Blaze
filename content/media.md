@@ -8,5 +8,5 @@ Here is an image
 ![](assets/yes.png)
 Here is a funny gif.
 
-![funny gif](caption.gif)  
+![funny gif](assets/caption.gif)  
 

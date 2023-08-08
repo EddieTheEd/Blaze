@@ -22,3 +22,5 @@ Here are the essential features of Blaze.
 [Folders example](subfolder/subsubfolder/subsubfile.md)
 
 [Line breaks](linebreaks.md)
+
+[Testing things](testing.md)

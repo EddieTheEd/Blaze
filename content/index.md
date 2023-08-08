@@ -15,6 +15,8 @@ Officially releasing soon. See the [repository](https://github.com/EddieTheEd/Bl
 
 [consider reading the white paper!](whitepaper.md)
 
+[here's how to use blaze](usage.md)
+
 > [!quote] Theogony, Hesiod
 >
 > He hid fire. But that fine son of Iapetos stole it

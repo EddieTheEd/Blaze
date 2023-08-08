@@ -88,7 +88,12 @@ img:not(.calloutimage) {
     display: block;
     margin-left: auto;
     margin-right: auto;
-    width: 50%;
+}
+
+#rightside img {
+  height: 90%;
+  width: 100%;
+  object-fit: contain;
 }
 
 /* header stuff */

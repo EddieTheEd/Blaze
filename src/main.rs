@@ -3,6 +3,7 @@ use std::time::UNIX_EPOCH;
 use std::io::prelude::*;
 use std::path::Path;
 use std::collections::HashMap;
+use std::io::Write;
 use time::macros::date;
 use serde::Deserialize;
 use toml::Value;
@@ -193,7 +194,8 @@ fn compile_markdown (
     backlinks: &HashMap<String, Vec<LinkTarget>>, 
     infos: &HashMap<String, PageInfo>, 
     partials: &HashMap<String,String>, 
-    first_iteration: bool) {
+    first_iteration: bool
+    ) {
     if first_iteration {
         // delete directory and create a new one
         match fs::remove_dir_all(&cfg.build.output) {
@@ -231,6 +233,8 @@ fn compile_markdown (
                     //[something](somethingelse.md)
                     let mut content = content.clone().replace(".md)",")");
                     let old_content = &content.clone().replace(".md)",")");
+
+                    let mut pathways: HashMap<String, String> = HashMap::new();
 
                     let crlfregex = Regex::new(r#"([^\r])\n"#).unwrap();
 
@@ -303,8 +307,12 @@ fn compile_markdown (
 
                         match backlinks.get(&canonical_path) {
                             Some(backlinks) => {
+                                
                                 for link in backlinks {
                                     println!("--- backlink --- {}",link.path);
+                                    let tempkey = &link.path.to_string().replace(".html", "");
+                                    let tempvalue = "/".to_owned() + &link.path.to_string().replace("output", "");
+                                    pathways.insert(tempkey.to_string(), tempvalue.to_string());
                                     match infos.get(&link.path) {
                                         Some(info) => {
                                             backlinks_partials.push_str(
@@ -322,7 +330,7 @@ fn compile_markdown (
                             },
                             None => () // odd but fine
                         }
-                        println!("{}", backlinks_partials);
+                        //println!("{}", backlinks_partials);
 
                         compiled_html = compiled_html.replace("{{backlinks}}", &backlinks_partials);
                     }
@@ -487,7 +495,60 @@ fn compile_markdown (
                     //         None => break
                     //     }
                     // }
-                    
+                    //
+                    // graphing time (only backlinks cause i dunno how to do forward links)
+                    // probably would've been better to save as not a hashmap but oh well
+                    let mut jsondata = String::from("{\"nodes\":[");
+
+                    let root = &dir.replace("output/","").replace(".html", "");
+                    let rootlink = &dir.replace("output", "");
+
+                    jsondata.push_str(&format!("{{\"id\":\"{}\",\"link\":\"{}\"}},", root, rootlink));
+
+                    let mut counter = 0;
+
+                    for (key, value) in pathways.iter() {
+                        
+                        let temp = format!("{{\"id\":\"{}\",\"link\":\"{}\"}},", key, value);
+                        //println!("Link: {} -> Value: {}", key, value);
+                        jsondata.push_str(&temp);
+                        counter = counter + 1;
+                        
+                    }
+
+                    // forward logic goes here
+                    if counter != 0 {
+                        jsondata.pop();
+                    }
+                    jsondata.push_str("], \"links\":[");
+
+                    counter = 0;
+
+                    for (key, value) in pathways.iter() {
+                        let temp = format!("{{\"source\":\"{}\",\"target\":\"{}\",\"value\":2}},", rootlink, value);
+                        //println!("Link: {} -> Value: {}", key, value);
+                        jsondata.push_str(&temp);
+                        counter = counter + 1;
+                        
+                    }
+                    // forward logic goes here
+
+                    if counter != 0 {
+                        jsondata.pop();
+                    }
+
+                    jsondata.push_str("]}");
+
+                    let jsonfilename = format!("output/{}.json", root);
+
+                    let mut file = File::create(jsonfilename.clone()).expect("Failed to create file");
+
+                    file.write_all(jsondata.as_bytes()).expect("Failed to write to file");
+
+                    println!("JSON outputted to {}", jsonfilename);
+
+                    // umm it seems that the .json just gets a default html slapped on it... fix
+                    // later ig lol should just be simple as ignore .json files
 
                     match file.write(compiled_html.as_bytes()) {
                         Ok(_) => (),
@@ -515,6 +576,7 @@ fn compile_markdown (
             }
         }
     }
+    
 }
 
 fn copy_theme_files(things: &Vec<FsThing>, cfg: &Config, theme_path: &str) {
@@ -766,4 +828,16 @@ fn main() {
     let theme_files = walk_directory(&theme_path, &config, &theme_path);
 
     copy_theme_files(&theme_files, &config, &theme_path);
+    
+    //let json_str = r#"{ "key": "value" }"#;
+    //let parsed_json: JsonResult<JsonValue> = serde_json::from_str(json_str);
+    
+    //match parsed_json {
+      //  Ok(json) => {
+        //    println!("Parsed JSON: {:?}", json);
+        //}
+        //Err(err) => {
+         //   println!("Error parsing JSON: {}", err);
+       // }
+    //}
 }

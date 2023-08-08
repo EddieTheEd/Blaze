@@ -11,9 +11,9 @@ Worked on by Ed and Ossac (maybe mace if he responds to my emails).
 
 Officially releasing soon. See the [repository](https://github.com/EddieTheEd/Blaze) to find out on our progress!
 
-[so what can this "blaze" thing do?](showcase)
+[so what can this "blaze" thing do?](showcase.md)
 
-[consider reading the white paper!](whitepaper)
+[consider reading the white paper!](whitepaper.md)
 
 > [!quote] Theogony, Hesiod
 >

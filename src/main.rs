@@ -225,12 +225,12 @@ fn compile_markdown (
 
                     // extract the frontmatter
                     let mut frontmatter: Frontmatter = Frontmatter::new();
-
-                    let mut content = content.clone();
-
-                    // content = content.replace("\r\n","\n"); // simulate linux for me
-
-                    let old_content = content.clone();
+                    
+                    //modifying backlink content to account for links with .md
+                    //temporary solution, this replaces all instances of .md, not
+                    //[something](somethingelse.md)
+                    let mut content = content.clone().replace(".md","");
+                    let old_content = &content.clone().replace(".md","");
 
                     let crlfregex = Regex::new(r#"([^\r])\n"#).unwrap();
 
@@ -404,7 +404,7 @@ fn compile_markdown (
                                         caps.get(1).unwrap().as_str(),
                                         caps.get(2).unwrap().as_str(),
                                         caps.get(3).unwrap().as_str(),);
-                                println!("{}", replacement);
+                                // println!("{}", replacement);
                                 compiled_html = compiled_html.replace(caps.get(0).unwrap().as_str(), &replacement);
                             }
                             None => break
@@ -453,7 +453,7 @@ fn compile_markdown (
                         match latex_block_regex.captures(&compiled_html) {
                             Some(caps) => {
                                 let replacement = format!("$${}$$", caps.get(1).unwrap().as_str());
-                                println!("{}", &replacement);
+                                // println!("{}", &replacement);
                                 compiled_html = compiled_html.replace(caps.get(0).unwrap().as_str(), &replacement);
                             }
                             None => break
@@ -556,6 +556,10 @@ fn generate_backlinks<'a> (things: &Vec<FsThing>, cfg: &Config,
         for thing in things {
             match thing {
                 FsThing::File { path, content, metadata } => {
+                    //modifying backlink content to account for links with .md
+                    //temporary solution, this replaces all instances of .md, not
+                    //[something](somethingelse.md)
+                    let content = &content.clone().replace(".md","");
                     let link_regex = Regex::new(r"[^!]\[([^\[\]]*)\]\(([^\(\)]*)\)").unwrap();
 
                     let path = if path.ends_with(".md") {
@@ -753,9 +757,9 @@ fn main() {
     if config.settings.graph.unwrap_or(false) {
         generate_backlinks(&all_content, &config, &mut links, &mut backlinks, &mut infos);
 
-        println!("{:#?}", infos);
+        // println!("{:#?}", infos);
     }
-
+    
     // now compile .md or .markdown files
     compile_markdown(&all_content, &config, &theme_html, &links, &backlinks, &infos, &partials, true);
 

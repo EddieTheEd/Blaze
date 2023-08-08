@@ -7,18 +7,18 @@ description: This is a description. You can edit this in the frontmatter!
 
 Here are the essential features of Blaze.
 
-[Markdown](markdown)
+[Markdown](markdown.md)
 
-[Media](media)
+[Media](media.md)
 
-[Latex](latex)
+[Latex](latex.md)
 
-[Tables](tables)
+[Tables](tables.md)
 
-[Callouts](callouts)
+[Callouts](callouts.md)
 
-[Sidenotes](sidenotes)
+[Sidenotes](sidenotes.md)
 
-[Folders example](subfolder/subsubfolder/subsubfile)
+[Folders example](subfolder/subsubfolder/subsubfile.md)
 
-[Line breaks](linebreaks)
+[Line breaks](linebreaks.md)

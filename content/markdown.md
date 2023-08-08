@@ -36,7 +36,7 @@ Here is a list of cool people.
 
 [this is a markdown link to cool math games](https://www.coolmathgames.com/)
 
-[this is a link to the index file](index)
+[this is a link to the index file](index.md)
 
 Here is `some inline code!!!`
 

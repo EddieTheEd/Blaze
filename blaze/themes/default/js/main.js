@@ -1,7 +1,7 @@
 let path = window.location.pathname.replace(".html",".json");
 
-if(path == "/output/"){
-  path = "/output/index.json";
+if(path == "/"){
+  path = "/index.json";
 }
 
 console.log(path)

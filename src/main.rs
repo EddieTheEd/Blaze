@@ -498,54 +498,50 @@ fn compile_markdown (
                     //
                     // graphing time (only backlinks cause i dunno how to do forward links)
                     // probably would've been better to save as not a hashmap but oh well
-                    let mut jsondata = String::from("{\"nodes\":[");
+                    let mut graphdata = String::from("{\"nodes\":[");
 
                     let root = &dir.replace("output/","").replace(".html", "");
-                    let rootlink = &dir.replace("output", "");
+                    let rootlink = &dir.replace("output/", "/");
 
-                    jsondata.push_str(&format!("{{\"id\":\"{}\",\"link\":\"{}\"}},", root, rootlink));
+                    graphdata.push_str(&format!("{{\"id\":\"{}\",\"link\":\"{}\"}}", root, rootlink));
 
                     let mut counter = 0;
 
                     for (key, value) in pathways.iter() {
                         
-                        let temp = format!("{{\"id\":\"{}\",\"link\":\"{}\"}},", key, value);
+                        let temp = format!(",{{\"id\":\"{}\",\"link\":\"{}\"}}", key, value);
                         //println!("Link: {} -> Value: {}", key, value);
-                        jsondata.push_str(&temp);
-                        counter = counter + 1;
-                        
+                        graphdata.push_str(&temp);
+                                               
                     }
 
                     // forward logic goes here
-                    if counter != 0 {
-                        jsondata.pop();
-                    }
-                    jsondata.push_str("], \"links\":[");
+                    
+                    graphdata.push_str("], \"links\":[");
 
                     counter = 0;
-
                     for (key, value) in pathways.iter() {
-                        let temp = format!("{{\"source\":\"{}\",\"target\":\"{}\",\"value\":2}},", rootlink, value);
+                        let temp = format!("{{\"source\":\"{}\",\"target\":\"{}\",\"value\":2}},", root, key);
                         //println!("Link: {} -> Value: {}", key, value);
-                        jsondata.push_str(&temp);
+                        graphdata.push_str(&temp);
                         counter = counter + 1;
                         
                     }
                     // forward logic goes here
 
                     if counter != 0 {
-                        jsondata.pop();
+                        graphdata.pop();
                     }
 
-                    jsondata.push_str("]}");
+                    graphdata.push_str("]}");
 
-                    let jsonfilename = format!("output/{}.json", root);
+                    let graphfilename = format!("output/{}.json", root);
 
-                    let mut file = File::create(jsonfilename.clone()).expect("Failed to create file");
+                    let mut graphfile = File::create(graphfilename.clone()).expect("Failed to create file");
 
-                    file.write_all(jsondata.as_bytes()).expect("Failed to write to file");
+                    graphfile.write_all(graphdata.as_bytes()).expect("Failed to write to file");
 
-                    println!("JSON outputted to {}", jsonfilename);
+                    println!("Data outputted to {}", graphfilename);
 
                     // umm it seems that the .json just gets a default html slapped on it... fix
                     // later ig lol should just be simple as ignore .json files

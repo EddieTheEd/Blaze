@@ -41,7 +41,7 @@ a {
     
 }
 
-a:hover {
+a:hover:not(.headerlink){
     background-color: var(--lightbackground) !important;
     transition: 0.1s;
     border-radius: 4px !important;

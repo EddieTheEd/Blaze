@@ -440,6 +440,11 @@ fn compile_markdown (
                                         None => break
                                     }
                                 }
+                                //println!("here is a link maybe: {}", full_path);
+                                let rootpath = "/".to_owned()+&full_path;
+                                pathways.insert(full_path.to_string(), rootpath.to_string());
+
+
                                 full_path.push_str(".html"); // it brokey without this thats why there's so many debug
                                 let replacement =
                                     format!("<a href=\"{}\">{}</a>",

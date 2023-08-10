@@ -16,7 +16,6 @@ if (request.status === 200) {
   console.error('Error fetching JSON:', request.statusText);
 }
 
-console.log(graphdata);
 
 
   /*var graphTitle = document.getElementById("graphTitle");
@@ -60,6 +59,8 @@ console.log(graphdata);
   .attr("stroke-opacity", 0.6)
   .attr("stroke-width", d => Math.sqrt(d.value));
 
+
+
   const node = svg.selectAll("a")
   .data(nodes)
   .enter()
@@ -67,7 +68,7 @@ console.log(graphdata);
   .attr("xlink:href", d => d.link) 
   .append("circle") 
   .attr("r", 5)
-  .attr("fill", "var(--secondary)");
+  .attr("fill", d => d.linktype);
 
   
   const labels = svg.selectAll("text")
@@ -165,4 +166,4 @@ console.log(graphdata);
   }
 
   d3.select("#graph").call(zoom);
-console.log("graph... done?");
+

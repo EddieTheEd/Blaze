@@ -3,7 +3,7 @@ title: Blaze
 description: This is Blaze, a ""simple"" static site generator written in Rust
 ---
 
-## Hi!
+## Hej!
 
 Blaze is a project that aims to convert a collection of Markdown files, specifically in the format preferred by [Obsidian](https://obsidian.md/), into a static website.
 

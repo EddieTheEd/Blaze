@@ -310,7 +310,7 @@ fn compile_markdown (
                                 
                                 for link in backlinks {
                                     println!("--- backlink --- {}",link.path);
-                                    let tempkey = &link.path.to_string().replace(".html", "");
+                                    let tempkey = "backlink".to_owned()+&link.path.to_string().replace(".html", "");
                                     let tempvalue = "/".to_owned() + &link.path.to_string().replace("output", "");
                                     pathways.insert(tempkey.to_string(), tempvalue.to_string());
                                     match infos.get(&link.path) {
@@ -442,7 +442,7 @@ fn compile_markdown (
                                 }
                                 //println!("here is a link maybe: {}", full_path);
                                 let rootpath = "/".to_owned()+&full_path;
-                                pathways.insert(full_path.to_string(), rootpath.to_string());
+                                pathways.insert("forwardlink".to_owned()+&full_path.to_string(), rootpath.to_string());
 
 
                                 full_path.push_str(".html"); // it brokey without this thats why there's so many debug
@@ -508,16 +508,20 @@ fn compile_markdown (
                     let root = &dir.replace("output/","").replace(".html", "");
                     let rootlink = &dir.replace("output/", "/");
 
-                    graphdata.push_str(&format!("{{\"id\":\"{}\",\"link\":\"{}\"}}", root, rootlink));
+                    graphdata.push_str(&format!("{{\"id\":\"{}\",\"link\":\"{}\",\"linktype\":\"var(--root)\"}}", root, rootlink));
 
                     let mut counter = 0;
 
                     for (key, value) in pathways.iter() {
-                        
-                        let temp = format!(",{{\"id\":\"{}\",\"link\":\"{}\"}}", key, value);
-                        //println!("Link: {} -> Value: {}", key, value);
-                        graphdata.push_str(&temp);
-                                               
+
+                        if key.contains("backlink") {
+                            let temp = format!(",{{\"id\":\"{}\",\"link\":\"{}\",\"linktype\":\"var(--blnode)\"}}", key, value).replace("backlink", "");
+                            graphdata.push_str(&temp);
+                        }
+                        if key.contains("forwardlink") {
+                            let temp = format!(",{{\"id\":\"{}\",\"link\":\"{}\",\"linktype\":\"var(--flnode)\"}}", key, value).replace("forwardlink", "");
+                            graphdata.push_str(&temp);
+                        }
                     }
 
                     // forward logic goes here
@@ -526,7 +530,7 @@ fn compile_markdown (
 
                     counter = 0;
                     for (key, value) in pathways.iter() {
-                        let temp = format!("{{\"source\":\"{}\",\"target\":\"{}\",\"value\":2}},", root, key);
+                        let temp = format!("{{\"source\":\"{}\",\"target\":\"{}\",\"value\":2}},", root, key).replace("backlink", "").replace("forwardlink", "");
                         //println!("Link: {} -> Value: {}", key, value);
                         graphdata.push_str(&temp);
                         counter = counter + 1;

@@ -1,4 +1,4 @@
-let path = window.location.pathname.replace(".html",".json");
+let path = window.location.pathname.replace(".html","")+".json";
 
 if(path == "/"){
   path = "/index.json";

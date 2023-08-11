@@ -3,7 +3,6 @@
         calloutimages = document.querySelectorAll(".calloutimage");
             for (var i = 0; i < calloutimages.length; i++) {
                 callouttype = calloutimages[i].id;
-                console.log(callouttype);
                 try {
                     calloutimg = document.createElement("img");
                     calloutimg.src = "./callouts/"+callouttype+".svg";

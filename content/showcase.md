@@ -24,3 +24,5 @@ Here are the essential features of Blaze.
 [Line breaks](linebreaks.md)
 
 [Testing things](testing.md)
+
+[Table of Contents](tableofcontents.md)

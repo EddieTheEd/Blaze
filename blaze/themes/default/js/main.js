@@ -1,10 +1,8 @@
 let path = window.location.pathname.replace(".html","")+".json";
 
-if(path == "/"){
+if(path == "/.json"){
   path = "/index.json";
 }
-
-console.log(path)
 
 var request = new XMLHttpRequest();
 request.open('GET', path, false);  

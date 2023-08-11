@@ -90,6 +90,14 @@ img:not(.calloutimage) {
     margin-right: auto;
 }
 
+span:target {
+  background-color: var(--lightbackground) !important;
+  border-radius: 4px;
+  padding: 5px;
+  transition: background-color 0.1s;
+}
+
+
 #rightside img {
   height: 90%;
   width: 100%;

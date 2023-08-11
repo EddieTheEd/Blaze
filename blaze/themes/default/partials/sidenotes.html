@@ -37,6 +37,7 @@
             let footnotecontent = document.createElement("span");
             footnotecontent.innerHTML = (i+1) + ". " + realfootnotes[i].firstElementChild.innerHTML;
             footnotecontent.classList.add("sidenote");
+            footnotecontent.id = realfootnotes[i].id;
 
 
             realfootnotenums[i].parentElement.insertBefore(footnotecontent, realfootnotenums[i]);

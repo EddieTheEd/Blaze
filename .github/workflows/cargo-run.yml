@@ -49,20 +49,21 @@ jobs:
 
       - name: Move output
         run: |
-          mv /home/runner/work/Blaze/Blaze/output/* .
+          mv /home/runner/work/${{ github.event.repository.name }}/${{ github.event.repository.name }}/output/* .
           
           
       - name: Custom Domain
         run: |
           touch 'CNAME'
           echo "blaze.toomwn.xyz" > 'CNAME'
-          touch .nojekyll
+          
 
           # replace "blaze.toomwn.xyz" with your custom name
           # delete this part of the workflow if you don't have a custom domain
 
       - name: Update Master
         run: |
+          
           git add -A
           git commit -m "Master branch update"
           git push origin master

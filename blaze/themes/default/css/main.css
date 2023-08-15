@@ -316,7 +316,7 @@ hr:after {
     background-color: var(--red);
 }
 
-.bug-callout {
+.bug-callout, .missing-callout {
     background-color: var(--red);
 }
 

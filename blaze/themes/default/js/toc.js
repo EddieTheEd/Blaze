@@ -40,7 +40,6 @@ if (headingsArray.length > 0){
     section.id = content.textContent.replaceAll(" ", "-").toLowerCase();
     content.parentNode.insertBefore(section, content);
     section.appendChild(content);
-    content.id = content.textContent.replaceAll(" ", "-").toLowerCase();
     toc.push({text: content.textContent, link: "#" + content.textContent.replaceAll(" ", "-").toLowerCase(), type: type.replace("H", "")})
   });
 

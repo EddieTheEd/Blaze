@@ -258,6 +258,7 @@ fn compile_markdown (
                                         let mut piter = line.split(":");
                                         let key = piter.next().unwrap();
                                         let val = piter.next().unwrap_or("");
+                                        // dunno what unwrap_or does, so im just gonna replace lol
 
                                         match key {
                                             "title" => frontmatter.title = Some(val.trim().to_string()),
@@ -310,8 +311,8 @@ fn compile_markdown (
                                 
                                 for link in backlinks {
                                     println!("--- backlink --- {}",link.path);
-                                    let tempkey = "backlink".to_owned()+&link.path.to_string().replace(".html", "");
-                                    let tempvalue = "/".to_owned() + &link.path.to_string().replace("output", "");
+                                    let tempkey = "backlink".to_owned()+&link.path.to_string().replace(".html", "").replace("%20", " ");
+                                    let tempvalue = "/".to_owned() + &link.path.to_string().replace("output", "").replace("%20", " ");
                                     pathways.insert(tempkey.to_string(), tempvalue.to_string());
                                     match infos.get(&link.path) {
                                         Some(info) => {
@@ -408,8 +409,8 @@ fn compile_markdown (
                                     // todo: make the theme dependent on the theme selected
                                     // the blaze.png is temporary
                                     format!("<blockquote id=\"callout\" class=\"{}-callout\"><div id='callout-header'><div id='{}' class='calloutimage'></div><h3 id='callout-title'>{}</h3></div><p>{}</p></blockquote>", 
-                                        caps.get(1).unwrap().as_str(), 
-                                        caps.get(1).unwrap().as_str(),
+                                        caps.get(1).unwrap().as_str().to_lowercase(), 
+                                        caps.get(1).unwrap().as_str().to_lowercase(),
                                         caps.get(2).unwrap().as_str(),
                                         caps.get(3).unwrap().as_str(),);
                                 // println!("{}", replacement);
@@ -442,7 +443,7 @@ fn compile_markdown (
                                 }
                                 //println!("here is a link maybe: {}", full_path);
                                 let rootpath = "/".to_owned()+&full_path;
-                                pathways.insert("forwardlink".to_owned()+&full_path.to_string(), rootpath.to_string());
+                                pathways.insert("forwardlink".to_owned()+&full_path.to_string().replace("%20", " "), rootpath.to_string().replace("%20", " "));
 
 
                                 full_path.push_str(".html"); // it brokey without this thats why there's so many debug
@@ -515,11 +516,11 @@ fn compile_markdown (
                     for (key, value) in pathways.iter() {
 
                         if key.contains("backlink") {
-                            let temp = format!(",{{\"id\":\"{}\",\"link\":\"{}\",\"linktype\":\"var(--blnode)\"}}", key, value).replace("backlink", "");
+                            let temp = format!(",{{\"id\":\"{}\",\"link\":\"{}\",\"linktype\":\"var(--blnode)\"}}", key, value.replace(".html", "")+".html").replace("backlink", "");
                             graphdata.push_str(&temp);
                         }
                         if key.contains("forwardlink") {
-                            let temp = format!(",{{\"id\":\"{}\",\"link\":\"{}\",\"linktype\":\"var(--flnode)\"}}", key, value).replace("forwardlink", "");
+                            let temp = format!(",{{\"id\":\"{}\",\"link\":\"{}\",\"linktype\":\"var(--flnode)\"}}", key, value.replace(".html", "")+".html").replace("forwardlink", "");
                             graphdata.push_str(&temp);
                         }
                     }

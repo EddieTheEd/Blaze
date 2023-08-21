@@ -61,30 +61,48 @@ Blaze is built under the following principles:
 ### 2023-07-26
 - White paper made
 
+### 2023-08-18
+- [Starred by Jzhao](https://github.com/EddieTheEd/Blaze/stargazers)!!!!!!
+
 ## Plans
 ### Essential
-- Functional TOC
-- Spruce up Backlinks
-- Actually add the graph
-- Actually add the sidenotes
-- Frontmatterification
+- ~~Functional TOC~~
+    - Have the TOC work for more than just h2 and h3. All I need to do is just modify the logic. Should be pretty simple. But I've been putting it off. I think the best way to approach it is to create a file that essentially tests the TOC. From there, I can look at the problem from a better perspective and see how the logic is going to work. This has surprisingly become a rather interesting question with regards to comp sci in general.
+- ~~Actually add the graph~~
+- ~~Actually add the sidenotes~~
+- **Frontmatterification**
 	- ~~Fix current bugs~~
-	- Description displayed below title
+	- ~~Description displayed below title~~
 	- CSS changes via frontmatter
 	- **draft: true prevents the page from being made**
 - ~~Fix formatting for callouts to align with the standard~~
+- Make repository into display of all features, breaking down code
+    - Much like how [Quartz](https://quartz.jzhao.xyz/) does it.
+    - Shouldn't be too technical, someone like me at the start of this whole thing should be able to understand and learn from it.
+- **Extreme Customisability using blazeconfig.toml**
+    - Able to use or not use things like Mathjax directly from blazeconfig.toml
+    
+
+
+### Less important
+- Spruce up Backlinks
+- Multi-device layouts
+    - Should be a simple fix with css. Nothing too hard I hope.
+- Graph full screen mode(like how Quartz does it, looks very hot 👍)
+- x min read on top (literally stolen from Quartz)
+
 
 ### Distant
 - Full-text search
 	- Optional natural language search??!?
-- Refine the showcase
-- Make repository into display of all features, breaking down code, much like how [Quartz](https://quartz.jzhao.xyz/) does it
 - More themes! [~~Jacaranda~~ Dracula](https://nottacoz.github.io/jacaranda/) theme potentially?
-- Search (this will be a life saver)
 - ~~Light dark mode~~ never, dark mode is superior
+    - Just kidding. But I think I'll implement it differently to how Quartz does it. Instead of just a light and dark mode button, I think I might instead have a "settings" button, where the user can make personalisations to the way they view the Blaze website, stored locally of course.
 - Search for pathing
 	- Breadth-first search :(
-- Multi-device layouts
+- SPA???
+    - Maybe. I have bad memories with SPA from Quartz :( but it makes things faster, and I should be able to implement this alongside with changes to the frontmatter.
+    - i.e. If the theme of a page is "dracula", for example, this should still be loaded regardless of whether Blaze is configered to be a SPA or not.
 
 ## Miscellaneous
 ### Donating

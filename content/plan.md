@@ -18,6 +18,7 @@ The plan will be divided into 4 parts:
 
 - draft: true excluding files
 - backlinks fixed
+- Switch from Prism to [Rehype Pretty Code](https://rehype-pretty-code.netlify.app/) (thanks Jzhao)
 
 ## Awesome Features
 

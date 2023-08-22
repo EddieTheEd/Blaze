@@ -17,6 +17,8 @@ Here are the essential features of Blaze.
 
 [Callouts](callouts.md)
 
+[Codeblocks](codeblocks.md)
+
 [Sidenotes](sidenotes.md)
 
 [Folders example](subfolder/subsubfolder/subsubfile.md)

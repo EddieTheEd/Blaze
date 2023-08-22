@@ -19,8 +19,12 @@ code[class*="language-"],
 pre[class*="language-"] {
     color: var(--codebase) !important;
     text-shadow: none !important;
+    overflow-x: scroll;
 }
 
+code {
+  width: 70vw;
+}
 
 mark {
     background-color: var(--mark);

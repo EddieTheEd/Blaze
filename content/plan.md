@@ -11,6 +11,7 @@ The plan will be divided into 4 parts:
 
 - Remove unnecessary parts of CSS
 - Create separate .js files for partials
+- Properly load js scripts
 
 ## Crucial Elements
 

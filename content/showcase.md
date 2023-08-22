@@ -28,3 +28,5 @@ Here are the essential features of Blaze.
 [Testing things](testing.md)
 
 [Table of Contents](tableofcontents.md)
+
+[PDFs](pdf.md)

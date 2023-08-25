@@ -3,9 +3,18 @@ title: Plan
 description: The plan for Blaze's development
 ---
 
-The plan will be divided into 4 parts:
+## Buggies
 
-## Spring Cleaning
+These are the current bugs that Blaze has:
+
+- Backlinks do not work when the filename of the thing being linked has spaces in it
+- Title frontmatter formatted like `title: "{{title}}"` will still have the quotation marks
+
+## The development plan
+
+The plan will be divided into these parts:
+
+### Spring Cleaning
 
 *Polishing and reorganising the code so future work is easier*
 
@@ -13,7 +22,7 @@ The plan will be divided into 4 parts:
 - Create separate .js files for partials
 - Properly load js scripts
 
-## Crucial Elements
+### Crucial Elements
 
 *These are the things needed for basic function. The benchmark for this is whether my obsidian vault works with as expected.*
 
@@ -21,7 +30,7 @@ The plan will be divided into 4 parts:
 - backlinks fixed
 - Switch from Prism to [Rehype Pretty Code](https://rehype-pretty-code.netlify.app/) (thanks Jzhao)
 
-## Awesome Features
+### Awesome Features
 
 *Really cool features that I want Blaze to have*
 
@@ -32,9 +41,15 @@ The plan will be divided into 4 parts:
 - Minification
     - Have js and css minified
 
-## Customisation
+### Customisation
 
 *Making it usable for the user*
 
 - Make it fully customisable from blazeconfig.toml
     - Conditional logic in the html partials
+
+### Optimisiation
+
+*Focusing on performance*
+
+- Only modify files that are changed, i.e. don't delete all the html and replace, but change the html for files that are changed (wording???)

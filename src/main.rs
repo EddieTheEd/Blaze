@@ -62,9 +62,11 @@ struct Metadata {
     modified: u64,
 }
 
+#[derive(Debug)]
 struct Frontmatter {
     title: Option<String>,
     description: Option<String>,
+    draft: Option<String>,
 }
 
 #[derive(Clone, Debug)]
@@ -87,7 +89,8 @@ impl Frontmatter {
         Frontmatter 
             { 
                 title: None, 
-                description: None
+                description: None,
+                draft: None,
             }
     }
 }
@@ -107,7 +110,7 @@ impl Metadata {
             Err(_) => panic!("what the fuck")
         };
 
-        Metadata { created, accessed, modified }
+        Metadata { created,  accessed, modified }
     }
 }
 
@@ -261,25 +264,21 @@ fn compile_markdown (
                                     line => {
                                         let mut piter = line.split(":");
                                         let key = piter.next().unwrap();
-                                        let val = piter.next().unwrap_or("");
+                                        let val = piter.next().unwrap();
                                         // dunno what unwrap_or does, so im just gonna replace lol
 
                                         match key {
                                             "title" => {
-                                                let processed_title = val.trim().trim_matches('\'').trim_matches('\"').to_string(); // It unfortunately removes all quotation marks at the beginning and end of the title (First ', then ")
-                                                frontmatter.title = Some(processed_title);
+                                                // It unfortunately removes all quotation marks at the beginning and end of the title (First ', then ")
+                                                frontmatter.title = Some(val.trim().trim_matches('\'').trim_matches('\"').to_string());
                                             },
                                             "description" => {
-                                                frontmatter.description = Some(val.trim().trim_matches('\"').to_string())
+                                                frontmatter.description = Some(val.trim().trim_matches('\"').to_string());
                                             },
                                             
                                             // If draft: true, then don't compile
                                             "draft" => {
-                                                if val.trim().trim_matches('\"') == "true" {
-                                                    println!("DRAFT {}", path);
-                                                    // Code to make it not compile
-                                                    
-                                                }
+                                                "draft" => frontmatter.draft = Some(val.trim().trim_matches('\"').to_string());
                                             },
                                             _ => (),
                                         }
@@ -292,7 +291,6 @@ fn compile_markdown (
                         } else {
                             content.clone()
                         };
-
                     let compiled_markdown = to_html_with_options(&content,
                         &markdown::Options { 
                             parse: markdown::ParseOptions { 
@@ -310,7 +308,6 @@ fn compile_markdown (
                                 ..Default::default() 
                             }
                     ).unwrap();
-                    
                     
                     let mut compiled_html = theme.clone();
 
@@ -537,7 +534,7 @@ fn compile_markdown (
                             let temp = format!(",{{\"id\":\"{}\",\"link\":\"{}\",\"linktype\":\"var(--blnode)\"}}", key, value.replace(".html", "")+".html").replace("backlink", "");
                             graphdata.push_str(&temp);
                         }
-                        if key.contains("forwardlink") {
+                        if key.contains("forwardlink"){
                             let temp = format!(",{{\"id\":\"{}\",\"link\":\"{}\",\"linktype\":\"var(--flnode)\"}}", key, value.replace(".html", "")+".html").replace("forwardlink", "");
                             graphdata.push_str(&temp);
                         }
@@ -574,22 +571,36 @@ fn compile_markdown (
                     // umm it seems that the .json just gets a default html slapped on it... fix
                     // later ig lol should just be simple as ignore .json files
 
-                    match file.write(compiled_html.as_bytes()) {
-                        Ok(_) => (),
-                        Err(why) => panic!("error writing {}: {}", dir, why)
+
+                    match &frontmatter.draft {
+                        Some(draft) => {
+                            if draft != "true"{
+                                match file.write(compiled_html.as_bytes()) {
+                                    Ok(_) => (),
+                                    Err(why) => panic!("error writing {}: {}", dir, why)
+                                }
+                                } else {
+                                    // copy file directly
+                                    println!("this file may potentially be a draft...");
+                                    let mut in_dir = cfg.build.input.clone();
+                                    in_dir.push('/');
+                                    in_dir.push_str(path.as_str());
+                                    let mut out_dir = cfg.build.output.clone();
+                                    out_dir.push('/');
+                                    out_dir.push_str(path.as_str());
+                                    println!("copying file {} -> {}", path, out_dir);
+                                    let _ = fs::copy(in_dir, out_dir);
+                                }
+                            },
+                        None => {
+                            let last = html_path.replace("\\","/");
+                            let last = last.split("/").last().expect("should have a path");
+                            compiled_html = compiled_html.replace("{{title}}", last)
+                        },
                     }
-                } else {
-                    // copy file directly
-                    let mut in_dir = cfg.build.input.clone();
-                    in_dir.push('/');
-                    in_dir.push_str(path.as_str());
-                    let mut out_dir = cfg.build.output.clone();
-                    out_dir.push('/');
-                    out_dir.push_str(path.as_str());
-                    println!("copying file {} -> {}", path, out_dir);
-                    let _ = fs::copy(in_dir, out_dir);
                 }
             }
+                
             FsThing::Directory { path, contents, metadata: _ } => {
                 let mut dir = cfg.build.output.clone();
                 dir.push('/');
@@ -706,7 +717,7 @@ fn generate_backlinks<'a> (things: &Vec<FsThing>, cfg: &Config,
 
                         let mut frontmatter = 
                             if content.starts_with("---") {
-                                let mut frontmatter = Frontmatter { title: None, description: None };
+                                let mut frontmatter = Frontmatter { title: None, description: None, draft: None };
                                 // frontmatter
                                 let mut c_iter = content.split("\n");
 
@@ -732,7 +743,7 @@ fn generate_backlinks<'a> (things: &Vec<FsThing>, cfg: &Config,
 
                                 frontmatter
                             } else {
-                                Frontmatter { title: None, description: None }
+                                Frontmatter { title: None, description: None, draft: None }
                             };
 
                         if frontmatter.title.is_none() {

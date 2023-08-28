@@ -1,12 +1,8 @@
----
-title: "draft"
-description: "you shouldn't be able to see this"
+
+title: Draft
+description: A draft file, hopefully you never see this description!
 draft: "true"
 ---
 
-
-DRAFT
-
-IN PROGRESS
-
+You shouldn't be able to see this. 
 

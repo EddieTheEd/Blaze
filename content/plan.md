@@ -9,6 +9,7 @@ These are the current bugs that Blaze has:
 
 - Backlinks do not work when the filename of the thing being linked has spaces in it
 - Title frontmatter formatted like `title: "{{title}}"` will still have the quotation marks
+    - FIXED - Reaper
 
 ## The development plan
 

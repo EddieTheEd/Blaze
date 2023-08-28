@@ -10,6 +10,7 @@ use toml::Value;
 use markdown::{to_html_with_options, Constructs};
 use regex::Regex;
 
+
 #[derive(Deserialize, Debug)]
 struct Config {
     build: Build,
@@ -36,6 +37,9 @@ enum FsThing {
     File { path: String, content: String, metadata: Metadata },
     Directory { path: String, contents: Vec<FsThing>, metadata: Metadata }
 }
+
+// static mut drafts = Vec::<T>::new();
+
 
 // wrapper function to format a date
 fn format_date (time: u64) -> String {
@@ -261,8 +265,45 @@ fn compile_markdown (
                                         // dunno what unwrap_or does, so im just gonna replace lol
 
                                         match key {
-                                            "title" => frontmatter.title = Some(val.trim().to_string()),
-                                            "description" => frontmatter.description = Some(val.trim().to_string()),
+                                            "title" => {
+                                                let processed_title = val.trim().trim_matches('\'').trim_matches('\"').to_string();
+                                                frontmatter.title = Some(processed_title);
+                                            },
+                                            "description" => {
+                                                frontmatter.description = Some(val.trim().trim_matches('\"').to_string())
+                                            },
+                                            
+                                            // If draft: true, then don't compile
+                                            "draft" => {
+                                                if val.trim().trim_matches('\"') == "true" {
+                                                    println!("DRAFT {}", path);
+                                                    // Code to make it not compile
+                                                    let mut chars = val.chars();
+
+                                                    // Get the first character
+                                                    let first_char = chars.next(); // Returns an Option<char>
+                                                
+                                                    // Iterate to the last character
+                                                    let mut last_char = None;
+                                                    while let Some(c) = chars.next() {
+                                                        last_char = Some(c);
+                                                    }
+                                                    if first_char == "\'".chars().next() || first_char == "\'".chars().next() {
+                                                        if last_char == "\"".chars().next() || last_char == "\"".chars().next() {
+                                                            if first_char == last_char {
+                                                                let mut modified_string: String = chars.collect();
+                                                                // Remove the first character
+                                                                modified_string.remove(0);
+
+                                                                // Remove the last character
+                                                                modified_string.pop();
+                                                            }
+
+                                                            
+                                                        }
+                                                    }
+                                                }
+                                            },
                                             _ => (),
                                         }
                                     }

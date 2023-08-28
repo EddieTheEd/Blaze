@@ -337,7 +337,7 @@ fn compile_markdown (
                                             backlinks_partials.push_str(
                                                 format!(r#"{{{{ partial "backlink.html" . ({}, {}, {}, {}) }}}}
 "#, 
-                                                    info.title,
+                                                    info.title.trim_matches('\'').trim_matches('\"').to_string(),
                                                     link.path,
                                                     info.description.clone().unwrap_or("".to_string()),
                                                     info.modified).as_str()

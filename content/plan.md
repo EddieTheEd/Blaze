@@ -54,3 +54,4 @@ The plan will be divided into these parts:
 *Focusing on performance*
 
 - Only modify files that are changed, i.e. don't delete all the html and replace, but change the html for files that are changed (wording???)
+    - Maybe check last date/time of modification? and store last cargo run/build date/time?

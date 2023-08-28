@@ -266,7 +266,7 @@ fn compile_markdown (
 
                                         match key {
                                             "title" => {
-                                                let processed_title = val.trim().trim_matches('\'').trim_matches('\"').to_string();
+                                                let processed_title = val.trim().trim_matches('\'').trim_matches('\"').to_string(); // It unfortunately removes all quotation marks at the beginning and end of the title (First ', then ")
                                                 frontmatter.title = Some(processed_title);
                                             },
                                             "description" => {

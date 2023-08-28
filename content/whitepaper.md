@@ -74,7 +74,7 @@ Blaze is built under the following principles:
 	- ~~Fix current bugs~~
 	- ~~Description displayed below title~~
 	- CSS changes via frontmatter
-	- **draft: true prevents the page from being made**
+	- ~~draft: true prevents the page from being made~~
 - ~~Fix formatting for callouts to align with the standard~~
 - Make repository into display of all features, breaking down code
     - Much like how [Quartz](https://quartz.jzhao.xyz/) does it.

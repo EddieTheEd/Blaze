@@ -276,9 +276,8 @@ fn compile_markdown (
                                                 frontmatter.description = Some(val.trim().trim_matches('\"').to_string());
                                             },
                                             
-                                            // If draft: true, then don't compile
                                             "draft" => {
-                                                "draft" => frontmatter.draft = Some(val.trim().trim_matches('\"').to_string());
+                                                frontmatter.draft = Some(val.trim().trim_matches('\"').to_string());
                                             },
                                             _ => (),
                                         }
@@ -290,25 +289,61 @@ fn compile_markdown (
                             c_iter.collect::<Vec<&str>>().join("\n")
                         } else {
                             content.clone()
-                        };
-                    let compiled_markdown = to_html_with_options(&content,
-                        &markdown::Options { 
-                            parse: markdown::ParseOptions { 
-                                    constructs: Constructs {
-                                        // frontmatter: true,
-                                        math_flow: true,
-                                        gfm_strikethrough: true,
-                                        gfm_table: true,
-                                        gfm_footnote_definition: true,
-                                        gfm_label_start_footnote: true,
-                                        ..Constructs::default()
-                                    }, 
-                                    ..Default::default() 
-                                }, 
-                                ..Default::default() 
-                            }
-                    ).unwrap();
+                    };
                     
+                    let compiled_markdown: String;  // Declare the variable outside the match
+
+                    match &frontmatter.draft {
+                        Some(draft) => {
+                            if draft == "true" {
+                                // for the future, this message should be read from the
+                                // blazeconfig.toml file.
+                                compiled_markdown = String::from("<p>This is a draft file. This means that the owner of this website did not want you to read this! However, you may be able to find the contents of this file if the website is hosted on a public repository.</p>");
+                            } else {
+                                compiled_markdown = to_html_with_options(
+                                    &content,
+                                    &markdown::Options {
+                                        parse: markdown::ParseOptions {
+                                            constructs: Constructs {
+                                                // frontmatter: true,
+                                                math_flow: true,
+                                                gfm_strikethrough: true,
+                                                gfm_table: true,
+                                                gfm_footnote_definition: true,
+                                                gfm_label_start_footnote: true,
+                                                ..Constructs::default()
+                                            },
+                                            ..Default::default()
+                                        },
+                                        ..Default::default()
+                                    },
+                                )
+                                .unwrap();
+                            }
+                        }
+                        None => {
+                            compiled_markdown = to_html_with_options(
+                                &content,
+                                &markdown::Options {
+                                    parse: markdown::ParseOptions {
+                                        constructs: Constructs {
+                                            // frontmatter: true,
+                                            math_flow: true,
+                                            gfm_strikethrough: true,
+                                            gfm_table: true,
+                                            gfm_footnote_definition: true,
+                                            gfm_label_start_footnote: true,
+                                            ..Constructs::default()
+                                        },
+                                        ..Default::default()
+                                    },
+                                    ..Default::default()
+                                },
+                            )
+                            .unwrap();
+                        }
+                    }                    
+
                     let mut compiled_html = theme.clone();
 
                     let mut backlinks_partials = "".to_string();
@@ -572,32 +607,20 @@ fn compile_markdown (
                     // later ig lol should just be simple as ignore .json files
 
 
-                    match &frontmatter.draft {
-                        Some(draft) => {
-                            if draft != "true"{
-                                match file.write(compiled_html.as_bytes()) {
-                                    Ok(_) => (),
-                                    Err(why) => panic!("error writing {}: {}", dir, why)
-                                }
-                                } else {
-                                    // copy file directly
-                                    println!("this file may potentially be a draft...");
-                                    let mut in_dir = cfg.build.input.clone();
-                                    in_dir.push('/');
-                                    in_dir.push_str(path.as_str());
-                                    let mut out_dir = cfg.build.output.clone();
-                                    out_dir.push('/');
-                                    out_dir.push_str(path.as_str());
-                                    println!("copying file {} -> {}", path, out_dir);
-                                    let _ = fs::copy(in_dir, out_dir);
-                                }
-                            },
-                        None => {
-                            let last = html_path.replace("\\","/");
-                            let last = last.split("/").last().expect("should have a path");
-                            compiled_html = compiled_html.replace("{{title}}", last)
-                        },
+                 match file.write(compiled_html.as_bytes()) {
+                        Ok(_) => (),
+                        Err(why) => panic!("error writing {}: {}", dir, why)
                     }
+                } else {
+                    // copy file directly
+                    let mut in_dir = cfg.build.input.clone();
+                    in_dir.push('/');
+                    in_dir.push_str(path.as_str());
+                    let mut out_dir = cfg.build.output.clone();
+                    out_dir.push('/');
+                    out_dir.push_str(path.as_str());
+                    println!("copying file {} -> {}", path, out_dir);
+                    let _ = fs::copy(in_dir, out_dir);
                 }
             }
                 

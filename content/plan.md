@@ -27,7 +27,7 @@ The plan will be divided into these parts:
 
 *These are the things needed for basic function. The benchmark for this is whether my obsidian vault works with as expected.*
 
-- draft: true excluding files
+- ~~draft: true excluding files~~
 - backlinks fixed
 - Switch from Prism to [Rehype Pretty Code](https://rehype-pretty-code.netlify.app/) (thanks Jzhao)
 

@@ -30,3 +30,5 @@ Here are the essential features of Blaze.
 [Table of Contents](tableofcontents.md)
 
 [PDFs](pdf.md)
+
+[Drafts](draft.md)

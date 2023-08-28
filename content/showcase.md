@@ -32,3 +32,14 @@ Here are the essential features of Blaze.
 [PDFs](pdf.md)
 
 [Drafts](draft.md)
+
+This is how the frontmatter for the draft file looks like:
+
+```
+---
+title: Draft
+description: A draft file, you can see this description though! And maybe infer what the draft is... 
+draft: "true"
+---
+
+```

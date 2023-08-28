@@ -1,7 +1,7 @@
 ---
 title: Draft
 description: A draft file, you can see this description though! And maybe infer what the draft is... 
-draft: true
+draft: "true"
 ---
 
 You shouldn't be able to see this. 

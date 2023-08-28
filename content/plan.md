@@ -8,7 +8,8 @@ description: The plan for Blaze's development
 These are the current bugs that Blaze has:
 
 - Backlinks do not work when the filename of the thing being linked has spaces in it
-- Title frontmatter formatted like `title: "{{title}}"` will still have the quotation marks
+- ~Title frontmatter formatted like `title: "{{title}}"` will still have the quotation marks~
+    - FIXED - Reaper
 
 ## The development plan
 
@@ -53,3 +54,4 @@ The plan will be divided into these parts:
 *Focusing on performance*
 
 - Only modify files that are changed, i.e. don't delete all the html and replace, but change the html for files that are changed (wording???)
+    - Maybe check last date/time of modification? and store last cargo run/build date/time?

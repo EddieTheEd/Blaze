@@ -10,6 +10,7 @@ use toml::Value;
 use markdown::{to_html_with_options, Constructs};
 use regex::Regex;
 
+
 #[derive(Deserialize, Debug)]
 struct Config {
     build: Build,
@@ -36,6 +37,9 @@ enum FsThing {
     File { path: String, content: String, metadata: Metadata },
     Directory { path: String, contents: Vec<FsThing>, metadata: Metadata }
 }
+
+// static mut drafts = Vec::<T>::new();
+
 
 // wrapper function to format a date
 fn format_date (time: u64) -> String {
@@ -264,9 +268,18 @@ fn compile_markdown (
                                         // dunno what unwrap_or does, so im just gonna replace lol
 
                                         match key {
-                                            "title" => frontmatter.title = Some(val.trim().to_string()),
-                                            "description" => frontmatter.description = Some(val.trim().to_string()),
-                                            "draft" => frontmatter.draft = Some(val.trim().to_string()),
+                                            "title" => {
+                                                // It unfortunately removes all quotation marks at the beginning and end of the title (First ', then ")
+                                                frontmatter.title = Some(val.trim().trim_matches('\'').trim_matches('\"').to_string());
+                                            },
+                                            "description" => {
+                                                frontmatter.description = Some(val.trim().trim_matches('\"').to_string());
+                                            },
+                                            
+                                            // If draft: true, then don't compile
+                                            "draft" => {
+                                                "draft" => frontmatter.draft = Some(val.trim().trim_matches('\"').to_string());
+                                            },
                                             _ => (),
                                         }
                                     }
@@ -321,7 +334,7 @@ fn compile_markdown (
                                             backlinks_partials.push_str(
                                                 format!(r#"{{{{ partial "backlink.html" . ({}, {}, {}, {}) }}}}
 "#, 
-                                                    info.title,
+                                                    info.title.trim_matches('\'').trim_matches('\"').to_string(),
                                                     link.path,
                                                     info.description.clone().unwrap_or("".to_string()),
                                                     info.modified).as_str()

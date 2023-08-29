@@ -709,6 +709,8 @@ fn generate_backlinks<'a> (things: &Vec<FsThing>, cfg: &Config,
                                 Vec::new()
                             );
                         }
+                        
+
                         let outlinks = links.get(&path.replace("\\","/")).unwrap();
                         let mut outlinks = outlinks.clone();
                         outlinks.push(

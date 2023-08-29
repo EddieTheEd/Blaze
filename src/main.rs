@@ -274,11 +274,11 @@ fn compile_markdown (
                                                 frontmatter.title = Some(val.trim().trim_matches('\'').trim_matches('\"').to_string());
                                             },
                                             "description" => {
-                                                frontmatter.description = Some(val.trim().trim_matches('\"').to_string());
+                                                frontmatter.description = Some(val.trim().trim_matches('\'').trim_matches('\"').to_string());
                                             },
                                             
                                             "draft" => {
-                                                frontmatter.draft = Some(val.trim().trim_matches('\"').to_string());
+                                                frontmatter.draft = Some(val.trim().trim_matches('\'').trim_matches('\"').to_string());
                                             },
                                             _ => (),
                                         }

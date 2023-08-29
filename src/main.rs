@@ -9,12 +9,14 @@ use serde::Deserialize;
 use toml::Value;
 use markdown::{to_html_with_options, Constructs};
 use regex::Regex;
+use toml;
 
 
 #[derive(Deserialize, Debug)]
 struct Config {
     build: Build,
     settings: Settings,
+    drafts: Drafts,
 }
 
 #[derive(Deserialize, Debug)]
@@ -31,6 +33,11 @@ struct Build {
 struct Settings {
     graph: Option<bool>,
     backlinks: Option<bool>,
+}
+
+#[derive(Deserialize, Debug)]
+struct Drafts {
+    message: String,
 }
 
 #[derive(Debug)]
@@ -280,6 +287,9 @@ fn compile_markdown (
                                             "draft" => {
                                                 frontmatter.draft = Some(val.trim().trim_matches('\'').trim_matches('\"').to_string());
                                             },
+                                            "theme" => {
+                                                // ignore
+                                            }
                                             _ => (),
                                         }
                                     }
@@ -299,7 +309,7 @@ fn compile_markdown (
                             if draft == "true" {
                                 // for the future, this message should be read from the
                                 // blazeconfig.toml file.
-                                compiled_markdown = String::from("<p>This is a draft file. This means that the owner of this website did not want you to read this! However, you may be able to find the contents of this file if the website is hosted on a public repository.</p>");
+                                compiled_markdown = String::from(format!("{}", cfg.drafts.message));
                             } else {
                                 compiled_markdown = to_html_with_options(
                                     &content,

@@ -26,4 +26,9 @@ theme = 'default'
 
 # enable site graph
 graph = true
-backlinks = false # this will affect the graph!
+backlinks = true # this will affect the graph!
+
+[drafts]
+
+message = "<p style='color: white'>DRAFT DOCUMENT</p>"
+# Temporary css, need to be added to main css

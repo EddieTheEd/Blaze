@@ -262,7 +262,6 @@ fn compile_markdown (
                             loop {
                                 match c_iter.next().unwrap_or("---").trim() {
                                     "---" => break,
-                                    "" => break,
                                     line => {
                                         let mut piter = line.split(":");
                                         let key = piter.next().unwrap();

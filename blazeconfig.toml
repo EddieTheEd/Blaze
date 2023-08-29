@@ -30,5 +30,9 @@ backlinks = true # this will affect the graph!
 
 [drafts]
 
+use_file_description = true
+# Use the file description as the description
+# If use_file_description == false, then it uses custom_draft_description
+custom_draft_description = "This is a draft"
 message = "<p style='color: white'>DRAFT DOCUMENT</p>"
 # Temporary css, need to be added to main css

@@ -37,6 +37,8 @@ struct Settings {
 
 #[derive(Deserialize, Debug)]
 struct Drafts {
+    use_file_description: Option<bool>,
+    custom_draft_description: String,
     message: String,
 }
 
@@ -286,9 +288,14 @@ fn compile_markdown (
                                             
                                             "draft" => {
                                                 frontmatter.draft = Some(val.trim().trim_matches('\'').trim_matches('\"').to_string());
+                                                if cfg.drafts.use_file_description.unwrap_or(true) {
+                                                } else {
+                                                    frontmatter.description = Some(cfg.drafts.custom_draft_description.clone());
+                                                }
+                                                
                                             },
                                             "theme" => {
-                                                // ignore
+                                                // Ignore for now
                                             }
                                             _ => (),
                                         }
@@ -309,6 +316,7 @@ fn compile_markdown (
                             if draft == "true" {
                                 // for the future, this message should be read from the
                                 // blazeconfig.toml file.
+                                // DONE - 29/08/23 - Reaper
                                 compiled_markdown = String::from(format!("{}", cfg.drafts.message));
                             } else {
                                 compiled_markdown = to_html_with_options(

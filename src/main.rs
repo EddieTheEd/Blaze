@@ -30,6 +30,7 @@ struct Build {
 #[derive(Deserialize, Debug)]
 struct Settings {
     graph: Option<bool>,
+    backlinks: Option<bool>,
 }
 
 #[derive(Debug)]
@@ -348,7 +349,7 @@ fn compile_markdown (
 
                     let mut backlinks_partials = "".to_string();
 
-                    if cfg.settings.graph.unwrap_or(false) {
+                    if cfg.settings.backlinks.unwrap_or(false) {
                         let canonical_path = path.replace("\\", "/");
                         let canonical_path = if canonical_path.contains(".md") {
                             canonical_path.replace(".md", "")
@@ -552,59 +553,62 @@ fn compile_markdown (
                     //     }
                     // }
                     //
-                    // graphing time (only backlinks cause i dunno how to do forward links)
-                    // probably would've been better to save as not a hashmap but oh well
-                    let mut graphdata = String::from("{\"nodes\":[");
+                    if cfg.settings.graph.unwrap_or(false) {
+                        // graphing time (only backlinks cause i dunno how to do forward links)
+                        // probably would've been better to save as not a hashmap but oh well
+                        let mut graphdata = String::from("{\"nodes\":[");
 
-                    let root = &dir.replace("output/","").replace(".html", "");
-                    let rootlink = &dir.replace("output/", "/");
+                        let root = &dir.replace("output/","").replace(".html", "");
+                        let rootlink = &dir.replace("output/", "/");
 
-                    graphdata.push_str(&format!("{{\"id\":\"{}\",\"link\":\"{}\",\"linktype\":\"var(--root)\"}}", root, rootlink));
+                        graphdata.push_str(&format!("{{\"id\":\"{}\",\"link\":\"{}\",\"linktype\":\"var(--root)\"}}", root, rootlink));
 
-                    let mut counter = 0;
+                        let mut counter = 0;
 
-                    for (key, value) in pathways.iter() {
+                        for (key, value) in pathways.iter() {
 
-                        if key.contains("backlink") {
-                            let temp = format!(",{{\"id\":\"{}\",\"link\":\"{}\",\"linktype\":\"var(--blnode)\"}}", key, value.replace(".html", "")+".html").replace("backlink", "");
-                            graphdata.push_str(&temp);
+                            if key.contains("backlink") {
+                                let temp = format!(",{{\"id\":\"{}\",\"link\":\"{}\",\"linktype\":\"var(--blnode)\"}}", key, value.replace(".html", "")+".html").replace("backlink", "");
+                                graphdata.push_str(&temp);
+                            }
+                            if key.contains("forwardlink"){
+                                let temp = format!(",{{\"id\":\"{}\",\"link\":\"{}\",\"linktype\":\"var(--flnode)\"}}", key, value.replace(".html", "")+".html").replace("forwardlink", "");
+                                graphdata.push_str(&temp);
+                            }
                         }
-                        if key.contains("forwardlink"){
-                            let temp = format!(",{{\"id\":\"{}\",\"link\":\"{}\",\"linktype\":\"var(--flnode)\"}}", key, value.replace(".html", "")+".html").replace("forwardlink", "");
-                            graphdata.push_str(&temp);
-                        }
-                    }
 
-                    // forward logic goes here
-                    
-                    graphdata.push_str("], \"links\":[");
-
-                    counter = 0;
-                    for (key, value) in pathways.iter() {
-                        let temp = format!("{{\"source\":\"{}\",\"target\":\"{}\",\"value\":2}},", root, key).replace("backlink", "").replace("forwardlink", "");
-                        //println!("Link: {} -> Value: {}", key, value);
-                        graphdata.push_str(&temp);
-                        counter = counter + 1;
+                        // forward logic goes here
                         
+                        graphdata.push_str("], \"links\":[");
+
+                        counter = 0;
+                        for (key, value) in pathways.iter() {
+                            let temp = format!("{{\"source\":\"{}\",\"target\":\"{}\",\"value\":2}},", root, key).replace("backlink", "").replace("forwardlink", "");
+                            //println!("Link: {} -> Value: {}", key, value);
+                            graphdata.push_str(&temp);
+                            counter = counter + 1;
+                            
+                        }
+                        // forward logic goes here
+
+                        if counter != 0 {
+                            graphdata.pop();
+                        }
+
+                        graphdata.push_str("]}");
+
+                        let graphfilename = format!("output/{}.json", root);
+
+                        let mut graphfile = File::create(graphfilename.clone()).expect("Failed to create file");
+
+                        graphfile.write_all(graphdata.as_bytes()).expect("Failed to write to file");
+
+                        println!("Data outputted to {}", graphfilename);
+
+                        // umm it seems that the .json just gets a default html slapped on it... fix
+                        // later ig lol should just be simple as ignore .json files
                     }
-                    // forward logic goes here
-
-                    if counter != 0 {
-                        graphdata.pop();
-                    }
-
-                    graphdata.push_str("]}");
-
-                    let graphfilename = format!("output/{}.json", root);
-
-                    let mut graphfile = File::create(graphfilename.clone()).expect("Failed to create file");
-
-                    graphfile.write_all(graphdata.as_bytes()).expect("Failed to write to file");
-
-                    println!("Data outputted to {}", graphfilename);
-
-                    // umm it seems that the .json just gets a default html slapped on it... fix
-                    // later ig lol should just be simple as ignore .json files
+                    
 
 
                  match file.write(compiled_html.as_bytes()) {
@@ -813,7 +817,8 @@ fn main() {
 
     let config: Config = toml::from_str(&config_file_contents).unwrap();
 
-    // println!("{:#?}", config);
+    println!("Blazeconfig.toml: {:#?}", config);
+
 
     let mut theme_path = "blaze/themes/".to_string();
     theme_path.push_str(&config.build.theme);
@@ -874,10 +879,8 @@ fn main() {
     let mut backlinks: HashMap<String, Vec<LinkTarget>> = HashMap::new();
     let mut infos: HashMap<String, PageInfo> = HashMap::new();
 
-    if config.settings.graph.unwrap_or(false) {
+    if config.settings.backlinks.unwrap_or(false) {
         generate_backlinks(&all_content, &config, &mut links, &mut backlinks, &mut infos);
-
-        // println!("{:#?}", infos);
     }
     
     // now compile .md or .markdown files
@@ -886,6 +889,10 @@ fn main() {
     let theme_files = walk_directory(&theme_path, &config, &theme_path);
 
     copy_theme_files(&theme_files, &config, &theme_path);
+
+    let mut configoutputpath = config.build.output.clone() + "/blazeconfig.toml";
+    fs::copy("blazeconfig.toml", configoutputpath);
+
     
     //let json_str = r#"{ "key": "value" }"#;
     //let parsed_json: JsonResult<JsonValue> = serde_json::from_str(json_str);

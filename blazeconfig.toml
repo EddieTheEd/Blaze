@@ -24,5 +24,6 @@ theme = 'default'
 
 [settings]
 
-# enable site graph at the bottom of page
+# enable site graph
 graph = true
+backlinks = false # this will affect the graph!

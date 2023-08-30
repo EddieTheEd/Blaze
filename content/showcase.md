@@ -33,6 +33,8 @@ Here are the essential features of Blaze.
 
 [Drafts](draft.md)
 
+[testing spaces](title%20space.md)
+
 This is how the frontmatter for the draft file looks like:
 
 ```

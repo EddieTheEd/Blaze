@@ -34,5 +34,5 @@ use_file_description = true
 # Use the file description as the description
 # If use_file_description == false, then it uses custom_draft_description
 custom_draft_description = "This is a draft"
-message = "<p style='color: white'>DRAFT DOCUMENT</p>"
+message = "This is a draft file. This means that the owner of this website did not want you to read this! However, you may be able to find the contents of this file if the website is hosted on a public repository."
 # Temporary css, need to be added to main css

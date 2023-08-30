@@ -320,7 +320,7 @@ fn compile_markdown (
                                 // for the future, this message should be read from the
                                 // blazeconfig.toml file.
                                 // DONE - 29/08/23 - Reaper
-                                compiled_markdown = String::from(format!("{}", cfg.drafts.message));
+                                compiled_markdown = String::from(format!("<strong>{}</strong>", cfg.drafts.message));
                             } else {
                                 compiled_markdown = to_html_with_options(
                                     &content,

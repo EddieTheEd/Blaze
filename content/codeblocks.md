@@ -38,4 +38,6 @@ have some css code
 
 ```
 
+Enjoy! [^1]
 
+[^1]: This is here to test codeblocks with sidenotes.

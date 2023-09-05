@@ -584,8 +584,6 @@ fn compile_markdown (
 
                         graphdata.push_str(&format!("{{\"id\":\"{}\",\"link\":\"{}\",\"linktype\":\"var(--root)\"}}", root, rootlink));
 
-                        let mut counter = 0;
-
                         for (key, value) in pathways.iter() {
 
                             if key.contains("backlink") {
@@ -602,8 +600,8 @@ fn compile_markdown (
                         
                         graphdata.push_str("], \"links\":[");
 
-                        counter = 0;
-                        for (key, value) in pathways.iter() {
+                        let mut counter = 0;
+                        for (key, _value) in pathways.iter() {
                             let temp = format!("{{\"source\":\"{}\",\"target\":\"{}\",\"value\":2}},", root, key).replace("backlink", "").replace("forwardlink", "");
                             //println!("Link: {} -> Value: {}", key, value);
                             graphdata.push_str(&temp);
@@ -840,9 +838,6 @@ fn main() {
 
     let config: Config = toml::from_str(&config_file_contents).unwrap();
 
-    println!("Blazeconfig.toml: {:#?}", config);
-
-
     let mut theme_path = "blaze/themes/".to_string();
     theme_path.push_str(&config.build.theme);
 
@@ -886,7 +881,7 @@ fn main() {
                     }
                 };
                 let compact_path = entry.path().to_str().unwrap().split("partials").last().unwrap().to_string().chars().skip(1).collect::<String>();
-                println!("{}",compact_path);
+                //println!("{}",compact_path);
                 partials.insert(
                     compact_path.to_string(),
                     content
@@ -913,19 +908,6 @@ fn main() {
 
     copy_theme_files(&theme_files, &config, &theme_path);
 
-    let mut configoutputpath = config.build.output.clone() + "/blazeconfig.toml";
-    fs::copy("blazeconfig.toml", configoutputpath);
+    let _ = fs::copy("blazeconfig.toml", config.build.output.clone() + "/blazeconfig.toml");
 
-    
-    //let json_str = r#"{ "key": "value" }"#;
-    //let parsed_json: JsonResult<JsonValue> = serde_json::from_str(json_str);
-    
-    //match parsed_json {
-      //  Ok(json) => {
-        //    println!("Parsed JSON: {:?}", json);
-        //}
-        //Err(err) => {
-         //   println!("Error parsing JSON: {}", err);
-       // }
-    //}
 }

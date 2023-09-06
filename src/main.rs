@@ -609,7 +609,7 @@ fn copy_theme_files(things: &Vec<FsThing>, cfg: &Config, theme_path: &str) {
                 if path.ends_with(".html") {
                     // skip that
                 } else {
-                    if path == "README.md"{
+                    if path.contains("README.md"){
                         println!("readme file detected");
                         // also skip that
                     }

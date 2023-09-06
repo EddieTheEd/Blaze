@@ -146,64 +146,6 @@ fn format_path (path: &String) -> String {
     path
 }
 
-fn walk_directory(path: &str, cfg: &Config, ignore: &str) -> Vec<FsThing> {
-    let this_dir = match fs::read_dir(path) {
-        Ok(dir) => dir,
-        Err(why) => {
-            println!("error reading path {}: {}", path,why);
-            return vec![]
-        }
-    };
-
-    let entries: Vec<DirEntry> = this_dir
-        .filter(|elem| elem.is_ok())
-        .map(|elem| elem.unwrap())
-        .collect();
-
-    entries.iter()
-        .map(|entry| {
-
-            println!("found {}", format_path(&entry.path().display().to_string()));
-            let metadata = fs::metadata(entry.path()).unwrap();
-            let metadata = Metadata::new(metadata);
-            if cfg.build.verbose.unwrap_or(false) {
-                println!("created {}", format_date(metadata.created));
-                println!("last accessed {}", format_date(metadata.accessed));
-                println!("last modified {}", format_date(metadata.modified));
-            }
-
-            if cfg.build.ignore.iter().any(|i| match i {
-                Value::String(s) => s.to_string() == entry.path().to_str().unwrap().replace("\\","/"),
-                _ => false
-            }) {
-                println!("ignored (private)");
-                return None
-            }
-
-            if entry.path().is_dir() {
-                Some(FsThing::Directory { 
-                    path: entry.path().display().to_string().chars().skip(ignore.len() + 1).collect::<String>(), 
-                    contents: walk_directory(entry.path().to_str().expect("should not fail"), cfg, ignore), 
-                    metadata
-                })
-            } else {
-                let content = match std::fs::read_to_string(entry.path()) {
-                    Ok(content) => content,
-                    Err(why)      => {println!("failed to read file: {}", why); "".to_string()}
-                };
-                Some(FsThing::File { 
-                    path: entry.path().display().to_string().chars().skip(ignore.len() + 1).collect::<String>(), 
-                    content, 
-                    metadata
-                })
-            }
-
-        })
-        .filter(|entry| entry.is_some())
-        .map(|entry| entry.unwrap())
-        .collect::<Vec<FsThing>>()
-
-}
 
 fn compile_markdown (
     things: &Vec<FsThing>, cfg: &Config, theme: &String, 
@@ -667,15 +609,22 @@ fn copy_theme_files(things: &Vec<FsThing>, cfg: &Config, theme_path: &str) {
                 if path.ends_with(".html") {
                     // skip that
                 } else {
-                    // copy file directly
-                    let mut in_dir = theme_path.to_string();
-                    in_dir.push('/');
-                    in_dir.push_str(path.as_str());
-                    let mut out_dir = cfg.build.output.clone();
-                    out_dir.push('/');
-                    out_dir.push_str(path.as_str());
-                    println!("copying file {} -> {}", path, out_dir);
-                    let _ = fs::copy(in_dir, out_dir);
+                    if path == "README.md"{
+                        println!("readme file detected");
+                        // also skip that
+                    }
+                    else {
+                        // copy file directly
+                        let mut in_dir = theme_path.to_string();
+                        in_dir.push('/');
+                        in_dir.push_str(path.as_str());
+                        let mut out_dir = cfg.build.output.clone();
+                        out_dir.push('/');
+                        out_dir.push_str(path.as_str());
+                        println!("copying file {} -> {}", path, out_dir);
+                        let _ = fs::copy(in_dir, out_dir);
+
+                    }
                 }
             }
             FsThing::Directory { path, contents, metadata: _ } => {
@@ -690,6 +639,65 @@ fn copy_theme_files(things: &Vec<FsThing>, cfg: &Config, theme_path: &str) {
             }
         }
     }
+}
+
+fn walk_directory(path: &str, cfg: &Config, ignore: &str) -> Vec<FsThing> {
+    let this_dir = match fs::read_dir(path) {
+        Ok(dir) => dir,
+        Err(why) => {
+            println!("error reading path {}: {}", path,why);
+            return vec![]
+        }
+    };
+
+    let entries: Vec<DirEntry> = this_dir
+        .filter(|elem| elem.is_ok())
+        .map(|elem| elem.unwrap())
+        .collect();
+
+    entries.iter()
+        .map(|entry| {
+
+            println!("found {}", format_path(&entry.path().display().to_string()));
+            let metadata = fs::metadata(entry.path()).unwrap();
+            let metadata = Metadata::new(metadata);
+            if cfg.build.verbose.unwrap_or(false) {
+                println!("created {}", format_date(metadata.created));
+                println!("last accessed {}", format_date(metadata.accessed));
+                println!("last modified {}", format_date(metadata.modified));
+            }
+
+            if cfg.build.ignore.iter().any(|i| match i {
+                Value::String(s) => s.to_string() == entry.path().to_str().unwrap().replace("\\","/"),
+                _ => false
+            }) {
+                println!("ignored (private)");
+                return None
+            }
+
+            if entry.path().is_dir() {
+                Some(FsThing::Directory { 
+                    path: entry.path().display().to_string().chars().skip(ignore.len() + 1).collect::<String>(), 
+                    contents: walk_directory(entry.path().to_str().expect("should not fail"), cfg, ignore), 
+                    metadata
+                })
+            } else {
+                let content = match std::fs::read_to_string(entry.path()) {
+                    Ok(content) => content,
+                    Err(why)      => {println!("failed to read file: {}", why); "".to_string()}
+                };
+                Some(FsThing::File { 
+                    path: entry.path().display().to_string().chars().skip(ignore.len() + 1).collect::<String>(), 
+                    content, 
+                    metadata
+                })
+            }
+
+        })
+        .filter(|entry| entry.is_some())
+        .map(|entry| entry.unwrap())
+        .collect::<Vec<FsThing>>()
+
 }
 
 fn generate_backlinks<'a> (things: &Vec<FsThing>, cfg: &Config,
@@ -846,7 +854,6 @@ fn main() {
         Ok(_) => (),
         Err(why) => panic!("error reading theme {}: {}", config.build.theme, why)
     }
-
     let mut theme_html = theme_path.clone();
     theme_html.push_str("/_theme.html");
 
@@ -909,5 +916,17 @@ fn main() {
     copy_theme_files(&theme_files, &config, &theme_path);
 
     let _ = fs::copy("blazeconfig.toml", config.build.output.clone() + "/blazeconfig.toml");
+
+    let mut universal_path = "blaze/universal".to_string(); 
+
+    match fs::read_dir(&universal_path) {
+        Ok(_) => (),
+        Err(why) => panic!("error reading universal: {}", why)
+    }
+
+    let universal_files = walk_directory(&universal_path, &config, &universal_path);
+
+    copy_theme_files(&universal_files, &config, &universal_path);
+
 
 }

@@ -17,6 +17,7 @@ struct Config {
     build: Build,
     settings: Settings,
     drafts: Drafts,
+    deployment: Deployment,
 }
 
 #[derive(Deserialize, Debug)]
@@ -40,6 +41,11 @@ struct Drafts {
     use_file_description: Option<bool>,
     custom_draft_description: String,
     message: String,
+}
+
+#[derive(Deserialize, Debug)]
+struct Deployment {
+    vercelcleanurl: Option<bool>,
 }
 
 #[derive(Debug)]
@@ -565,9 +571,6 @@ fn compile_markdown (
                         graphfile.write_all(graphdata.as_bytes()).expect("Failed to write to file");
 
                         println!("Data outputted to {}", graphfilename);
-
-                        // umm it seems that the .json just gets a default html slapped on it... fix
-                        // later ig lol should just be simple as ignore .json files
                     }
                     
 
@@ -927,6 +930,20 @@ fn main() {
     let universal_files = walk_directory(&universal_path, &config, &universal_path);
 
     copy_theme_files(&universal_files, &config, &universal_path);
+
+    if config.deployment.vercelcleanurl.unwrap_or(false) {
+        // graphing time (only backlinks cause i dunno how to do forward links)
+        // probably would've been better to save as not a hashmap but oh well
+        let mut verceljson = String::from("{
+  \"cleanUrls\": true
+}");
+
+        let verceljsonname = "output/versel.json";
+
+        let mut verceljsonfile = File::create(verceljsonname.clone()).expect("Failed to create file");
+
+        verceljsonfile.write_all(verceljson.as_bytes()).expect("Failed to write to file");
+    }
 
 
 }

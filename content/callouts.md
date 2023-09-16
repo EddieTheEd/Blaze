@@ -3,43 +3,45 @@ title: Callouts
 description: All the currently supported callouts. Feel free to fork and add your own!
 ---
 
-> [!note] Title
+> regular blockquote for comparison's sake  
+
+> [!note] Title  
 > Contents
 
-> [!abstract] Title
+> [!abstract] Title  
 > Contents
 
-> [!info] Title
+> [!info] Title  
 > Contents
 
-> [!todo] Title
+> [!todo] Title  
 > Contents
 
-> [!tip] Title
+> [!tip] Title  
 > Contents
 
-> [!success] Title
+> [!success] Title  
 > Contents
 
-> [!question] Title
+> [!question] Title  
 > Contents
 
-> [!warning] Title
+> [!warning] Title  
 > Contents
 
-> [!failure] Title
+> [!failure] Title  
 > Contents
 
-> [!danger] Title
+> [!danger] Title  
 > Contents
 
-> [!bug] Title
+> [!bug] Title  
 > Contents
 
-> [!example] Title
+> [!example] Title  
 > Contents
 
-> [!quote] Title
+> [!quote] Title  
 > Contents
 
 woah!![^1]

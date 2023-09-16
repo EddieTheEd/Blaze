@@ -1,0 +1,173 @@
+* {
+  margin: 0;
+  box-sizing: border-box;
+  color: var( --text );
+}
+body {
+  padding: 0rem;
+  background-color: var( --background );
+}
+a {
+  text-decoration: underline dashed;
+  color: var( --highlight );
+}
+a:visited {
+  color: var( --highlight-2 );
+}
+blockquote {
+  font-style: italic;
+  color: var( --highlight );
+  margin-left: 0rem;
+  margin-right: 0rem;
+  padding-left: 0.5rem;
+  border-left: 2px dashed var( --highlight );
+  background-color: var( --lowlight );
+}
+hr {
+  border: 1px dashed var( --highlight );
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+h2, h3 {
+  margin-top: 1rem;
+}
+main {
+  width: calc(50rem);
+  padding: 1rem;
+  margin-left: calc(50% - 25rem - 9rem);
+}
+nav {
+  width: 18rem;
+  float: right;
+  margin-left: 1rem;
+  height: 100vh;
+  position:fixed;
+  top: 0rem;
+  right: 0rem;
+  background-color: var( --lowlight );
+  padding :1rem;
+}
+nav a {
+  color: var( --highlight ) !important; 
+}
+
+img:not(.calloutimage) {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (max-width: 85rem) {
+  main {
+    width: calc(100% - 18rem);
+    margin-left: 0;
+  }
+}
+@media (max-width: 60rem) {
+  main {
+    width: 100%;
+    margin-left: 0;
+  }
+  nav {
+    position: static;
+    width: 100%;
+    height: unset;
+  }
+}
+
+/* callouts !! */
+
+#callout {
+  padding: 0.25rem;
+  padding-left: 1rem;
+  padding-top: 0.25rem;
+  padding-bottom: 0.5rem;
+  margin-bottom: 0.25rem;
+}
+
+.info-callout {
+  background-color: var( --lightblue-bg );
+  border-left: var( --lightblue ) 2px dashed;
+  --emoji: 'ℹ️';
+}
+
+.quote-callout {
+  background-color: var( --peach-bg );
+  border-left: var( --peach ) 2px dashed;
+  --emoji: '📜';
+}
+
+.note-callout {
+  background-color: var(--darkerlightblue-bg);
+  border-left: var(--darkerlightblue) 2px dashed;
+  --emoji: '📓';
+}
+
+.abstract-callout {
+  background-color: var(--lightestblue-bg);
+  border-left: var(--lightestblue) 2px dashed;
+  --emoji: '🕰️';
+}
+
+.example-callout {
+  background-color: var(--purple-bg);
+  border-left: var(--purple) 2px dashed;
+  --emoji: '🧾';
+}
+
+.todo-callout {
+  background-color: var( --lightblue-bg );
+  border-left: var( --lightblue ) 2px dashed;
+  --emoji: '📝';
+}
+
+.tip-callout {
+  background-color: var(--lightestblue-bg);
+  border-left: var(--lightestblue) 2px dashed;
+  --emoji: '💡';
+}
+
+.success-callout {
+  background-color: var(--green-bg);
+  border-left: var(--green) 2px dashed;
+  --emoji: '✅';
+}
+
+.question-callout {
+  background-color: var(--yellow-bg);
+  border-left: var(--yellow) 2px dashed;
+  --emoji: '❓';
+}
+
+.warning-callout {
+  background-color: var(--orange-bg);
+  border-left: var(--orange) 2px dashed;
+  --emoji: '⚠️';
+}
+
+.failure-callout {
+  background-color: var(--red-bg);
+  border-left: var(--red) 2px dashed;
+  --emoji: '❌';
+}
+
+.danger-callout {
+  background-color: var(--red-bg);
+  border-left: var(--red) 2px dashed;
+  --emoji: '🚨';
+}
+
+.bug-callout, .missing-callout {
+  background-color: var(--red-bg);
+  border-left: var(--red) 2px dashed;
+  --emoji: '🐛';
+}
+
+#callout-title {
+  font-size: 26px;
+}
+#callout-title::before {
+  content: var( --emoji );
+  font-style: normal;
+  padding-right: 0.5rem;
+}

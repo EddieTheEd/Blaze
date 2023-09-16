@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+/* edit fonts and colours here!! */ 
+
+:root {
+  font-size: 1.25em;
+  font-family: 'Comic Neue', cursive;
+  color: white;
+
+  --text: #ffffff;
+  --background: #28012f;
+  --highlight: #e59df1;
+  --highlight-2: #9046cc;
+  --lowlight: #e59df12f;
+
+  --red: #f19d9d;
+  --red-bg: #f19d9d2f;
+
+  --peach: #f1cd9d;
+  --peach-bg: #f1cd9d2f;
+
+  --orange: #f1cf9d;
+  --orange-bg: #f1cf9d2f;
+
+  --yellow: #f0f19d;
+  --yellow-bg: #f0f19d2f;
+
+  --green: #a0f19d;
+  --green-bg: #a0f19d2f;
+
+  --darkerlightblue: #9db8f1;
+  --darkerlightblue-bg: #9db8f12f;
+
+  --lightblue: #9de7f1;
+  --lightblue-bg: #9de7f12f;
+
+  --lightestblue: #b4f0eb;
+  --lightestblue-bg: #b4f0eb2f;
+  
+  --purple: #e59df1;
+  --purple-bg: #e59df12f;
+}

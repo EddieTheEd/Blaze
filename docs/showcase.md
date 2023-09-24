@@ -7,33 +7,33 @@ description: This is a description. You can edit this in the frontmatter!
 
 Here are the essential features of Blaze.
 
-[Markdown](markdown.md)
+[Markdown](features/markdown.md)
 
-[Media](media.md)
+[Media](features/media.md)
 
-[Latex](latex.md)
+[Latex](features/latex.md)
 
-[Tables](tables.md)
+[Tables](features/tables.md)
 
-[Callouts](callouts.md)
+[Callouts](features/callouts.md)
 
-[Codeblocks](codeblocks.md)
+[Codeblocks](features/codeblocks.md)
 
-[Sidenotes](sidenotes.md)
+[Sidenotes](features/sidenotes.md)
 
-[Folders example](subfolder/subsubfolder/subsubfile.md)
+[Folders example](features/subfolder/subsubfolder/subsubfile.md)
 
-[Line breaks](linebreaks.md)
+[Line breaks](features/linebreaks.md)
 
-[Testing things](testing.md)
+[Testing things](features/testing.md)
 
-[Table of Contents](tableofcontents.md)
+[Table of Contents](features/tableofcontents.md)
 
-[PDFs](pdf.md)
+[PDFs](features/pdf.md)
 
-[Drafts](draft.md)
+[Drafts](features/draft.md)
 
-[testing spaces](title%20space.md)
+[testing spaces](features/title%20space.md)
 
 This is how the frontmatter for the draft file looks like:
 

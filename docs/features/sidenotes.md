@@ -3,8 +3,6 @@ title: Thylacine
 description: the thy is lacinging
 ---
 
-[index](index.md)
-
 In the Australian bush at night, you could find a lost sixpence or the feldspar in a piece of quartz; you could find the buckle from a dog's collar or a sooty owl in a tree. But you'd never find a pound note or an ant, and you'd never find an old sepia photograph, or **why things are the way they are, although men will look for it there, some of them all of their lives.**[^1]
 
 And so Douglas was looking again, even though he'd told his brother he was going to check on the chooks. **That cold winter luminescence shone with such a fierce white light.**[^2] Ah, it's a cold star - a cold star bearing the steely light of a cold moon, bearing that light for some things, *but not enough for vision.(? this bit baffles me. let's ask widjaja!)* **Old iron shines like new milled steel, a shovel blade glints sharp from the work in gravelly soil, trees shimmer like chandeliers, the dam like a disc of stamped plate. All these old things gleam anew.**[^3] The barbed wire's rusty knots glisten with frost, spider's webs are jewelled like the most precious things hung from the pale necks of the world's most desirable women.

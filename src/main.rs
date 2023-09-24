@@ -11,13 +11,13 @@ use markdown::{to_html_with_options, Constructs};
 use regex::Regex;
 use toml;
 
-
 #[derive(Deserialize, Debug)]
 struct Config {
     build: Build,
     settings: Settings,
     drafts: Drafts,
     deployment: Deployment,
+    development: Development,
 }
 
 #[derive(Deserialize, Debug)]
@@ -46,6 +46,11 @@ struct Drafts {
 #[derive(Deserialize, Debug)]
 struct Deployment {
     vercelcleanurl: Option<bool>,
+}
+
+#[derive(Deserialize, Debug)]
+struct Development {
+    liveserverconfig: Option<bool>,
 }
 
 #[derive(Debug)]

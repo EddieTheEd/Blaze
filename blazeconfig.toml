@@ -38,6 +38,10 @@ custom_draft_description = "This is a draft"
 message = "This is a draft file. This means that the owner of this website did not want you to read this! However, you may be able to find the contents of this file if the website is hosted on a public repository."
 # Temporary css, need to be added to main css
 
-[deployment]
+[deployment] 
 
 vercelcleanurl = false
+
+[development] #settings for a development configuration of blaze
+
+liveserverconfig = true

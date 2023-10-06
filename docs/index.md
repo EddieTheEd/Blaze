@@ -32,3 +32,5 @@ Officially releasing soon. See the [repository](https://github.com/EddieTheEd/Bl
 > The flame in a fennel stalk.
 
 Soon releasing!
+
+([Join the discord!!!!](https://discord.gg/xJJeASEeAv))

@@ -15,6 +15,10 @@ jobs:
 
       - name: Install pagefind
         run: |
+          git checkout --orphan master
           cargo install pagefind
           pagefind --site "."
+          git add -A
+          git commit -m "Pagefind update"
+          git push origin master
 

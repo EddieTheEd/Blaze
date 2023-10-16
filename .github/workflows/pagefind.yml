@@ -16,5 +16,5 @@ jobs:
       - name: Install pagefind
         run: |
           cargo install pagefind
-          pagefind --site "output"
+          pagefind --site "."
 

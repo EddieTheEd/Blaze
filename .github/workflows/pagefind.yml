@@ -19,7 +19,7 @@ jobs:
           git config --local user.name "GitHub Action"
           git checkout --orphan master
           git pull origin master
-          ./pagefind --site "."
+          npx pagefind --site .
           git add 'pagefind'
           git commit -m "Pagefind update"
           git push origin master

@@ -10,6 +10,19 @@
   <div id="description">
     <i>{{description}}</i>
   </div>
+
+  <div id="search"></div>
+  <script>
+    window.addEventListener('DOMContentLoaded', (event) => {
+      new PagefindUI({ 
+        element: "#search", 
+        showSubResults: false, 
+        baseUrl: "{{base_url}}",
+        showImages: false,
+        debounceTimeoutMs: 0,
+      });
+    });
+  </script>
   
   <div id="page">
   {{ partial "body.html" .}}

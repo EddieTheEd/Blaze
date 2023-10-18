@@ -369,4 +369,5 @@ mjx-container {
 
 #search {
   padding-left: 5%;
+  position: sticky;
 }

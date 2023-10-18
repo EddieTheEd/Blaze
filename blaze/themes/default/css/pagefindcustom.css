@@ -1,6 +1,6 @@
 :root {
   --pagefind-ui-scale: .8 !important;
-  --pagefind-ui-primary: var(--tertiary) !important;
+  --pagefind-ui-primary: var(--secondary) !important;
   --pagefind-ui-text: var(--text) !important;
   --pagefind-ui-background: var(--lightbackground) !important;
   --pagefind-ui-border: var(--secondary) !important;

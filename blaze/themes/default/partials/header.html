@@ -1,4 +1,4 @@
-<a href="/" class="headerlink"> <!--scuffed but should work-->
+<a href="{{base_url}}" class="headerlink"> <!--scuffed but should work-->
     <div id="header">
 
     <img id="headericon" src="./static/blaze.png" height="60" width="60">
@@ -7,8 +7,9 @@
 
     <link href="{{base_url}}pagefind/pagefind-ui.css" rel="stylesheet">
   <script src="{{base_url}}pagefind/pagefind-ui.js"></script>
+</a>
 
-  <div id="search"></div>
+<div id="search"></div>
   <script>
     window.addEventListener('DOMContentLoaded', (event) => {
       new PagefindUI({ 
@@ -17,5 +18,4 @@
         baseUrl: "/Blaze/"
       });
     });
-  </script>
-</a>
+</script>

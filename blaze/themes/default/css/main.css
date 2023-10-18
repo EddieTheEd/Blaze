@@ -366,3 +366,7 @@ mjx-container {
     ::-webkit-scrollbar-thumb:hover {
     background:var(--secondary); 
     }
+
+#search {
+  padding-left: 5%;
+}

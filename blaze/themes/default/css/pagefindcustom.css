@@ -1,7 +1,7 @@
 :root {
   --pagefind-ui-scale: 1;
   --pagefind-ui-primary: var(--tertiary);
-  --pagefind-ui-text: var(--lighterbackground);
+  --pagefind-ui-text: var(--text);
   --pagefind-ui-background: var(--lightbackground);
   --pagefind-ui-border: var(--secondary);
   --pagefind-ui-tag: var(--secondary);

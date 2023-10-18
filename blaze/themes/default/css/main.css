@@ -367,7 +367,8 @@ mjx-container {
     background:var(--secondary); 
     }
 
-#search * {
+#search {
   padding-left: 5%;
   position: sticky !important;
+  top: 10px;
 }

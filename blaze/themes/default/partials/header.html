@@ -14,8 +14,10 @@
     window.addEventListener('DOMContentLoaded', (event) => {
       new PagefindUI({ 
         element: "#search", 
-        showSubResults: true, 
-        baseUrl: "{{base_url}}"
+        showSubResults: false, 
+        baseUrl: "{{base_url}}",
+        showImages: false,
+        debounceTimeoutMs: 0,
       });
     });
 </script>

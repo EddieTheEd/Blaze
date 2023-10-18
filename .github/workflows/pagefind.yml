@@ -20,6 +20,7 @@ jobs:
           git checkout --orphan master
           git pull origin master
           npx pagefind --site .
+          git reset HEAD -- .
           git add ./pagefind
           git status -v
           git commit -m "Pagefind update"

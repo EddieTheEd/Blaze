@@ -148,7 +148,7 @@ span:target {
     grid-template-rows: auto;
     height: max-content;
     position: sticky;
-    top: 10px;
+    top: 60px;
 }
 
 #toc {

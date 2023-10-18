@@ -4,4 +4,14 @@
     <img id="headericon" src="./static/blaze.png" height="60" width="60">
     <h1 id="pageh1">{{title}}</h1>
     </div>
+
+    <link href="/pagefind/pagefind-ui.css" rel="stylesheet">
+  <script src="/pagefind/pagefind-ui.js"></script>
+
+  <div id="search"></div>
+  <script>
+    window.addEventListener('DOMContentLoaded', (event) => {
+        new PagefindUI({ element: "#search", showSubResults: true });
+    });
+  </script>
 </a>

@@ -20,8 +20,7 @@ ignore = [
 # custom themes for specific pages will be setup else where!
 theme = 'default'
 
-# uncomment if you want a baseurl
-# base_url = 'https://example.com/'
+base_url = 'https://eddietheed.github.io/Blaze/'
 
 [settings]
 

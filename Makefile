@@ -17,7 +17,7 @@ serve: ## Configure base_url to be root directory, then run live-server
 	@npx pagefind --site output
 	@live-server output
 reset: ## Clear any additional files, excluding content or user made files, in particular the node_modules, output and target folders
-	@rm -r node_modules
-	@rm -r output
-	@rm -r target
+	@rm -rf node_modules
+	@rm -rf output
+	@rm -rf target
 run: reset setup serve ## Serve Blaze locally

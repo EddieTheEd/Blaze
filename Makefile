@@ -20,6 +20,8 @@ reset: ## Clear any additional files, excluding content or user made files, in p
 	@rm -rf node_modules
 	@rm -rf output
 	@rm -rf target
+	@rm -rf package-lock.json
+	@rm -rf package.json
 run: reset setup serve ## Serve Blaze locally
 update: ## Update Blaze to latest version. Will ignore blaze.config, content. All thanks to Jzhao's Quartz 3 Makefile! 
 	@git remote show upstream || (echo "remote 'upstream' not present, setting 'upstream'" && git remote add upstream https://github.com/EddieTheEd/Blaze.git)

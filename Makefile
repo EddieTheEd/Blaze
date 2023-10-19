@@ -21,3 +21,9 @@ reset: ## Clear any additional files, excluding content or user made files, in p
 	@rm -rf output
 	@rm -rf target
 run: reset setup serve ## Serve Blaze locally
+update: ## Update Blaze to latest version. Will ignore blaze.config, Makefile. All thanks to Jzhao's Quartz 3 Makefile! 
+	@git remote show upstream || (echo "remote 'upstream' not present, setting 'upstream'" && git remote add upstream https://github.com/EddieTheEd/Blaze.git)
+	@git fetch upstream
+	@git log --oneline --decorate --graph ..upstream/main
+	@git checkout -p upstream/main -- Makefile blazeconfig.toml
+	

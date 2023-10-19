@@ -26,5 +26,5 @@ update: ## Update Blaze to latest version. Will ignore blaze.config, content. Al
 	@git fetch upstream
 	@echo -e "\033[1mNOTE: Press 'q' to escape the log, once you've looked over(or cant be bothered to read) the commits.\033[0m"
 	@git log --oneline --decorate --graph ..upstream/main
-	@git checkout -p upstream/main -- Makefile blaze .github src
+	@git checkout -p upstream/main -- Makefile blaze .github .gitignore src
 	

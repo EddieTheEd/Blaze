@@ -13,21 +13,11 @@ use toml;
 
 #[derive(Deserialize, Debug)]
 struct Config {
-    build: Build,
     settings: Settings,
     drafts: Drafts,
     deployment: Deployment,
     development: Development,
-}
-
-#[derive(Deserialize, Debug)]
-struct Build {
-    input: String,
-    output: String,
-    ignore: toml::value::Array,
-    theme: String,
-    verbose: Option<bool>,
-    base_url: Option<String>,
+    build: Build,
 }
 
 #[derive(Deserialize, Debug)]
@@ -51,6 +41,16 @@ struct Deployment {
 #[derive(Deserialize, Debug)]
 struct Development {
     liveserverconfig: Option<bool>,
+}
+
+#[derive(Deserialize, Debug)]
+struct Build {
+    input: String,
+    output: String,
+    ignore: toml::value::Array,
+    theme: String,
+    verbose: Option<bool>,
+    base_url: Option<String>,
 }
 
 #[derive(Debug)]

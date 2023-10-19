@@ -1,3 +1,26 @@
+[settings]
+
+# enable site graph
+graph = true
+backlinks = true # this will affect the graph!
+
+[drafts]
+
+use_file_description = true
+# Use the file description as the description
+# If use_file_description == false, then it uses custom_draft_description
+custom_draft_description = "This is a draft"
+message = "This is a draft file. This means that the owner of this website did not want you to read this! However, you may be able to find the contents of this file if the website is hosted on a public repository."
+# Temporary css, need to be added to main css
+
+[deployment] 
+
+vercelcleanurl = false
+
+[development] #settings for a development configuration of blaze
+
+liveserverconfig = true
+
 [build]
 
 # this is the folder that will be built from.
@@ -21,26 +44,3 @@ ignore = [
 theme = 'default'
 
 base_url = 'https://blaze.toomwn.xyz/'
-
-[settings]
-
-# enable site graph
-graph = true
-backlinks = true # this will affect the graph!
-
-[drafts]
-
-use_file_description = true
-# Use the file description as the description
-# If use_file_description == false, then it uses custom_draft_description
-custom_draft_description = "This is a draft"
-message = "This is a draft file. This means that the owner of this website did not want you to read this! However, you may be able to find the contents of this file if the website is hosted on a public repository."
-# Temporary css, need to be added to main css
-
-[deployment] 
-
-vercelcleanurl = false
-
-[development] #settings for a development configuration of blaze
-
-liveserverconfig = true

@@ -27,3 +27,9 @@ Na_{2}CO_{3} + 2HCl \to 2Na^{+} + CO_{2} + H_{2}O + 2Cl^{-} \\
 c = \frac{n}{V}, \therefore [HCl] = \frac{4.53\times 10^{-3}}{0.0212}=0.2 molL^{-1} \ (1SF)
 \end{align}
 $$
+
+$$\begin{align}
+\text{Cl_{2(aq)}} \text{ half-cell}: \\
+\text{Greenish-yellow, pungent effervescent is bubbled into a colourless solution} \\
+\text{Loses its effervescence} \implies \text{ colourless solution} 
+\end{align}$$

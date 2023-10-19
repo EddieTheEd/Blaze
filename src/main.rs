@@ -189,7 +189,7 @@ fn compile_markdown (
                     dir.push('/');
                     dir.push_str(html_path.as_str());
                     
-                    println!("processing {}",dir);
+                    // println!("processing {}",dir);
                     let mut file = match fs::File::create(&dir) {
                         Ok(f) => f,
                         Err(why) => panic!("error creating file {}: {}", &dir, why)
@@ -214,7 +214,7 @@ fn compile_markdown (
                         content = content.replace(cap.get(0).unwrap().as_str(), &new);
                     }
 
-                    let content = 
+                    let mut content = 
                         if content.starts_with("---") {
                             // frontmatter
                             let mut c_iter = content.split("\n");
@@ -265,6 +265,11 @@ fn compile_markdown (
                             content.clone()
                     };
                     
+                    content = content.replace("$$\\begin{align}", "$$\n\\begin{align}").replace("\\end{align}$$", "\\end{align}\n$$");
+                    // cause obsidian and/or obsidian's latex suite are acting up. This is a
+                    // specific enough replace that I'm confident it will cause any erroneous
+                    // errors.
+
                     let compiled_markdown: String;  // Declare the variable outside the match
 
                     match &frontmatter.draft {
@@ -317,7 +322,7 @@ fn compile_markdown (
                             )
                             .unwrap();
                         }
-                    }                    
+                    }      
 
                     let mut compiled_html = theme.clone();
 
@@ -575,7 +580,7 @@ fn compile_markdown (
 
                         graphfile.write_all(graphdata.as_bytes()).expect("Failed to write to file");
 
-                        println!("Data outputted to {}", graphfilename);
+                        // println!("Data outputted to {}", graphfilename);
                     }
                     
 
@@ -592,7 +597,7 @@ fn compile_markdown (
                     let mut out_dir = cfg.build.output.clone();
                     out_dir.push('/');
                     out_dir.push_str(path.as_str());
-                    println!("copying file {} -> {}", path, out_dir);
+                    // println!("copying file {} -> {}", path, out_dir);
                     let _ = fs::copy(in_dir, out_dir);
                 }
             }
@@ -618,7 +623,7 @@ fn copy_theme_files(things: &Vec<FsThing>, cfg: &Config, theme_path: &str) {
                     // skip that
                 } else {
                     if path.contains("README.md"){
-                        println!("readme file detected");
+                        //println!("readme file detected");
                         // also skip that
                     }
                     else {
@@ -629,7 +634,7 @@ fn copy_theme_files(things: &Vec<FsThing>, cfg: &Config, theme_path: &str) {
                         let mut out_dir = cfg.build.output.clone();
                         out_dir.push('/');
                         out_dir.push_str(path.as_str());
-                        println!("copying file {} -> {}", path, out_dir);
+                        // println!("copying file {} -> {}", path, out_dir);
                         let _ = fs::copy(in_dir, out_dir);
 
                     }
@@ -653,7 +658,7 @@ fn walk_directory(path: &str, cfg: &Config, ignore: &str) -> Vec<FsThing> {
     let this_dir = match fs::read_dir(path) {
         Ok(dir) => dir,
         Err(why) => {
-            println!("error reading path {}: {}", path,why);
+            // println!("error reading path {}: {}", path,why);
             return vec![]
         }
     };
@@ -666,20 +671,20 @@ fn walk_directory(path: &str, cfg: &Config, ignore: &str) -> Vec<FsThing> {
     entries.iter()
         .map(|entry| {
 
-            println!("found {}", format_path(&entry.path().display().to_string()));
+            // println!("found {}", format_path(&entry.path().display().to_string()));
             let metadata = fs::metadata(entry.path()).unwrap();
             let metadata = Metadata::new(metadata);
             if cfg.build.verbose.unwrap_or(false) {
-                println!("created {}", format_date(metadata.created));
-                println!("last accessed {}", format_date(metadata.accessed));
-                println!("last modified {}", format_date(metadata.modified));
+                // println!("created {}", format_date(metadata.created));
+                // println!("last accessed {}", format_date(metadata.accessed));
+                // println!("last modified {}", format_date(metadata.modified));
             }
 
             if cfg.build.ignore.iter().any(|i| match i {
                 Value::String(s) => s.to_string() == entry.path().to_str().unwrap().replace("\\","/"),
                 _ => false
             }) {
-                println!("ignored (private)");
+                // println!("ignored (private)");
                 return None
             }
 

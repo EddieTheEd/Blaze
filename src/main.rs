@@ -340,7 +340,7 @@ fn compile_markdown (
                             Some(backlinks) => {
                                 
                                 for link in backlinks {
-                                    println!("--- backlink --- {}",link.path);
+                                    //println!("--- backlink --- {}",link.path);
                                     let tempkey = "backlink".to_owned()+&link.path.to_string().replace(".html", "").replace("%20", " ");
                                     let tempvalue = "/".to_owned() + &link.path.to_string().replace("output", "").replace("%20", " ");
                                     pathways.insert(tempkey.to_string(), tempvalue.to_string());
@@ -697,7 +697,7 @@ fn walk_directory(path: &str, cfg: &Config, ignore: &str) -> Vec<FsThing> {
             } else {
                 let content = match std::fs::read_to_string(entry.path()) {
                     Ok(content) => content,
-                    Err(why)      => {println!("failed to read file: {}", why); "".to_string()}
+                    Err(_)    => {"hi".to_string()} // this may have caused issues
                 };
                 Some(FsThing::File { 
                     path: entry.path().display().to_string().chars().skip(ignore.len() + 1).collect::<String>(), 
@@ -896,7 +896,7 @@ fn main() {
                 let content = match std::fs::read_to_string(entry.path()) {
                     Ok(content) => content,
                     Err(why)      => {
-                        println!("failed to read file: {}", why); "".to_string();
+                        // println!("failed to read file: {}", why); "".to_string();
                         continue
                     }
                 };
@@ -954,6 +954,8 @@ fn main() {
 
         verceljsonfile.write_all(verceljson.as_bytes()).expect("Failed to write to file");
     }
+
+    println!("Blaze has finished compiling")
 
 
 }

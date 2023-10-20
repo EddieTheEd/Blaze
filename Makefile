@@ -1,5 +1,6 @@
 .DEFAULT_GOAL := help
 
+## Linux - NB: windows will be the default and other os will be something like linux-help
 help: ## Show all Makefile targets
 	@echo -e "NOTE: This has only been tested on Unix/macOS!\nPrerequisites:\n- Make\n- npm\n- cargo(from rustup)\n\nRun 'make setup', then 'make serve'.\n\nThese are all the available functions:\n"
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}' # does not work on windows
@@ -33,3 +34,11 @@ update: ## Update Blaze to latest version. Will ignore blaze.config, content. Al
 	git commit -m "Update Blaze"
 	git push
 	
+
+## Windows
+
+
+
+
+
+

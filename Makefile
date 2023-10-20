@@ -2,7 +2,7 @@
 
 help: ## Show all Makefile targets
 	@echo -e "NOTE: This has only been tested on Unix/macOS!\nPrerequisites:\n- Make\n- npm\n- cargo(from rustup)\n\nRun 'make setup', then 'make serve'.\n\nThese are all the available functions:\n"
-	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
+	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}' # does not work on windows
 setup: ## Install all dependencies for serving Blaze locally
 	@npm install live-server@1.2.2 ## Live server from NPM https://www.npmjs.com/package/live-server
 	@curl https://sh.rustup.rs -sSf | sh

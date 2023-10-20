@@ -36,8 +36,10 @@ lupdate: ## Update Blaze to latest version. Will ignore blaze.config, content. A
 
 
 ## Windows
+## Convert the lhelp function to windows commands
 help:
-	@echo -e NOTE: This has only been tested on Unix/macOS!\nPrerequisites:\n- Make\n- npm\n- cargo(from rustup)\n\nRun 'make setup', then 'make serve'.\n\nThese are all the available functions:\n
+	@echo -e "NOTE: This has only been tested on Unix!\nPrerequisites:\n- Make\n- npm\n- cargo(from rustup)\n\nRun 'make setup', then 'make serve'.\n\nThese are all the available functions:\n"
+	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {gsub(/lhelp/, "help"); printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}' # does not work on windows
 
 
 

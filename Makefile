@@ -25,6 +25,8 @@ reset: ## Clear any additional files, excluding content or user made files, in p
 	@rm -rf package.json
 run: reset setup serve ## Serve Blaze locally
 update: ## Update Blaze to latest version. Will ignore blaze.config, content. All thanks to Jzhao's Quartz 3 Makefile! 
+	@start=$$(date +%s); \
+  echo $@: $$start > test.log
 	@git remote show upstream || (echo "remote 'upstream' not present, setting 'upstream'" && git remote add upstream https://github.com/EddieTheEd/Blaze.git)
 	@git fetch upstream
 	@echo -e "\033[1mNOTE: Press 'q' to escape the log, once you've looked over(or cant be bothered to read) the commits.\033[0m"
@@ -33,6 +35,8 @@ update: ## Update Blaze to latest version. Will ignore blaze.config, content. Al
 	git add .
 	git commit -m "Update Blaze"
 	git push
+	@end=$$(date +%s); \
+  echo $@: $$end >> test.log
 	
 
 ## Windows

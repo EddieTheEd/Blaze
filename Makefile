@@ -22,7 +22,6 @@ lserve: ## Configure base_url to be root directory, then run live-server
 	@end=$$(date +%s); \
   echo $@: $$end >> test.log
 lreset: ## Clear any additional files, excluding content or user made files, in particular the node_modules, output and target folders
->>>>>>> 9747b20a2e2776726e6b7ce0552de2a6125ba62a
 	@rm -rf node_modules
 	@rm -rf output
 	@rm -rf target

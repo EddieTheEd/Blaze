@@ -43,5 +43,4 @@ ignore = [
 # custom themes for specific pages will be setup else where!
 theme = 'default'
 
-temp_base_url = 'https://blaze.toomwn.xyz/'
-base_url = '/'
+base_url = 'https://blaze.toomwn.xyz'

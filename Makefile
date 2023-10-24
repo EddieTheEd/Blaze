@@ -11,7 +11,7 @@ lserve: ## Configure base_url to be root directory, then run live-server
 	@start=$$(date +%s); \
   echo $@: $$start > test.log
 	@sed -i 's\base_url\temp_base_url\g' blazeconfig.toml
-	@echo "base_url = '/'" > localbaseurl.txt
+	@echo "base_url = ''" > localbaseurl.txt
 	@cat localbaseurl.txt >> blazeconfig.toml
 	@rm localbaseurl.txt
 	@cargo run

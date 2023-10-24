@@ -7,3 +7,4 @@ docs/.trash/
 node_modules/
 package-lock.json
 package.json
+test.log

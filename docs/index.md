@@ -15,7 +15,7 @@ Officially releasing soon. See the [repository](https://github.com/EddieTheEd/Bl
 
 [consider reading the white paper!](whitepaper.md)
 
-[here's how to use blaze](usage.md)
+[here's how to use blaze](setup/prerequisites.md)
 
 [i'm literally speechless.. well not really](amazing.md)
 

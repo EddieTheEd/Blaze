@@ -12,4 +12,6 @@ Before you start using Blaze, you probably need to set up a few other things fir
 
 ![](assets/obbysettings.png)
 
+## Github
+
 [^1]: This is because Blaze reads with the content directory as the root. Also, Blaze is designed to **only** read [markdown links](https://www.markdownguide.org/basic-syntax/), while Obsidian tends to default to [wikilinks](https://en.wikipedia.org/wiki/Help:Link).

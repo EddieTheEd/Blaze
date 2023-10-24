@@ -28,24 +28,24 @@ the reasoning: quartz == igneous == ignite == fire == blazingly fast™">
 
 <!--to do later: make the baseurl thingy (will have to ask ossac(alongside logic for html partials(and forwardlinks)))-->
 
-<link rel="icon" type="image/x-icon" href="./static/blaze.ico">
+<link rel="icon" type="image/x-icon" href="{{base_url}}static/blaze.ico">
 
 <base href="{{base_url}}">
 <title>{{title}}</title>
 
-<link rel="preload" href="./css/main.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="./css/main.css"></noscript>
+<link rel="preload" href="{{base_url}}css/main.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="{{base_url}}css/main.css"></noscript>
 
-<link rel="preload" href="./css/custom.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="./css/custom.css"></noscript>
+<link rel="preload" href="{{base_url}}css/custom.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="{{base_url}}css/custom.css"></noscript>
 
-<link rel="preload" href="./css/pagefindcustom.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="./css/pagefindcustom.css"></noscript>
+<link rel="preload" href="{{base_url}}css/pagefindcustom.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="{{base_url}}css/pagefindcustom.css"></noscript>
 
-<link rel="preload" href="./js/d3.v7.min.js" as="script">
-<script src="./js/d3.v7.min.js" ></script>
+<link rel="preload" href="{{base_url}}js/d3.v7.min.js" as="script">
+<script src="{{base_url}}js/d3.v7.min.js" ></script>
 
-<script defer src="./js/graph.js"></script>
+<script defer src="{{base_url}}js/graph.js"></script>
 
 
 {{ partial "latex.html" .}}

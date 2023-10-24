@@ -42,4 +42,4 @@ ignore = [
 # if you want a custom theme for ALL pages, switch here. 
 # custom themes for specific pages will be setup else where!
 theme = 'default'
-base_url = 'https://blaze.toomwn.xyz'
+base_url = 'https://blaze.toomwn.xyz/'

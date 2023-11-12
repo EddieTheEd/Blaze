@@ -329,20 +329,22 @@ fn compile_markdown (
                     let mut backlinks_partials = "".to_string();
 
                     if cfg.settings.backlinks.unwrap_or(false) {
-                        let canonical_path = path.replace("\\", "/");
+                        let canonical_path = path.replace("\\", "/").replace(" ","%20");
                         let canonical_path = if canonical_path.contains(".md") {
                             canonical_path.replace(".md", "")
                         } else {
                             canonical_path.replace(".markdown", "")
                         };
 
+                        //println!("{}",&canonical_path);
+
                         match backlinks.get(&canonical_path) {
                             Some(backlinks) => {
                                 
                                 for link in backlinks {
-                                    //println!("--- backlink --- {}",link.path);
-                                    let tempkey = "backlink".to_owned()+&link.path.to_string().replace(".html", "").replace("%20", " ");
-                                    let tempvalue = "/".to_owned() + &link.path.to_string().replace("output", "").replace("%20", " ");
+                                    //println!("--- backlink --- {} from {}",link.path, html_path);
+                                    let tempkey = "backlink".to_owned()+&link.path.to_string().replace(".html", "");
+                                    let tempvalue = "/".to_owned() + &link.path.to_string().replace("output", "");
                                     pathways.insert(tempkey.to_string(), tempvalue.to_string());
                                     match infos.get(&link.path) {
                                         Some(info) => {

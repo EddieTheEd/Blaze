@@ -4,12 +4,16 @@ use std::io::prelude::*;
 use std::path::Path;
 use std::collections::HashMap;
 use std::io::Write;
+use std::io;
 use time::macros::date;
 use serde::Deserialize;
 use toml::Value;
 use markdown::{to_html_with_options, Constructs};
 use regex::Regex;
 use toml;
+use std::fs::OpenOptions;
+use serde_json::Map;
+use serde_json::Value as JsonValue;
 
 #[derive(Deserialize, Debug)]
 struct Config {
@@ -577,10 +581,19 @@ fn compile_markdown (
                         graphdata.push_str("]}");
 
                         let graphfilename = format!("output/{}.json", root);
+                        let globalfilename = format!("output/global.json");
 
                         let mut graphfile = File::create(graphfilename.clone()).expect("Failed to create file");
 
                         graphfile.write_all(graphdata.as_bytes()).expect("Failed to write to file");
+
+                        let mut globalfile = OpenOptions::new()
+                            .create(true)
+                            .append(true)
+                            .open(globalfilename.clone())
+                            .expect("Failed to open or create global file");
+                        
+                        globalfile.write_all(graphdata.as_bytes()).expect("Failed to write to file");
 
                         // println!("Data outputted to {}", graphfilename);
                     }
@@ -955,6 +968,10 @@ fn main() {
         let mut verceljsonfile = File::create(verceljsonname.clone()).expect("Failed to create file");
 
         verceljsonfile.write_all(verceljson.as_bytes()).expect("Failed to write to file");
+    }
+
+    if config.settings.graph.unwrap_or(false) {
+        // global graphing code goes here
     }
 
     println!("Blaze has finished compiling")

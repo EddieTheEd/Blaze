@@ -37,7 +37,7 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git checkout --orphan master
+          git checkout --orphan working
 
       - name: Clear output branch
         run: |
@@ -45,7 +45,7 @@ jobs:
           mkdir temp
           git add -A
           git commit -m "Clear branch"
-          git push origin master --force
+          git push origin working --force
 
       - name: Move output
         run: |
@@ -66,5 +66,5 @@ jobs:
         run: |
           
           git add -A
-          git commit -m "Master branch update"
-          git push origin master
+          git commit -m "Working branch update"
+          git push origin working

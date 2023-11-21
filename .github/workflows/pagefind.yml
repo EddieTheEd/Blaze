@@ -17,8 +17,9 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
+          git checkout --orphan working
+          git pull origin working
           git checkout --orphan master
-          git pull origin master
           npx pagefind --site .
           git reset HEAD -- .
           git add ./pagefind

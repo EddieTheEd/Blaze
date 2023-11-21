@@ -1,4 +1,7 @@
-let path = window.location.pathname.replace(".html","")+".json"/*"/global.json"*/;
+
+
+let path = /*window.location.pathname.replace(".html","")+".json"*/"/global.json";
+
 
 if(path == "/.json"){
   path = "/index.json";
@@ -9,7 +12,7 @@ request.open('GET', path, false);
 request.send(null);
 
 if (request.status === 200) {
-  var graphdata = JSON.parse(request.responseText);
+  var graphdata = request.responseText;
   } else {
   console.error('Error fetching JSON:', request.statusText);
 }
@@ -24,9 +27,8 @@ if (request.status === 200) {
   graphTitle.style.margin = "0";
   graphTitle.style.padding = "10px";*/
 
-  let data = graphdata;
-
-
+  let data = JSON.parse(graphdata);
+  console.log(data);
   const links = data.links.map(d => ({...d}));
   const nodes = data.nodes.map(d => ({...d}));
   const groups = [...new Set(nodes.map(node => node.group))];

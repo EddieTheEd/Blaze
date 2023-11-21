@@ -972,6 +972,8 @@ fn main() {
 
     if config.settings.graph.unwrap_or(false) {
         // global graphing code goes here
+        let globalgraphdata = fs::read_to_string("output/global.json").expect("REASON");
+        let _ = fs::write("output/global.json", globalgraphdata);
     }
 
     println!("Blaze has finished compiling")

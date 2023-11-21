@@ -62,7 +62,7 @@ jobs:
           # replace "blaze.toomwn.xyz" with your custom name
           # delete this part of the workflow if you don't have a custom domain
 
-      - name: Update Master
+      - name: Update Working
         run: |
           
           git add -A

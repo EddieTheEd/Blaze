@@ -32,6 +32,10 @@ mark {
     background-color: var(--mark);
 }
 
+del {
+  color: var(--strikethrough);
+}
+
 a {
     color: var(--textlink);
     text-decoration: none;

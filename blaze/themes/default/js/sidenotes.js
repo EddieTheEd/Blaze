@@ -1,4 +1,4 @@
-  try {
+try {
     document.getElementById("sidenotetitle").innerHTML = "Sidenotes";
     document.getElementById("rightside").appendChild(document.querySelector(".footnotes"));
 

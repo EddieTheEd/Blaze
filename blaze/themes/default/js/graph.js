@@ -1,6 +1,6 @@
 
 
-let path = /*window.location.pathname.replace(".html","")+".json"*/"/global.json";
+let path = window.location.pathname.replace(".html","")+".json"/*"/global.json"*/;
 
 
 if(path == "/.json"){

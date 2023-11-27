@@ -20,8 +20,9 @@ e.g. @import url('https://fonts.googleapis.com/css2?family=Lumanosimo&display=sw
     --background: #151515;
     --lightbackground: #2a2727;
     --lighterbackground: #494444;
-    --text: #DDDDDD;
+    --text: #C2C2C2;
     --lighttext: #aeadad;
+    --strikethrough: #8e8888; 
     --textlink: #2F459C;
     --textlinkvisited: #2F459C;
     --secondary: #2F459C;

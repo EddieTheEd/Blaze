@@ -17,12 +17,12 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git checkout working
+          git switch working
           git pull origin working
           npx pagefind --site .
           git reset HEAD -- .
           git add ./pagefind
-          git checkout master
+          git switch master
           git commit -m "Pagefind update"
           git push origin +master
 

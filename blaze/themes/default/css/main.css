@@ -3,7 +3,6 @@ html {
     background-color: var(--background);
     scroll-behavior: smooth;
 
-    font-family: "Dante MT Std", "Times New Roman", Times, serif;
     font-size: 150%;
 }
 
@@ -111,10 +110,22 @@ span:target {
 /* header stuff */
 
 #header{
-    display: flex;
-    width: 100%;
-    padding-left: 5%;
-    padding-top: 3%;
+  display: grid;
+  grid-template-areas: "a a";
+  grid-template-columns: 500px, 1fr;
+  width: 100%;
+  padding-left: 5%;
+  padding-top: 3%;
+}
+
+#insideheader{
+  display: flex;
+}
+
+#darklightimg{
+  position: absolute;
+  right: 150px;
+  padding-top: 15px;
 }
 
 #headericon {

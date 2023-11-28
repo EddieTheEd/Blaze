@@ -30,10 +30,10 @@ e.g. @import url('https://fonts.googleapis.com/css2?family=Lumanosimo&display=sw
 /* base css colours */
 
 :root[data-theme="light"] {
-    --background: #C2C2C2;
-    --lightbackground: #2a2727;
-    --lighterbackground: #494444;
-    --text: #151515;
+    --background: #FDFDFD;
+    --lightbackground: #EAE8E8;
+    --lighterbackground: #9E9E9E;
+    --text: #131330;
     --lighttext: #aeadad;
     --strikethrough: #8e8888; 
     --textlink: #2F459C;

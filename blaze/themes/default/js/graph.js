@@ -1,23 +1,58 @@
-
-
-let path = window.location.pathname.replace(".html","")+".json"/*"/global.json"*/;
-
-
-if(path == "/.json"){
-  path = "/index.json";
+function zoomed(event) {
+    svg.attr("transform", event.transform);
+}
+function dragstarted(event) {
+if (!event.active) simulation.alphaTarget(0.3).restart();
+event.subject.fx = event.subject.x;
+event.subject.fy = event.subject.y;
 }
 
-var request = new XMLHttpRequest();
-request.open('GET', path, false);  
-request.send(null);
-
-if (request.status === 200) {
-  var graphdata = request.responseText;
-  } else {
-  console.error('Error fetching JSON:', request.statusText);
+function dragged(event) {
+event.subject.fx = event.x;
+event.subject.fy = event.y;
 }
 
+function dragended(event) {
+if (!event.active) simulation.alphaTarget(0);
+event.subject.fx = null;
+event.subject.fy = null;
+}
 
+function dragged(event) {
+event.subject.fx = event.x;
+event.subject.fy = event.y;
+}
+
+function dragended(event) {
+if (!event.active) simulation.alphaTarget(0);
+event.subject.fx = null;
+event.subject.fy = null;
+}
+
+function creategraph(textcolour){
+  try {
+    let graphdiv = document.getElementById("graph");
+    let child = graphdiv.lastElementChild;
+    graphdiv.removeChild(child);
+  } catch (error) {
+    console.log(error); 
+  }
+  
+  let path = window.location.pathname.replace(".html","")+".json"/*"/global.json"*/;
+
+  if(path == "/.json"){
+    path = "/index.json";
+  }
+
+  var request = new XMLHttpRequest();
+  request.open('GET', path, false);  
+  request.send(null);
+
+  if (request.status === 200) {
+    var graphdata = request.responseText;
+    } else {
+    console.error('Error fetching JSON:', request.statusText);
+  }
 
   /*var graphTitle = document.getElementById("graphTitle");
 
@@ -29,14 +64,14 @@ if (request.status === 200) {
 
   let data = JSON.parse(graphdata);
   console.log(data);
-  const links = data.links.map(d => ({...d}));
-  const nodes = data.nodes.map(d => ({...d}));
-  const groups = [...new Set(nodes.map(node => node.group))];
+  links = data.links.map(d => ({...d}));
+  nodes = data.nodes.map(d => ({...d}));
+  groups = [...new Set(nodes.map(node => node.group))];
 
-  const width = 356;
-  const height = 356;
+  width = 356;
+  height = 356;
 
-  const svg = d3.select("#graph")
+  svg = d3.select("#graph")
     .style("position", "relative")
     .append("svg")
     .attr("width", width)
@@ -46,12 +81,12 @@ if (request.status === 200) {
 
    // .attr("transform","scale(3)");
 
-  const simulation = d3.forceSimulation(nodes)
+  simulation = d3.forceSimulation(nodes)
   .force("link", d3.forceLink(links).id(d => d.id))
   .force("charge", d3.forceManyBody())
   .force("center", d3.forceCenter(width / 2, height / 2));
 
-  const link = svg.selectAll("line")
+  link = svg.selectAll("line")
   .data(links)
   .enter()
   .append("line")
@@ -59,9 +94,7 @@ if (request.status === 200) {
   .attr("stroke-opacity", 0.6)
   .attr("stroke-width", d => Math.sqrt(d.value));
 
-
-
-  const node = svg.selectAll("a")
+  node = svg.selectAll("a")
   .data(nodes)
   .enter()
   .append("a") 
@@ -70,17 +103,16 @@ if (request.status === 200) {
   .attr("r", 5)
   .attr("fill", d => d.linktype);
 
-  
-  const labels = svg.selectAll("text")
-  .data(nodes)
-  .enter()
-  .append("text")
-  .text(d => d.id)
-  .attr("text-anchor", "middle")
-  .attr("dy", "-0.25em")
-  .attr("fill", "#FBFAF5")
-  .attr("font-size", "10px")
-  .attr("pointer-events", "none");
+  labels = svg.selectAll("text")
+    .data(nodes)
+    .enter()
+    .append("text")
+    .text(d => d.id)
+    .attr("text-anchor", "middle")
+    .attr("dy", "-0.25em")
+    .attr("fill", textcolour)
+    .attr("font-size", "10px")
+    .attr("pointer-events", "none"); 
 
   /*const legend = d3.select("#legend");
 
@@ -96,17 +128,17 @@ if (request.status === 200) {
     .enter()
     .append("div")
     .attr("id", "legend-item");
-  
+
   legendItems.append("span")
     .style("background-color", d => nodes.find(node => node.group === d).color)
     .attr("id", "legend-color");
-  
+
   legendItems.append("span")
     .text(d => d)
     .attr("id", "legend-label");
-*/
+  */
 
-  const tick = () => {
+  tick = () => {
   link
       .attr("x1", d => d.source.x)
       .attr("y1", d => d.source.y)
@@ -129,41 +161,11 @@ if (request.status === 200) {
   .on("drag", dragged)
   .on("end", dragended));
 
-  function dragstarted(event) {
-  if (!event.active) simulation.alphaTarget(0.3).restart();
-  event.subject.fx = event.subject.x;
-  event.subject.fy = event.subject.y;
-  }
-
-  function dragged(event) {
-  event.subject.fx = event.x;
-  event.subject.fy = event.y;
-  }
-
-  function dragended(event) {
-  if (!event.active) simulation.alphaTarget(0);
-  event.subject.fx = null;
-  event.subject.fy = null;
-  }
-
-  function dragged(event) {
-  event.subject.fx = event.x;
-  event.subject.fy = event.y;
-  }
-
-  function dragended(event) {
-  if (!event.active) simulation.alphaTarget(0);
-  event.subject.fx = null;
-  event.subject.fy = null;
-  }
-
-  const zoom = d3.zoom()
-      .scaleExtent([0.5, 2])
-      .on("zoom", zoomed);
-
-  function zoomed(event) {
-      svg.attr("transform", event.transform);
-  }
+  zoom = d3.zoom()
+    .scaleExtent([0.5, 2])
+    .on("zoom", zoomed);
 
   d3.select("#graph").call(zoom);
+  console.log("successfully switched to " + textcolour);
+}
 

@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!--meta tags, favicon-->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- HTML Meta Tags -->
+<meta name="description" content="A ""simple"" static site generator written in Rust.
+
+the reasoning: quartz == igneous == ignite == fire == blazingly fast™">
+
+<!-- Facebook Meta Tags -->
+<meta property="og:url" content="/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Blaze">
+<meta property="og:description" content="A &quot simple &quot static site generator written in Rust.
+
+the reasoning: quartz == igneous == ignite == fire == blazingly fast™">
+<meta property="og:image" content="/static/blazeog.png">
+
+<!-- Twitter Meta Tags -->
+<meta name="twitter:card" content="summary_large_image">
+<meta property="twitter:domain" content="/">
+<meta property="twitter:url" content="/">
+<meta name="twitter:title" content="Blaze">
+<meta name="twitter:description" content="A &quot simple &quot static site generator written in Rust.
+
+the reasoning: quartz == igneous == ignite == fire == blazingly fast™">
+<meta name="twitter:image" content="/static/blazeog.png">
+
+<!--to do later: make the baseurl thingy (will have to ask ossac(alongside logic for html partials(and forwardlinks)))-->
+
+<link rel="icon" type="image/x-icon" href="/static/blaze.ico">
+
+<title>A Surprise</title>
+
+<link rel="preload" href="/css/main.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="/css/main.css"></noscript>
+
+<link rel="preload" href="/css/custom.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="/css/custom.css"></noscript>
+
+<link rel="preload" href="/css/pagefindcustom.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="/css/pagefindcustom.css"></noscript>
+
+<link rel="preload" href="/js/d3.v7.min.js" as="script">
+<script src="/js/d3.v7.min.js" ></script>
+
+<script defer src="/js/graph.js"></script>
+
+
+
+<script>
+    MathJax = {
+        tex: {
+            inlineMath: [['$', '$'], ['$$', '$$'], ['\\(', '\\)']],
+            tags: "ams",
+        },
+        TeX: {
+            extensions: ['AMSmath.js'],
+            inlineMathDelimiters: [['$', '$'], ['\\(', '\\)']],
+            displayMathDelimiters: [['$$', '$$']],
+            processEnvironments: false,
+            processRefs: true,
+            indentalign: '\\left|',
+        },
+    };
+</script>
+<script type="text/javascript" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+
+<script src="/codeblocks/codeblocksmain.js"></script>
+
+<link rel="stylesheet" href="/codeblocks/codeblocks.css">
+
+<script src="/codeblocks/codeblocksextras.js"></script>
+
+  
+<script defer src="/js/darkmode.js"></script>
+
+</head>
+<header>
+  <div id="header">
+    <div id="insideheader">
+      <img id="headericon" src="/static/blaze.png" height="60" width="60">
+      <h1 id="pageh1">A Surprise</h1>
+  </div>
+  <div>
+    
+  <div>
+    <img id = "darklightimg" src="/static/darkmode.svg" width="40px" height="40px"/>
+  </div>
+</div>
+
+<link href="/pagefind/pagefind-ui.css" rel="stylesheet">
+<script src="/pagefind/pagefind-ui.js"></script>
+
+
+</header>
+<body>
+  <div id="description">
+    <i>One of the greatest things to happen to Blaze(ever)</i>
+  </div>
+
+  <div id="search"></div>
+  <script>
+    window.addEventListener('DOMContentLoaded', (event) => {
+      new PagefindUI({ 
+        element: "#search", 
+        showSubResults: false, 
+        baseUrl: "/",
+        showImages: false,
+        debounceTimeoutMs: 0,
+      });
+    });
+  </script>
+  
+  <div id="page">
+  <div id="leftside">
+    <div id="toc">
+    <h2 id="toctitle">Table of Contents</h2>
+    <ol id="toccontent">
+      
+    </ol>
+<script defer src="/js/toc.js"></script>
+</div>
+
+
+
+
+    <div id="graphcontainer">
+    <h2 id="graphtitle">Graph</h2>
+    <div id="graph">
+        
+    </div>
+</div>
+
+</div>
+
+<div id="rightside">
+    <h2 id="sidenotetitle"></h2>
+    
+    <p><em>This is crazy man, just crazy</em></p>
+<hr />
+<h2>Context</h2>
+<p>Let me set out the story. I wake up at 6. I'm preparing for spec cap. Before I leave home, I quickly check my Github. Cause maybe Jzhao<sup><a href="#user-content-fn-1" id="user-content-fnref-1" data-footnote-ref="" aria-describedby="footnote-label">1</a></sup> has starred something cool today, like <a href="https://spacetimedb.com/">the last thing he starred</a>. And it turns out he has. I look at my phone and see the following (-2 hours, I took this picture later in the day):</p>
+<p><img src="assets/bonkers.png" alt="" /></p>
+<p>At first, I was in disbelief. I was confused. It's that feeling you get when your casual routine, i.e. checking Github, is turned on its head. I'll be honest, I stared at my phone for a solid 10 seconds. Maybe even more. I just couldn't wrap my head around it. The legendary Jzhao, who basically inspired Blaze, giving his stamp of approval? Or interest. Who knows, I'm not gonna break down and analyse the meaning of starring things on Github. But regardless, the sense of joy and validation is immensely gratifying.</p>
+<h2>Reaction</h2>
+<p>When I arrived at school, I showed <a href="https://github.com/notmario">Ossac</a>. We both agree that this was amazing, and we both feel immensely grateful that our wacky, poorly made passion project with big aspirations but little actual execution was graced with the honour of a star from Jzhao. As someone who has taken extreme motivation from Jzhao to embark on fun and playful projects, I simply can't describe how estatic I felt upon receiving the news. Sorry if this is sounding weird, but over the last year and a bit; since my journey into making websites for my school notes and other things, I have essentially been a loyal<sup><a href="#user-content-fn-2" id="user-content-fnref-2" data-footnote-ref="" aria-describedby="footnote-label">2</a></sup> <a href="https://quartz.jzhao.xyz/">Quartz</a> user, and have strived to explore, understand, and emulate the great work of Jzhao.</p>
+<h2>What now?</h2>
+<p>Don't think this is it. Just because Blaze has received one of the highest honours it could possibly receive, doesn't mean the work is not over. Because while Blaze is in a pretty good state, if I can attempt to say so without bias, there's so many features I want to add. Blaze takes the majority of its inspiration from Quartz, but there's still things that are <strong>personally important to me</strong>, and I want to see Blaze to its end. When I actually, legitimately, release Blaze as a &quot;finished product&quot;, I want it to be something I'm proud of.</p>
+<p>On a personal note, for the people who I see almost every day, the image above is gonna be my background for at least a week. Sorry Pranav.</p>
+<h2>Summary</h2>
+<p>Dear Jzhao,</p>
+<p>We don't know each other that well. We've never spoken face to face, or even talked to each other. But I want you to know, I'm not exaggerating when I say that you starring something that I worked on is one of the greatest honours of my life. You have provided me a great boost in motivation and further inspiration throughout the past year and a bit, and I cannot quantify my gratitude to receive your star. I'm confident that Ossac feels the same way. We've both just pleasantly surprised and a little baffled.</p>
+<p>Sorry if I'm being way too verbose/obsessed with the star. It's just that this is something I couldn't possibly dream would happen in my lifetime.</p>
+<p><em>With love(not weird, i sign most things off with this, trust me),</em></p>
+<p><em>Ed</em></p>
+<section data-footnotes="" class="footnotes"><h2 id="footnote-label" class="sr-only">Footnotes</h2>
+<ol>
+<li id="user-content-fn-1">
+<p>By the way, is it Jzhao, or JZhao, or just jzhao? I've defaulted to Jzhao cause I feel such a name deserves the respect of a capitalised first letter, but I don't actually know which is preferred. <a href="#user-content-fnref-1" data-footnote-backref="" aria-label="Back to content" class="data-footnote-backref">↩</a></p>
+</li>
+<li id="user-content-fn-2">
+<p>Ehhh... At weak points during that time, I almost switched to Jekyll. And I start into this whole thing was some long forgotten Obsidian notes $\implies$ website thingy that used Netlify. I'd link it here, but I've legitimately forgotten what it was called. <a href="#user-content-fnref-2" data-footnote-backref="" aria-label="Back to content" class="data-footnote-backref">↩</a></p>
+</li>
+</ol>
+</section>
+
+    <script rel="preload" src="/js/sidenotes.js"></script>
+
+
+    <script defer src="/js/callouts.js"></script>
+
+
+  
+</div>
+
+<script defer src="/js/mobilefriendly.js"></script>
+
+  </div>
+  
+  
+  <div id="backlinks">
+    <h2 id="backlinkstitle">Backlinks</h2>
+    <a href=" index.html">Blaze</a><br>
+
+
+  </div>
+  
+</body>
+
+</html>

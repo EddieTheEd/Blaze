@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!--meta tags, favicon-->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- HTML Meta Tags -->
+<meta name="description" content="A ""simple"" static site generator written in Rust.
+
+the reasoning: quartz == igneous == ignite == fire == blazingly fast™">
+
+<!-- Facebook Meta Tags -->
+<meta property="og:url" content="/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Blaze">
+<meta property="og:description" content="A &quot simple &quot static site generator written in Rust.
+
+the reasoning: quartz == igneous == ignite == fire == blazingly fast™">
+<meta property="og:image" content="/static/blazeog.png">
+
+<!-- Twitter Meta Tags -->
+<meta name="twitter:card" content="summary_large_image">
+<meta property="twitter:domain" content="/">
+<meta property="twitter:url" content="/">
+<meta name="twitter:title" content="Blaze">
+<meta name="twitter:description" content="A &quot simple &quot static site generator written in Rust.
+
+the reasoning: quartz == igneous == ignite == fire == blazingly fast™">
+<meta name="twitter:image" content="/static/blazeog.png">
+
+<!--to do later: make the baseurl thingy (will have to ask ossac(alongside logic for html partials(and forwardlinks)))-->
+
+<link rel="icon" type="image/x-icon" href="/static/blaze.ico">
+
+<title>Building Blaze</title>
+
+<link rel="preload" href="/css/main.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="/css/main.css"></noscript>
+
+<link rel="preload" href="/css/custom.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="/css/custom.css"></noscript>
+
+<link rel="preload" href="/css/pagefindcustom.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="/css/pagefindcustom.css"></noscript>
+
+<link rel="preload" href="/js/d3.v7.min.js" as="script">
+<script src="/js/d3.v7.min.js" ></script>
+
+<script defer src="/js/graph.js"></script>
+
+
+
+<script>
+    MathJax = {
+        tex: {
+            inlineMath: [['$', '$'], ['$$', '$$'], ['\\(', '\\)']],
+            tags: "ams",
+        },
+        TeX: {
+            extensions: ['AMSmath.js'],
+            inlineMathDelimiters: [['$', '$'], ['\\(', '\\)']],
+            displayMathDelimiters: [['$$', '$$']],
+            processEnvironments: false,
+            processRefs: true,
+            indentalign: '\\left|',
+        },
+    };
+</script>
+<script type="text/javascript" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+
+<script src="/codeblocks/codeblocksmain.js"></script>
+
+<link rel="stylesheet" href="/codeblocks/codeblocks.css">
+
+<script src="/codeblocks/codeblocksextras.js"></script>
+
+  
+<script defer src="/js/darkmode.js"></script>
+
+</head>
+<header>
+  <div id="header">
+    <div id="insideheader">
+      <img id="headericon" src="/static/blaze.png" height="60" width="60">
+      <h1 id="pageh1">Building Blaze</h1>
+  </div>
+  <div>
+    
+  <div>
+    <img id = "darklightimg" src="/static/darkmode.svg" width="40px" height="40px"/>
+  </div>
+</div>
+
+<link href="/pagefind/pagefind-ui.css" rel="stylesheet">
+<script src="/pagefind/pagefind-ui.js"></script>
+
+
+</header>
+<body>
+  <div id="description">
+    <i>How to locally serve Blaze.</i>
+  </div>
+
+  <div id="search"></div>
+  <script>
+    window.addEventListener('DOMContentLoaded', (event) => {
+      new PagefindUI({ 
+        element: "#search", 
+        showSubResults: false, 
+        baseUrl: "/",
+        showImages: false,
+        debounceTimeoutMs: 0,
+      });
+    });
+  </script>
+  
+  <div id="page">
+  <div id="leftside">
+    <div id="toc">
+    <h2 id="toctitle">Table of Contents</h2>
+    <ol id="toccontent">
+      
+    </ol>
+<script defer src="/js/toc.js"></script>
+</div>
+
+
+
+
+    <div id="graphcontainer">
+    <h2 id="graphtitle">Graph</h2>
+    <div id="graph">
+        
+    </div>
+</div>
+
+</div>
+
+<div id="rightside">
+    <h2 id="sidenotetitle"></h2>
+    
+    <h2>Important note!</h2>
+<p>Currently, this should in theory only work <strong>Unix/macOS</strong>, as Blaze uses cargo.</p>
+<p>If you want to use this using Windows, you will probably have to install cargo conventionally, i.e. search it, and also install make. Once that is done, you can run make serve.</p>
+<h2>Prerequisites</h2>
+<ul>
+<li>Make</li>
+<li>npm</li>
+<li>cargo(from rustup)</li>
+</ul>
+<h2>How to!</h2>
+<ul>
+<li>Go to the root directory of the repository. i.e. /home/eddietheed/Blaze/</li>
+<li>Execute <code>make help</code>(or just <code>make</code>)</li>
+<li>Follow the instructions</li>
+<li>Tada!</li>
+</ul>
+
+    <script rel="preload" src="/js/sidenotes.js"></script>
+
+
+    <script defer src="/js/callouts.js"></script>
+
+
+  
+</div>
+
+<script defer src="/js/mobilefriendly.js"></script>
+
+  </div>
+  
+  
+  <div id="backlinks">
+    <h2 id="backlinkstitle">Backlinks</h2>
+    
+  </div>
+  
+</body>
+
+</html>

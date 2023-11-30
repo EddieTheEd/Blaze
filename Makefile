@@ -21,6 +21,20 @@ lserve: ## Configure base_url to be root directory, then run live-server
 	@live-server output
 	@end=$$(date +%s); \
   echo $@: $$end >> test.log
+lserveff: ## Configure base_url to be root directory, then run live-server for firefox developer edition
+	@start=$$(date +%s); \
+  echo $@: $$start > test.log
+	@sed -i 's\base_url\temp_base_url\g' blazeconfig.toml
+	@echo "base_url = '/'" > localbaseurl.txt
+	@cat localbaseurl.txt >> blazeconfig.toml
+	@rm localbaseurl.txt
+	@cargo run
+	@sed -i 's\temp_base_url\base_url\g' blazeconfig.toml
+	@sed -i '$$d' blazeconfig.toml
+	@npx pagefind --site output
+	@live-server output --browser=/usr/lib/firefox-developer-edition/firefox --no-browser
+	@end=$$(date +%s); \
+  echo $@: $$end >> test.log
 lreset: ## Clear any additional files, excluding content or user made files, in particular the node_modules, output and target folders
 	@rm -rf node_modules
 	@rm -rf output

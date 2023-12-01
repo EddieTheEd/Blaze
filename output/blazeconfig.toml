@@ -1,0 +1,47 @@
+[settings]
+
+# enable site graph
+graph = true
+backlinks = true # this will affect the graph!
+
+[drafts]
+
+use_file_description = true
+# Use the file description as the description
+# If use_file_description == false, then it uses custom_draft_description
+custom_draft_description = "This is a draft"
+message = "This is a draft file. This means that the owner of this website did not want you to read this! However, you may be able to find the contents of this file if the website is hosted on a public repository."
+# Temporary css, need to be added to main css
+
+[deployment] 
+
+vercelcleanurl = false
+
+[development] #settings for a development configuration of blaze
+
+liveserverconfig = true
+
+[build]
+
+# this is the folder that will be built from.
+input = 'docs'
+# change this to the folder where your content is, i.e. the content folder. (this is only for blaze.toomwn.xyz)
+
+# this is the output folder (i.e. where the compiled html will go)
+# (DO NOT CHANGE THIS unless you know what you are doing)
+output = 'output'
+
+# these folders / files will be ignored
+ignore = [
+  'content/templates',
+  'content/.obsidian',
+  'content/private',
+]
+
+# leaving it as 'default' makes all pages the 'default' theme.
+# if you want a custom theme for ALL pages, switch here. 
+# custom themes for specific pages will be setup else where!
+theme = 'default'
+temp_temp_base_url = '/'
+temp_base_url = '/'
+base_url = '/'

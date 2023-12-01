@@ -17,16 +17,7 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git fetch
-          git switch master
-          git rm -r --cached .
-          git clean -fdX
-          git commit -m "Clear master branch"
-          git push origin master
-          git switch working
-          git pull origin working
           npx pagefind --site .
-          git switch master
           git add .
           git commit -m "Pagefind update"
           git push origin master

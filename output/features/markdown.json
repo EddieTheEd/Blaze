@@ -1,0 +1,1 @@
+{"nodes":[{"id":"features/markdown","link":"/features/markdown.html","linktype":"var(--root)"},{"id":"../index","link":"/../index.html","linktype":"var(--flnode)"},{"id":"showcase","link":"/showcase.html","linktype":"var(--blnode)"}], "links":[{"source":"features/markdown","target":"../index","value":2},{"source":"features/markdown","target":"showcase","value":2}]}

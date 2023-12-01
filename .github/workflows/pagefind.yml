@@ -15,6 +15,7 @@ jobs:
 
       - name: Install pagefind
         run: |
+          rm -rf .
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git fetch

@@ -1,0 +1,1 @@
+{"nodes":[{"id":"whitepaper","link":"/whitepaper.html","linktype":"var(--root)"},{"id":"index","link":"/index.html","linktype":"var(--blnode)"}], "links":[{"source":"whitepaper","target":"index","value":2}]}

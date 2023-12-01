@@ -1,1 +1,0 @@
-{"nodes":[{"id":"features/pdf","link":"/features/pdf.html","linktype":"var(--root)"},{"id":"showcase","link":"/showcase.html","linktype":"var(--blnode)"}], "links":[{"source":"features/pdf","target":"showcase","value":2}]}

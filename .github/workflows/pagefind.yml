@@ -25,5 +25,5 @@ jobs:
           git switch master
           git add ./pagefind
           git commit -m "Pagefind update"
-          git push origin +master
+          git push origin +master --force
 

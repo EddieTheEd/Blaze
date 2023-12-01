@@ -317,6 +317,8 @@ fn compile_markdown (
                                             gfm_table: true,
                                             gfm_footnote_definition: true,
                                             gfm_label_start_footnote: true,
+                                            html_flow: true,
+                                            html_text: true,
                                             ..Constructs::default()
                                         },
                                         ..Default::default()
@@ -522,6 +524,8 @@ fn compile_markdown (
                             None => break
                         }
                     }
+
+                    compiled_html = compiled_html.replace("&lt;", "<").replace("&gt;", ">");
 
                     // highlighting. turns out this breaks a ton of shit!!
 

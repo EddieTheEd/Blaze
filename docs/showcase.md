@@ -35,6 +35,8 @@ Here are the essential features of Blaze.
 
 [testing spaces](features/title%20space.md)
 
+[write html in markdown](features/htmlinmarkdown.md)
+
 This is how the frontmatter for the draft file looks like:
 
 ```

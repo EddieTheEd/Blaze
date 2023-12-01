@@ -5,6 +5,8 @@ on:
     workflows: ["Cargo Run and Output to Branch"]
     types:
       - completed
+    branches:
+      - working
 
 jobs:
   add-pagefind:
@@ -12,13 +14,13 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+        with:
+          ref: 'working'
 
       - name: Install pagefind
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git checkout working
-          git pull origin working
           npx pagefind --site .
           git checkout master
           git add .

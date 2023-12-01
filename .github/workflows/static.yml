@@ -1,11 +1,11 @@
+
 # Simple workflow for deploying static content to GitHub Pages
 name: Deploy static content to Pages
 
 on:
-  workflow_run:
-    workflows: ["Pagefind"]
-    types:
-      - completed
+  # Runs on pushes targeting the default branch
+  push:
+    branches: ["master"]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -29,17 +29,9 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
-    if: github.event.workflow_run.conclusion == 'success'
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-      - name: Switch to Master
-        run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
-          git fetch
-          git switch master
-          git pull
       - name: Setup Pages
         uses: actions/configure-pages@v3
       - name: Upload artifact

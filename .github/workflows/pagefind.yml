@@ -17,6 +17,8 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
+          git fetch
+          git branch
           npx pagefind --site .
           git add .
           git commit -m "Pagefind update"

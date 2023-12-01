@@ -1,18 +1,32 @@
 {
   "main": {
-    "id": "afa9f7c27607f5eb",
+    "id": "c54e437cb58f728d",
     "type": "split",
     "children": [
       {
-        "id": "8e8544c187484a05",
+        "id": "6f4f9d8bd3e40f97",
         "type": "tabs",
         "children": [
           {
-            "id": "dd43bf1d736bef5c",
+            "id": "9dc4d33bddb1d0df",
             "type": "leaf",
+            "pane-relief:history-v1": {
+              "pos": 0,
+              "stack": [
+                {
+                  "state": "{}",
+                  "eState": "{}"
+                }
+              ]
+            },
             "state": {
-              "type": "empty",
-              "state": {}
+              "type": "markdown",
+              "state": {
+                "file": "setup/prerequisites.md",
+                "mode": "source",
+                "backlinks": false,
+                "source": false
+              }
             }
           }
         ]
@@ -21,16 +35,25 @@
     "direction": "vertical"
   },
   "left": {
-    "id": "e469f3e36ccc57dd",
+    "id": "c6dbe8b726525e85",
     "type": "split",
     "children": [
       {
-        "id": "c02db3cd82e48823",
+        "id": "df5b75ed0b6f87b0",
         "type": "tabs",
         "children": [
           {
-            "id": "624a4da5013635ea",
+            "id": "8db0c12dfbec6469",
             "type": "leaf",
+            "pane-relief:history-v1": {
+              "pos": 0,
+              "stack": [
+                {
+                  "state": "{}",
+                  "eState": "{}"
+                }
+              ]
+            },
             "state": {
               "type": "file-explorer",
               "state": {
@@ -39,8 +62,17 @@
             }
           },
           {
-            "id": "91b037d20be1a401",
+            "id": "bc7a1dead0751b46",
             "type": "leaf",
+            "pane-relief:history-v1": {
+              "pos": 0,
+              "stack": [
+                {
+                  "state": "{}",
+                  "eState": "{}"
+                }
+              ]
+            },
             "state": {
               "type": "search",
               "state": {
@@ -54,8 +86,17 @@
             }
           },
           {
-            "id": "75b1ec30f919b58c",
+            "id": "6d536e483f7ec144",
             "type": "leaf",
+            "pane-relief:history-v1": {
+              "pos": 0,
+              "stack": [
+                {
+                  "state": "{}",
+                  "eState": "{}"
+                }
+              ]
+            },
             "state": {
               "type": "bookmarks",
               "state": {}
@@ -68,19 +109,29 @@
     "width": 300
   },
   "right": {
-    "id": "d0257a9c1de43a96",
+    "id": "1abf9e93d529878b",
     "type": "split",
     "children": [
       {
-        "id": "faae297e8bbd5fbb",
+        "id": "7e7a3ceaf517db88",
         "type": "tabs",
         "children": [
           {
-            "id": "650b227335a10a26",
+            "id": "968110f4df8de400",
             "type": "leaf",
+            "pane-relief:history-v1": {
+              "pos": 0,
+              "stack": [
+                {
+                  "state": "{}",
+                  "eState": "{}"
+                }
+              ]
+            },
             "state": {
               "type": "backlink",
               "state": {
+                "file": "setup/prerequisites.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -92,19 +143,38 @@
             }
           },
           {
-            "id": "c23bffa24b707b82",
+            "id": "8980a5f2ee38ba30",
             "type": "leaf",
+            "pane-relief:history-v1": {
+              "pos": 0,
+              "stack": [
+                {
+                  "state": "{}",
+                  "eState": "{}"
+                }
+              ]
+            },
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "setup/prerequisites.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
             }
           },
           {
-            "id": "39b8dc012600a644",
+            "id": "a49d6ba4ec4f109c",
             "type": "leaf",
+            "pane-relief:history-v1": {
+              "pos": 0,
+              "stack": [
+                {
+                  "state": "{}",
+                  "eState": "{}"
+                }
+              ]
+            },
             "state": {
               "type": "tag",
               "state": {
@@ -114,10 +184,38 @@
             }
           },
           {
-            "id": "362c883dc16d44fd",
+            "id": "0abff5c9f4b53671",
             "type": "leaf",
+            "pane-relief:history-v1": {
+              "pos": 0,
+              "stack": [
+                {
+                  "state": "{}",
+                  "eState": "{}"
+                }
+              ]
+            },
             "state": {
               "type": "outline",
+              "state": {
+                "file": "setup/prerequisites.md"
+              }
+            }
+          },
+          {
+            "id": "67373c1133ab85a6",
+            "type": "leaf",
+            "pane-relief:history-v1": {
+              "pos": 0,
+              "stack": [
+                {
+                  "state": "{}",
+                  "eState": "{}"
+                }
+              ]
+            },
+            "state": {
+              "type": "calendar",
               "state": {}
             }
           }
@@ -135,9 +233,27 @@
       "canvas:Create new canvas": false,
       "daily-notes:Open today's daily note": false,
       "templates:Insert template": false,
-      "command-palette:Open command palette": false
+      "command-palette:Open command palette": false,
+      "table-editor-obsidian:Advanced Tables Toolbar": false,
+      "templater-obsidian:Templater": false,
+      "obsidian-day-planner:Week plan": false,
+      "obsidian42-brat:BRAT": false,
+      "obsidian-focus-mode:Toggle Focus Mode (Shift + Click to show active pane only)": false,
+      "omnisearch:Omnisearch": false
     }
   },
-  "active": "dd43bf1d736bef5c",
-  "lastOpenFiles": []
+  "active": "9dc4d33bddb1d0df",
+  "lastOpenFiles": [
+    "assets/obsidian create.png",
+    "assets/Pasted image 20231201141315.png",
+    "assets/foldering number whatever.png",
+    "assets/rename input.png",
+    "assets/foldering2-1.png",
+    "setup/prerequisites.md",
+    "assets/foldering2.png",
+    "assets/foldering.png",
+    "assets/foldering.png",
+    "assets/Pasted image 20231201135604.png",
+    "cloning.png"
+  ]
 }

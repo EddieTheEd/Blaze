@@ -229,7 +229,7 @@ fn compile_markdown (
                                 match c_iter.next().unwrap_or("---").trim() {
                                     "---" => break,
                                     "" => {
-                                        println!("space detected in frontmatter");
+                                        //println!("space detected in frontmatter");
                                     },
                                     line => {
                                         let mut piter = line.split(":");

@@ -15,9 +15,9 @@ jobs:
 
       - name: Install pagefind
         run: |
-          rm -rf .
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
+          git config pull.rebase false
           git fetch
           git pull origin working
           npx pagefind --site .

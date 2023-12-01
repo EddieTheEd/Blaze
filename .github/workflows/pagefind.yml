@@ -17,11 +17,11 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
+          git fetch
           git switch master
           git rm -r --cached .
           git commit -m "Clear master branch"
           git push origin master
-          git fetch
           git switch working
           git pull origin working
           npx pagefind --site .

@@ -20,11 +20,10 @@ jobs:
           git fetch
           git switch working
           git pull origin working
+          npx pagefind --site .
+          git add ./pagefind
           git fetch
           git switch master
-          npx pagefind --site .
-          git reset HEAD -- .
-          git add ./pagefind
           git commit -m "Pagefind update"
           git push origin +master
 

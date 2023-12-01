@@ -24,7 +24,7 @@ jobs:
           git add .
           git commit -m "Pagefind update"
           git switch master
-          git merge --allow-unrelated-histories working
+          git merge --allow-unrelated-histories origin/working
           git push origin master
 
 

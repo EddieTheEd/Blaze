@@ -1,1 +1,0 @@
-{"nodes":[{"id":"features/htmlinmarkdown","link":"/features/htmlinmarkdown.html","linktype":"var(--root)"},{"id":"showcase","link":"/showcase.html","linktype":"var(--blnode)"}], "links":[{"source":"features/htmlinmarkdown","target":"showcase","value":2}]}

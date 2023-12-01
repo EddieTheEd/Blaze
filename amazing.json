@@ -1,1 +1,0 @@
-{"nodes":[{"id":"amazing","link":"/amazing.html","linktype":"var(--root)"},{"id":"index","link":"/index.html","linktype":"var(--blnode)"}], "links":[{"source":"amazing","target":"index","value":2}]}

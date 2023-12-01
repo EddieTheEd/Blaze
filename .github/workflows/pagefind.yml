@@ -22,10 +22,6 @@ jobs:
           git pull origin working
           npx pagefind --site .
           git add .
-          git commit -m "Pagefind update?"
-          git fetch
-          git switch master
-          git add ./pagefind
           git commit -m "Pagefind update"
           git push origin +master --force
 

@@ -1,1 +1,0 @@
-{"nodes":[{"id":"features/media","link":"/features/media.html","linktype":"var(--root)"},{"id":"showcase","link":"/showcase.html","linktype":"var(--blnode)"}], "links":[{"source":"features/media","target":"showcase","value":2}]}

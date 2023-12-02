@@ -1,0 +1,1 @@
+{"nodes":[{"id":"features/latex","link":"/features/latex.html","linktype":"var(--root)"},{"id":"showcase","link":"/showcase.html","linktype":"var(--blnode)"}], "links":[{"source":"features/latex","target":"showcase","value":2}]}

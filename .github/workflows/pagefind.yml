@@ -17,11 +17,7 @@ jobs:
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git fetch origin
-          git switch working
           git pull origin working --force
-          git branch
-          git switch master
-          git branch
           npx pagefind --site .
           git add .
           git commit -m "Pagefind update"

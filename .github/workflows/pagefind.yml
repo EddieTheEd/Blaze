@@ -20,6 +20,8 @@ jobs:
           git switch working
           git pull --force
           git branch
+          git switch master
+          git branch
           npx pagefind --site .
           git add .
           git commit -m "Pagefind update"

@@ -25,5 +25,5 @@ jobs:
           npx pagefind --site .
           git add .
           git commit -m "Pagefind update"
-          git push origin origin/master --force
+          git push origin master --force
 

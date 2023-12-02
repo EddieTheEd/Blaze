@@ -18,7 +18,7 @@ jobs:
           git config --local user.name "GitHub Action"
           git config --local pull.rebase false
           git fetch origin
-          git pull working --force
+          git pull origin working --force
           npx pagefind --site .
           git add .
           git commit -m "Pagefind update"

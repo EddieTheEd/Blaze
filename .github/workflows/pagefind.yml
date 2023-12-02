@@ -12,13 +12,13 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-        with:
-          ref: 'working'
-
       - name: Install pagefind
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
+          git fetch
+          git switch working
+          git pull --force
           git branch
           npx pagefind --site .
           git add .

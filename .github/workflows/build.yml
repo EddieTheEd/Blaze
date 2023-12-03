@@ -38,7 +38,7 @@ jobs:
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git fetch
-          git switch working
+          git switch master
 
       - name: Clear master branch
         run: |

@@ -29,6 +29,11 @@ jobs:
 
       # sorry ossac, this is screwing things when deploying
 
+      - name: Git config
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+
       - name: Build and run Blaze
         run: |
           cargo run --release
@@ -37,13 +42,6 @@ jobs:
         run: |
           mv /home/runner/work/${{ github.event.repository.name }}/${{ github.event.repository.name }}/output/* .
           touch '.nojekyll'
-
-      - name: Git config
-        run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
-          git fetch
-          git switch master
           
       - name: Custom Domain
         run: |
@@ -58,6 +56,8 @@ jobs:
 
       - name: Update master
         run: |
+          git fetch
+          git switch master
           git add .
           git commit -m "Working branch update"
           git push origin master --force

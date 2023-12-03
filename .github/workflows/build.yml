@@ -1,4 +1,4 @@
-name: Cargo Run and Output to Branch
+name: Build Blaze
 
 on:
   push:
@@ -38,34 +38,35 @@ jobs:
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git fetch
-          git switch working
 
-      - name: Clear output branch
+      - name: Clear master branch
         run: |
           git rm -rf .
           mkdir temp
           git add -A
           git commit -m "Clear branch"
-          git push origin working --force
+          git push origin master --force
 
       - name: Move output
         run: |
           mv /home/runner/work/${{ github.event.repository.name }}/${{ github.event.repository.name }}/output/* .
           touch '.nojekyll'
           
-          
       - name: Custom Domain
         run: |
           touch 'CNAME'
           echo "blaze.toomwn.xyz" > 'CNAME'
           
-
           # replace "blaze.toomwn.xyz" with your custom name
           # delete this part of the workflow if you don't have a custom domain
-
-      - name: Update Working
+      - name: Pagefind
         run: |
-          
+          npx pagefind --site .
+          git add .
+          git commit -m "Pagefind update"
+
+      - name: Update master
+        run: |
           git add -A
           git commit -m "Working branch update"
-          git push origin working
+          git push origin master --force

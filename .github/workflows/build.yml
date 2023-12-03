@@ -57,7 +57,7 @@ jobs:
 
       - name: Update master
         run: |
-          git checkout master
+          git checkout master --force
           git add .
           git commit -m "Working branch update"
           git push origin master --force

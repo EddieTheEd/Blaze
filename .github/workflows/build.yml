@@ -36,14 +36,6 @@ jobs:
           git fetch
           git switch master
 
-      - name: Clear master branch
-        run: |
-          git rm -rf .
-          mkdir temp
-          git add -A
-          git commit -m "Clear branch"
-          git push origin master --force
-
       - name: Build and run Blaze
         run: |
           cargo run --release

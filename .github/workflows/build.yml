@@ -63,11 +63,9 @@ jobs:
       - name: Pagefind
         run: |
           npx pagefind --site .
-          git add .
-          git commit -m "Pagefind update"
 
       - name: Update master
         run: |
-          git add -A
+          git add .
           git commit -m "Working branch update"
           git push origin master --force

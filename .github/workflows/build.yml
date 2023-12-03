@@ -29,10 +29,6 @@ jobs:
 
       # sorry ossac, this is screwing things when deploying
 
-      - name: Build and run Blaze
-        run: |
-          cargo run --release
-
       - name: Git config
         run: |
           git config --local user.email "action@github.com"
@@ -47,6 +43,10 @@ jobs:
           git add -A
           git commit -m "Clear branch"
           git push origin master --force
+
+      - name: Build and run Blaze
+        run: |
+          cargo run --release
 
       - name: Move output
         run: |

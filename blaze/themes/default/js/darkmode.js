@@ -1,10 +1,4 @@
-
-
 var image = document.getElementById("darklightimg");
-mode = 'dark';
-
-const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : 'dark';
-
 if (currentTheme) {
     document.documentElement.setAttribute('data-theme', currentTheme);
 
@@ -27,8 +21,6 @@ image.onclick = function(e) {
     document.documentElement.setAttribute('data-theme', 'light'); 
     localStorage.setItem('theme', 'light');
     creategraph("#131330"); 
-    switchcalloutimagetype(mode)
-    
   }
   else {
     console.log('change to light');
@@ -37,6 +29,5 @@ image.onclick = function(e) {
     document.documentElement.setAttribute('data-theme', 'dark');
     localStorage.setItem('theme', 'dark');
     creategraph("#FBFAF5"); 
-    switchcalloutimagetype(mode)
   }
 }

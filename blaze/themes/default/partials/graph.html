@@ -1,6 +1,24 @@
 <div id="graphcontainer">
-    <h2 id="graphtitle">Graph</h2>
-    <div id="graph">
-        
+    <div id="graphheader">
+      <h2 id="graphtitle">Graph</h2><button id="globalgraphbutton" onclick="openglobalgraph()"></button>
+      <script>
+        document.getElementById("globalgraphbutton").style.background = "url('{{base_url}}static/globalgraph.svg') no-repeat";
+      </script>
+
     </div>
+    <div id="graph">
+    </div>
+    <
+    <div id="globalgraphbackground">
+      <div id="globalgraphcontainer">
+      </div>
+    </div>
+    <script>
+      document.getElementById("globalgraphcontainer").addEventListener("click", function(event) {
+        event.stopPropagation();
+      });
+      document.getElementById("globalgraphbackground").addEventListener('click', function() {
+        document.getElementById("globalgraphbackground").style.display = "none";
+      }); 
+  </script>
 </div>

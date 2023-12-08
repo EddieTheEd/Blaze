@@ -390,3 +390,46 @@ mjx-container {
 #search {
   margin-bottom: 20px;
 }
+
+/* global graph */
+#globalgraphbackground {
+  display: none;
+  z-index: 9999;
+  backdrop-filter: blur(4px);
+  width: 100vw;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+}
+
+#globalgraphcontainer {
+  border: 1px solid var(--lightbackground);
+  background-color: var(--background);
+  box-sizing: border-box;
+  border-radius: 5px;
+  width: 50vw;
+  height: 60vh;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+
+#graphheader {
+  display: flex;
+  align-items: center;
+}
+
+#globalgraphbutton{
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+  border: none;
+  background-size: cover !important;
+  width: 30px;
+  height: 30px;  
+  cursor: pointer;
+  margin-left: 20px;
+}

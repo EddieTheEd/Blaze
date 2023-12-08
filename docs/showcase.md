@@ -37,6 +37,8 @@ Here are the essential features of Blaze.
 
 [Write html in markdown](features/htmlinmarkdown.md)
 
+[Local serve](features/localserve.md)
+
 This is how the frontmatter for the draft file looks like:
 
 ```

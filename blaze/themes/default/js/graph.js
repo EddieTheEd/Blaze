@@ -30,13 +30,6 @@ event.subject.fy = null;
 }
 
 function globalgraph(){
-  try {
-    let graphdiv = document.getElementById("graph");
-    let child = graphdiv.lastElementChild;
-    graphdiv.removeChild(child);
-  } catch (error) {
-    console.log(error); 
-  }
   
   let path = "/global.json";
 
@@ -70,10 +63,12 @@ function globalgraph(){
   nodes = data.nodes.map(d => ({...d}));
   groups = [...new Set(nodes.map(node => node.group))];
 
-  width = 356;
-  height = 356;
+  var viewportwidth = window.innerWidth || document.documentElement.clientWidth;
+  var viewportheight = window.innerHeight || document.documentElement.clientHeight;
+  width = 0.5*viewportwidth;
+  height = 0.6*viewportheight;
 
-  svg = d3.select("#graph")
+  svg = d3.select("#globalgraphcontainer")
     .style("position", "relative")
     .append("svg")
     .attr("width", width)
@@ -283,4 +278,32 @@ function creategraph(textcolour){
   d3.select("#graph").call(zoom);
   console.log("successfully switched to " + textcolour);
 }
+
+globalloaded = false;
+
+function openglobalgraph(){
+  if (!globalloaded){
+    globalgraph();
+    globalloaded = true;
+  }
+  else {
+
+    let viewportwidth = window.innerWidth || document.documentElement.clientWidth;
+    let viewportheight = window.innerHeight || document.documentElement.clientHeight;
+    updatedwidth = 0.5*viewportwidth;
+    updatedheight = 0.6*viewportheight;
+
+    svg.attr("width", updatedwidth)
+       .attr("height", updatedheight)
+
+  }
+  document.getElementById("globalgraphbackground").style.display = "inline-block";
+}
+
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape' || event.keyCode === 27) {
+      document.getElementById("globalgraphbackground").style.display = "none";
+    }
+});
+
 

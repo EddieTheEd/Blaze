@@ -973,9 +973,34 @@ fn main() {
     }
 
     if config.settings.graph.unwrap_or(false) {
-        // global graphing code goes here
         let globalgraphdata = fs::read_to_string("output/global.json").expect("REASON");
-        let _ = fs::write("output/global.json", globalgraphdata);
+        let trimmedString = globalgraphdata.trim_start_matches('{').trim_end_matches('}');
+        let objects: Vec<&str> = trimmedString.split("}{").collect();
+
+        let mut nodesObjects: Vec<String> = Vec::new();
+        let mut linksObjects: Vec<String> = Vec::new();
+        let mut linksArray: Vec<String> = Vec::new();
+
+        for string in objects {
+            let sections: Vec<&str> = string.split(", ").collect();
+            if let Some(nodesSection) = sections.iter().find(|s| s.starts_with("\"nodes\":[")) {
+                nodesObjects.push(nodesSection.replace("\"nodes\":[", "").replace("]",""));
+            } else {
+                println!("Nodes section not found");
+            }    
+
+            if let Some(linksSection) = sections.iter().find(|s| s.starts_with("\"links\":[")) {
+                linksObjects.push(linksSection.replace("\"links\":[", "").replace("]",""));
+            } else {
+                println!("Links section not found");
+            }
+        }
+
+        let modifiedNodes = nodesObjects.concat().replace("}{", "}, {").replace("},{", "}, {");
+        let modifiedLinks = linksObjects.concat().replace("}{", "}, {").replace("},{", "}, {");
+        
+        let outputstring = "{\"nodes\":[".to_owned() + &modifiedNodes + "], \"links\":[" + &modifiedLinks + "]}";
+        let _ = fs::write("output/global.json", outputstring);
     }
 
     println!("Blaze has finished compiling")

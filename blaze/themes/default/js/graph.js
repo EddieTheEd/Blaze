@@ -29,6 +29,121 @@ event.subject.fx = null;
 event.subject.fy = null;
 }
 
+function globalgraph(){
+  try {
+    let graphdiv = document.getElementById("graph");
+    let child = graphdiv.lastElementChild;
+    graphdiv.removeChild(child);
+  } catch (error) {
+    console.log(error); 
+  }
+  
+  let path = "/global.json";
+
+  var request = new XMLHttpRequest();
+  request.open('GET', path, false);  
+  request.send(null);
+
+  if (request.status === 200) {
+    var graphdata = request.responseText;
+    } else {
+    console.error('Error fetching JSON:', request.statusText);
+  }
+
+  let data = JSON.parse(graphdata);
+  const uniqueNodesMap = new Map();
+
+  // Filter out duplicate nodes
+  data.nodes.forEach(node => {
+    uniqueNodesMap.set(node.id, node);
+  });
+
+  // Convert Map values back to an array of nodes
+  const uniqueNodesArray = Array.from(uniqueNodesMap.values());
+
+  // Update the graph object with unique nodes
+  data.nodes = uniqueNodesArray;
+
+  console.log(data);
+
+  links = data.links.map(d => ({...d}));
+  nodes = data.nodes.map(d => ({...d}));
+  groups = [...new Set(nodes.map(node => node.group))];
+
+  width = 356;
+  height = 356;
+
+  svg = d3.select("#graph")
+    .style("position", "relative")
+    .append("svg")
+    .attr("width", width)
+    .attr("height", height)
+    .call(d3.zoom().on("zoom", zoomed))
+    .append("g");
+
+  simulation = d3.forceSimulation(nodes)
+  .force("link", d3.forceLink(links).id(d => d.id))
+  .force("charge", d3.forceManyBody())
+  .force("center", d3.forceCenter(width / 2, height / 2));
+
+  link = svg.selectAll("line")
+  .data(links)
+  .enter()
+  .append("line")
+  .attr("stroke", "#999")
+  .attr("stroke-opacity", 0.6)
+  .attr("stroke-width", d => Math.sqrt(d.value));
+
+  node = svg.selectAll("a")
+  .data(nodes)
+  .enter()
+  .append("a") 
+  .attr("xlink:href", d => d.link) 
+  .append("circle") 
+  .attr("r", 5)
+  .attr("fill", "#1f2e6b");
+
+  labels = svg.selectAll("text")
+    .data(nodes)
+    .enter()
+    .append("text")
+    .text(d => d.id)
+    .attr("text-anchor", "middle")
+    .attr("dy", "-0.25em")
+    .attr("fill", "#FBFAF5")
+    .attr("font-size", "10px")
+    .attr("pointer-events", "none"); 
+
+  tick = () => {
+  link
+      .attr("x1", d => d.source.x)
+      .attr("y1", d => d.source.y)
+      .attr("x2", d => d.target.x)
+      .attr("y2", d => d.target.y);
+
+  node
+      .attr("cx", d => d.x)
+      .attr("cy", d => d.y);
+
+  labels
+      .attr("x", d => d.x)
+      .attr("y", d => d.y);
+  };
+
+  simulation.on("tick", tick);
+
+  node.call(d3.drag()
+  .on("start", dragstarted)
+  .on("drag", dragged)
+  .on("end", dragended));
+
+  zoom = d3.zoom()
+    .scaleExtent([0.5, 2])
+    .on("zoom", zoomed);
+
+  d3.select("#graph").call(zoom);
+}
+
 function creategraph(textcolour){
   try {
     let graphdiv = document.getElementById("graph");

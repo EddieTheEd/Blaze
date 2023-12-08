@@ -47,7 +47,7 @@ lupdate: ## Update Blaze to latest version. Will ignore blaze.config, content. A
 	@git fetch upstream
 	@echo -e "\033[1mNOTE: Press 'q' to escape the log, once you've looked over(or can't be bothered to read) the commits.\033[0m"
 	@git log --oneline --decorate --graph ..upstream/main
-	@git checkout -p upstream/main -- Makefile blaze .github .gitignore src Cargo.toml blazeconfig.toml ## Remove "Makefile" if you have customised your Makefile!
+	@git checkout -p upstream/main -- Makefile blaze/ .github .gitignore src/ Cargo.toml blazeconfig.toml ## Remove "Makefile" if you have customised your Makefile!
 	git pull
 	git add .
 	git commit -m "Update Blaze"

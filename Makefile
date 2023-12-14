@@ -8,8 +8,6 @@ lsetup: ## Install all dependencies for serving Blaze locally
 	@npm install live-server@1.2.2 ## Live server from NPM https://www.npmjs.com/package/live-server
 	@curl https://sh.rustup.rs -sSf | sh
 lserve: ## Configure base_url to be root directory, then run live-server
-	@start=$$(date +%s); \
-  echo $@: $$start > test.log
 	@sed -i 's\base_url\temp_base_url\g' blazeconfig.toml
 	@echo "base_url = '/'" > localbaseurl.txt
 	@cat localbaseurl.txt >> blazeconfig.toml
@@ -19,11 +17,7 @@ lserve: ## Configure base_url to be root directory, then run live-server
 	@sed -i '$$d' blazeconfig.toml
 	@npx pagefind --site output
 	@live-server output
-	@end=$$(date +%s); \
-  echo $@: $$end >> test.log
 lserveff: ## Configure base_url to be root directory, then run live-server for firefox developer edition
-	@start=$$(date +%s); \
-  echo $@: $$start > test.log
 	@sed -i 's\base_url\temp_base_url\g' blazeconfig.toml
 	@echo "base_url = '/'" > localbaseurl.txt
 	@cat localbaseurl.txt >> blazeconfig.toml
@@ -33,8 +27,6 @@ lserveff: ## Configure base_url to be root directory, then run live-server for f
 	@sed -i '$$d' blazeconfig.toml
 	@npx pagefind --site output
 	@live-server output --browser=/usr/lib/firefox-developer-edition/firefox --no-browser
-	@end=$$(date +%s); \
-  echo $@: $$end >> test.log
 lreset: ## Clear any additional files, excluding content or user made files, in particular the node_modules, output and target folders
 	@rm -rf node_modules
 	@rm -rf output

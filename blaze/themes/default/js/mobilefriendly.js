@@ -15,6 +15,9 @@ if (ismobile){
     document.getElementById("graph").style.width = "80%";
     document.getElementById("sidenotetitle").style.fontSize = "1.2em";
   }
-  document.getElementById("darklightimg").style.right = "auto";
+  document.getElementById("darklightimg").style.right = "5%";
+  document.getElementById("pageh1").style.height = "fit-content";
+  document.getElementById("pageh1").style.paddingBottom = "20px";
+
 }
 

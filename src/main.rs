@@ -4,7 +4,7 @@ use std::io::prelude::*;
 use std::path::Path;
 use std::collections::HashMap;
 use std::io::Write;
-use std::io;
+
 use time::macros::date;
 use serde::Deserialize;
 use toml::Value;
@@ -12,8 +12,8 @@ use markdown::{to_html_with_options, Constructs};
 use regex::Regex;
 use toml;
 use std::fs::OpenOptions;
-use serde_json::Map;
-use serde_json::Value as JsonValue;
+
+
 
 #[derive(Deserialize, Debug)]
 struct Config {
@@ -674,7 +674,7 @@ fn copy_theme_files(things: &Vec<FsThing>, cfg: &Config, theme_path: &str) {
 fn walk_directory(path: &str, cfg: &Config, ignore: &str) -> Vec<FsThing> {
     let this_dir = match fs::read_dir(path) {
         Ok(dir) => dir,
-        Err(why) => {
+        Err(_why) => {
             // println!("error reading path {}: {}", path,why);
             return vec![]
         }
@@ -912,7 +912,7 @@ fn main() {
             for entry in entries {
                 let content = match std::fs::read_to_string(entry.path()) {
                     Ok(content) => content,
-                    Err(why)      => {
+                    Err(_why)      => {
                         // println!("failed to read file: {}", why); "".to_string();
                         continue
                     }
@@ -947,7 +947,7 @@ fn main() {
 
     let _ = fs::copy("blazeconfig.toml", config.build.output.clone() + "/blazeconfig.toml");
 
-    let mut universal_path = "blaze/universal".to_string(); 
+    let universal_path = "blaze/universal".to_string(); 
 
     match fs::read_dir(&universal_path) {
         Ok(_) => (),
@@ -961,13 +961,13 @@ fn main() {
     if config.deployment.vercelcleanurl.unwrap_or(false) {
         // graphing time (only backlinks cause i dunno how to do forward links)
         // probably would've been better to save as not a hashmap but oh well
-        let mut verceljson = String::from("{
+        let verceljson = String::from("{
   \"cleanUrls\": true
 }");
 
         let verceljsonname = "output/versel.json";
 
-        let mut verceljsonfile = File::create(verceljsonname.clone()).expect("Failed to create file");
+        let mut verceljsonfile = File::create(verceljsonname).expect("Failed to create file");
 
         verceljsonfile.write_all(verceljson.as_bytes()).expect("Failed to write to file");
     }
@@ -979,7 +979,7 @@ fn main() {
 
         let mut nodesObjects: Vec<String> = Vec::new();
         let mut linksObjects: Vec<String> = Vec::new();
-        let mut linksArray: Vec<String> = Vec::new();
+        let _linksArray: Vec<String> = Vec::new();
 
         for string in objects {
             let sections: Vec<&str> = string.split(", ").collect();

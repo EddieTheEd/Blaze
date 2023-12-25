@@ -757,7 +757,8 @@ fn generate_backlinks<'a> (things: &Vec<FsThing>, cfg: &Config,
                     //modifying backlink content to account for links with .md
                     //temporary solution, this replaces all instances of .md, not
                     //[something](somethingelse.md)
-                    let content = &content.clone().replace(".md)",")");
+                    let content = &convert_links(&content.clone().replace(".md)",")"));
+                    println!("{:?}", &content);
                     let link_regex = Regex::new(r"[^!]\[([^\[\]]*)\]\(([^\(\)]*)\)").unwrap();
 
                     let path = if path.ends_with(".md") {

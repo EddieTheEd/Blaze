@@ -43,4 +43,6 @@ ignore = [
 # if you want a custom theme for ALL pages, switch here. 
 # custom themes for specific pages will be setup else where!
 theme = 'default'
+temp_temp_base_url = '/'
+temp_base_url = '/'
 base_url = '/'

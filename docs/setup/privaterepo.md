@@ -8,4 +8,4 @@ Not to toot my own horn, but my personal website ([ed.toomwn.xyz](https://ed.too
 
 ![](../assets/ed.toomwn.xyz%20repo.png)
 
-As you can probably guess, the way I did it(and the way I suggest to do it) is to use [Vercel](https://vercel.com/). 
+As you can probably guess, the way I did it(and the way I suggest to do it) is to use [Vercel](https://vercel.com/).

@@ -62,6 +62,9 @@ strong {
     color: var(--bold);
 }
 
+img {
+  padding-top: 1.5vh;
+}
 
 table {
     background-color: var(--lightbackground);

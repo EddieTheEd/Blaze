@@ -4,7 +4,6 @@ use std::io::prelude::*;
 use std::path::Path;
 use std::collections::HashMap;
 use std::io::Write;
-
 use time::macros::date;
 use serde::Deserialize;
 use toml::Value;
@@ -12,8 +11,6 @@ use markdown::{to_html_with_options, Constructs};
 use regex::Regex;
 use toml;
 use std::fs::OpenOptions;
-
-
 
 #[derive(Deserialize, Debug)]
 struct Config {
@@ -161,6 +158,26 @@ fn format_path (path: &String) -> String {
     path
 }
 
+fn convert_links(input: &str) -> String {
+    let link_regex = Regex::new(r#"\[\[([^|\]]+)(?:\|([^]]+))?\]\]"#).unwrap();
+
+    let replaced = link_regex.replace_all(input, |caps: &regex::Captures| {
+        if let Some(url) = caps.get(1) {
+            if let Some(text) = caps.get(2) {
+                // Format: [[URL|text]] - convert to [text](URL)
+                format!("[{}]({})", text.as_str(), url.as_str())
+            } else {
+                // Format: [[URL]] - convert to [URL](URL)
+                format!("[{}]({})", url.as_str(), url.as_str())
+            }
+        } else {
+            // No match, return the original substring
+            caps.get(0).unwrap().as_str().to_string()
+        }
+    });
+
+    replaced.to_string()
+}
 
 fn compile_markdown (
     things: &Vec<FsThing>, cfg: &Config, theme: &String, 
@@ -206,6 +223,8 @@ fn compile_markdown (
                     //temporary solution, this replaces all instances of .md, not
                     //[something](somethingelse.md)
                     let mut content = content.clone().replace(".md)",")");
+                    content = convert_links(&content); // converts wikilinks to mdlinks
+
                     let old_content = &content.clone().replace(".md)",")");
 
                     let mut pathways: HashMap<String, String> = HashMap::new();

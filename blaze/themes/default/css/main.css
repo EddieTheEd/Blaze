@@ -21,7 +21,7 @@ pre {
   overflow-x: scroll;
   background-color: var(--lightbackground) !important; 
   border-radius: 10px;
-  padding: 10px;
+  padding: 3px;
   overflow-x: scroll;
   max-width: 45vw;
 }

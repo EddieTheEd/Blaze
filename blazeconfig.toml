@@ -33,15 +33,20 @@ output = 'output'
 
 # these folders / files will be ignored
 ignore = [
-  'content/templates',
-  'content/.obsidian',
-  'content/private',
+  'docs/templates',
+  'docs/.obsidian',
+  'docs/private',
 ]
+#NOTE: If you make changes to the baseurl in 'input' you need to change it here as well. Maybe not in the future :/
 
 # leaving it as 'default' makes all pages the 'default' theme.
 # if you want a custom theme for ALL pages, switch here. 
 # custom themes for specific pages will be setup else where!
 theme = 'default'
+temp_temp_temp_temp_temp_temp_temp_base_url = '/'
+temp_temp_temp_temp_temp_temp_base_url = '/'
+temp_temp_temp_temp_temp_base_url = '/'
+temp_temp_temp_temp_base_url = '/'
 temp_temp_temp_base_url = '/'
 temp_temp_base_url = '/'
 temp_base_url = '/'

@@ -4,11 +4,67 @@
     "type": "split",
     "children": [
       {
-        "id": "6f4f9d8bd3e40f97",
+        "id": "1a9fb40b22b010de",
         "type": "tabs",
         "children": [
           {
-            "id": "9dc4d33bddb1d0df",
+            "id": "250b318993f2b23d",
+            "type": "leaf",
+            "pane-relief:history-v1": {
+              "pos": 0,
+              "stack": [
+                {
+                  "state": "{}",
+                  "eState": "{}"
+                },
+                {
+                  "title": "prerequisites",
+                  "icon": "lucide-file",
+                  "state": "{\"type\":\"markdown\",\"state\":{\"file\":\"setup/prerequisites.md\",\"mode\":\"source\",\"backlinks\":false,\"source\":false}}",
+                  "eState": "{\"cursor\":{\"from\":{\"line\":16,\"ch\":336},\"to\":{\"line\":16,\"ch\":336}},\"scroll\":13.420410029112052}"
+                }
+              ]
+            },
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "setup/privaterepo.md",
+                "mode": "source",
+                "backlinks": false,
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "9562e0d92203a3fd",
+            "type": "leaf",
+            "pane-relief:history-v1": {
+              "pos": 0,
+              "stack": [
+                {
+                  "state": "{}",
+                  "eState": "{}"
+                },
+                {
+                  "title": "prerequisites",
+                  "icon": "lucide-file",
+                  "state": "{\"type\":\"markdown\",\"state\":{\"file\":\"setup/prerequisites.md\",\"mode\":\"source\",\"backlinks\":false,\"source\":false}}",
+                  "eState": "{\"cursor\":{\"from\":{\"line\":56,\"ch\":0},\"to\":{\"line\":56,\"ch\":0}},\"scroll\":49.173961314500644}"
+                }
+              ]
+            },
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "features/links.md",
+                "mode": "source",
+                "backlinks": false,
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "5007c1df86cc8881",
             "type": "leaf",
             "pane-relief:history-v1": {
               "pos": 0,
@@ -29,7 +85,8 @@
               }
             }
           }
-        ]
+        ],
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -242,18 +299,24 @@
       "omnisearch:Omnisearch": false
     }
   },
-  "active": "9dc4d33bddb1d0df",
+  "active": "5007c1df86cc8881",
   "lastOpenFiles": [
-    "assets/obsidian create.png",
-    "assets/Pasted image 20231201141315.png",
-    "assets/foldering number whatever.png",
-    "assets/rename input.png",
+    "setup/privaterepo.md",
     "assets/foldering2-1.png",
     "setup/prerequisites.md",
+    "assets/foldering2-2.png",
+    "assets/fldering.png",
+    "assets/Pasted image 20231225190032.png",
+    "features/links.md",
+    "features/markdown.md",
+    "features/codeblocks.md",
     "assets/foldering2.png",
-    "assets/foldering.png",
-    "assets/foldering.png",
-    "assets/Pasted image 20231201135604.png",
-    "cloning.png"
+    "assets/foldering2.png",
+    "assets/createnewrepo.png",
+    "features/draft.md",
+    "private/important.md",
+    "assets/newrepo.png",
+    "assets/usethistemplate.png",
+    "assets/githublanding.png"
   ]
 }

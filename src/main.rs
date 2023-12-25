@@ -758,7 +758,6 @@ fn generate_backlinks<'a> (things: &Vec<FsThing>, cfg: &Config,
                     //temporary solution, this replaces all instances of .md, not
                     //[something](somethingelse.md)
                     let content = &convert_links(&content.clone().replace(".md)",")"));
-                    println!("{:?}", &content);
                     let link_regex = Regex::new(r"[^!]\[([^\[\]]*)\]\(([^\(\)]*)\)").unwrap();
 
                     let path = if path.ends_with(".md") {

@@ -165,10 +165,10 @@ fn convert_links(input: &str) -> String {
         if let Some(url) = caps.get(1) {
             if let Some(text) = caps.get(2) {
                 // Format: [[URL|text]] - convert to [text](URL)
-                format!("[{}]({})", text.as_str(), url.as_str().replace(".md", "") + ".md")
+                format!("[{}]({})", text.as_str(), url.as_str().replace(" ", "%20"))
             } else {
                 // Format: [[URL]] - convert to [URL](URL)
-                format!("[{}]({})", url.as_str(), url.as_str().replace(".md", "") + ".md")
+                format!("[{}]({})", url.as_str(), url.as_str().replace(" ", "%20"))
             }
         } else {
             // No match, return the original substring

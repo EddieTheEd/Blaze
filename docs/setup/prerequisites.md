@@ -44,9 +44,9 @@ Now you're done! Open the new folder as a vault and your Obsidian stuff should b
 ![](../assets/foldering2-2.png)
 2. Create a new folder, and name it to what you want your Obsidian vault to be called. For example, in the image below I have named mine `Obsidian Vault`.
 ![](../assets/fldering.png)
-3. Now open Obsidian and click the `Create` button, then navigate to the named folder inside the `Blaze` folder.
+3. Now open Obsidian and click the `Create` button, then navigate to the named folder inside the repository folder.
 ![](../assets/obsidian%20create.png)
-4. Next, you need to change the `blazeconfig.toml` file. Go to the `build` section and change the string of the `input` option to **the name of your Obsidian Vault**. For example, I would have to change it to `'Obsidian Vault'.`
+4. Next, you need to change the `blazeconfig.toml` file. Go to the `build` section and change the string of the `input` option to **the name of your Obsidian Vault**. For example, I would have to change it to `'Obsidian Vault'`.
 ![](../assets/rename%20input.png)
 
 Now you're done!

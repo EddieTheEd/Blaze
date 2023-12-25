@@ -36,7 +36,7 @@ jobs:
 
       - name: Clear output
         run: |
-          rm -rf .
+          rm -rf *
 
       - name: Build and run Blaze
         run: |

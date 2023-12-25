@@ -40,7 +40,7 @@ jobs:
 
       - name: Move output
         run: |
-          mv /home/runner/work/${{ github.event.repository.name }}/${{ github.event.repository.name }}/output/* .
+          mv -f /home/runner/work/${{ github.event.repository.name }}/${{ github.event.repository.name }}/output/* .
           touch '.nojekyll'
           
       - name: Custom Domain

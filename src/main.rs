@@ -161,22 +161,20 @@ fn format_path (path: &String) -> String {
 fn convert_links(input: &str) -> String {
     let link_regex = Regex::new(r#"\[\[([^|\]]+)(?:\|([^]]+))?\]\]"#).unwrap();
 
-    let replaced = link_regex.replace_all(input, |caps: &regex::Captures| {
+    link_regex.replace_all(input, |caps: &regex::Captures| {
         if let Some(url) = caps.get(1) {
             if let Some(text) = caps.get(2) {
                 // Format: [[URL|text]] - convert to [text](URL)
-                format!("[{}]({})", text.as_str(), url.as_str().replace(".md","")+".md")
+                format!("[{}]({})", text.as_str(), url.as_str().replace(".md", "") + ".md")
             } else {
                 // Format: [[URL]] - convert to [URL](URL)
-                format!("[{}]({})", url.as_str(), url.as_str().replace(".md","")+".md")
+                format!("[{}]({})", url.as_str(), url.as_str().replace(".md", "") + ".md")
             }
         } else {
             // No match, return the original substring
             caps.get(0).unwrap().as_str().to_string()
         }
-    });
-
-    replaced.to_string()
+    }).to_string()
 }
 
 fn compile_markdown (
@@ -253,7 +251,7 @@ fn compile_markdown (
                                     line => {
                                         let mut piter = line.split(":");
                                         let key = piter.next().unwrap();
-                                        let val = piter.next().unwrap();
+                                        let val = piter.next().unwrap_or("");
                                         // dunno what unwrap_or does, so im just gonna replace lol
 
                                         match key {

@@ -67,8 +67,14 @@
             "id": "5007c1df86cc8881",
             "type": "leaf",
             "pane-relief:history-v1": {
-              "pos": 0,
+              "pos": 1,
               "stack": [
+                {
+                  "title": "privaterepo",
+                  "icon": "lucide-file",
+                  "state": "{\"type\":\"markdown\",\"state\":{\"file\":\"setup/privaterepo.md\",\"mode\":\"source\",\"backlinks\":false,\"source\":false}}",
+                  "eState": "{\"cursor\":{\"from\":{\"line\":4,\"ch\":0},\"to\":{\"line\":4,\"ch\":0}},\"scroll\":4}"
+                },
                 {
                   "state": "{}",
                   "eState": "{}"
@@ -85,7 +91,8 @@
               }
             }
           }
-        ]
+        ],
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -187,7 +194,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "setup/privaterepo.md",
+                "file": "setup/prerequisites.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -213,7 +220,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "setup/privaterepo.md",
+                "file": "setup/prerequisites.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -254,7 +261,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "setup/privaterepo.md"
+                "file": "setup/prerequisites.md"
               }
             }
           },
@@ -298,8 +305,11 @@
       "omnisearch:Omnisearch": false
     }
   },
-  "active": "250b318993f2b23d",
+  "active": "5007c1df86cc8881",
   "lastOpenFiles": [
+    "setup/privaterepo.md",
+    "features/links.md",
+    "setup/prerequisites.md",
     "assets/domainsvercel.png",
     "assets/saveguys.png",
     "assets/maintomaster.png",
@@ -310,10 +320,6 @@
     "assets/importrepo?.png",
     "assets/verceldashboard.png",
     "assets/ed.toomwn.xyz repo.png",
-    "setup/prerequisites.md",
-    "setup/privaterepo.md",
-    "assets/foldering2-1.png",
-    "features/links.md",
     "features/markdown.md",
     "features/codeblocks.md",
     "features/draft.md",

@@ -40,7 +40,6 @@ jobs:
 
       - name: Move output
         run: |
-          find /home/runner/work/${{ github.event.repository.name }}/${{ github.event.repository.name }}/ \( -name 'output' -o -name '.git' \) -prune -o -exec rm -rf -- {} +
           mv /home/runner/work/${{ github.event.repository.name }}/${{ github.event.repository.name }}/output/* . && rmdir /home/runner/work/${{ github.event.repository.name }}/${{ github.event.repository.name }}/output
           touch '.nojekyll'
           

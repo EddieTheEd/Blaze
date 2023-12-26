@@ -40,7 +40,8 @@ jobs:
 
       - name: Move output
         run: |
-          shopt -s extglob && rm -r -- !(/home/runner/work/${{ github.event.repository.name }}/${{ github.event.repository.name }}/output) && mv /home/runner/work/${{ github.event.repository.name }}/${{ github.event.repository.name }}/output/* . && rmdir /home/runner/work/${{ github.event.repository.name }}/${{ github.event.repository.name }}/output
+          find /home/runner/work/${{ github.event.repository.name }}/${{ github.event.repository.name }}/ -mindepth 1 -maxdepth 1 -name 'output' -prune -o -exec rm -r -- {} +
+          mv /home/runner/work/${{ github.event.repository.name }}/${{ github.event.repository.name }}/output/* . && rmdir /home/runner/work/${{ github.event.repository.name }}/${{ github.event.repository.name }}/output
           touch '.nojekyll'
           
       - name: Custom Domain

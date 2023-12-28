@@ -90,6 +90,28 @@
                 "source": false
               }
             }
+          },
+          {
+            "id": "2b510790293988b5",
+            "type": "leaf",
+            "pane-relief:history-v1": {
+              "pos": 0,
+              "stack": [
+                {
+                  "state": "{}",
+                  "eState": "{}"
+                }
+              ]
+            },
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "subfolder/subfile.md",
+                "mode": "source",
+                "backlinks": false,
+                "source": false
+              }
+            }
           }
         ],
         "currentTab": 2
@@ -307,8 +329,9 @@
   },
   "active": "5007c1df86cc8881",
   "lastOpenFiles": [
-    "setup/privaterepo.md",
     "features/links.md",
+    "setup/privaterepo.md",
+    "subfolder/subfile.md",
     "setup/prerequisites.md",
     "assets/domainsvercel.png",
     "assets/saveguys.png",

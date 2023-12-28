@@ -1,3 +1,5 @@
+console.log(window.location.href);
+
 function zoomed(event) {
     svg.attr("transform", event.transform);
 }
@@ -208,7 +210,13 @@ function creategraph(textcolour){
   .data(nodes)
   .enter()
   .append("a") 
-  .attr("xlink:href", d => d.link) 
+  .attr("xlink:href", function(d) { //here's a cheap parlor trick
+    if (d.linktype === 'var(--blnode)' || d.linktype === 'var(--root)') {
+      return d.link;
+    } else {
+      return window.location.href.replace(/\/[^/]+$/, '') + d.link;
+    }
+  })
   .append("circle") 
   .attr("r", 5)
   .attr("fill", d => d.linktype);

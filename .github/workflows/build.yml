@@ -33,7 +33,6 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          ls
 
       - name: Build and run Blaze
         run: |
@@ -41,10 +40,8 @@ jobs:
 
       - name: Move output
         run: |
-          ls
-          mv /home/runner/work/${{ github.event.repository.name }}/${{ github.event.repository.name }}/output/* . && rmdir /home/runner/work/${{ github.event.repository.name }}/${{ github.event.repository.name }}/output
+          mv output/* . && rmdir output
           touch '.nojekyll'
-          ls
           
       - name: Custom Domain
         run: |
@@ -56,7 +53,6 @@ jobs:
       - name: Pagefind
         run: |
           npx pagefind --site .
-          ls
 
       - name: Update master
         run: |

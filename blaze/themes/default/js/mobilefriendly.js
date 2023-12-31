@@ -23,6 +23,7 @@ if (ismobile){
   document.getElementById("pageh1").style.paddingBottom = "20px";
   document.getElementById("description").style.marginTop = "auto";
 
-
+  document.getElementById("nextpreviouslinks").style.width = "100vw";
+  document.getElementById("nextpreviouslinks2").style.width = "100vw";
 }
 

@@ -134,17 +134,14 @@ span:target {
 
 #headericon {
     margin: 0;
-    margin-bottom: 10.5px;
-    width: 60px;
-    height: 60px;
+    max-width: 60px;
+    max-height: 60px;
 }
 
 #pageh1{
-    margin-left: 5px;
     margin-bottom: 0;
-    margin-top: 10px;
     border-bottom: 3px var(--text) solid;
-    height: 55px;
+    max-height: 40px;
 }
 
 

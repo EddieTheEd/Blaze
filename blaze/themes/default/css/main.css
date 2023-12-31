@@ -351,6 +351,7 @@ hr:after {
 
 mjx-container {
     font-size: 100% !important;
+    position: static !important;
 }
 
 #description {

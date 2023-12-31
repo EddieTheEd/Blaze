@@ -161,7 +161,7 @@ span:target {
     grid-template-rows: auto;
     height: max-content;
     position: sticky;
-    top: 60px;
+    top: 2vh;
 }
 
 #toc {

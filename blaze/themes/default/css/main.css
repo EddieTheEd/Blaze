@@ -128,8 +128,7 @@ span:target {
 
 #darklightimg{
   position: absolute;
-  right: 150px;
-  padding-top: 15px;
+  right: 7.8125vw;
 }
 
 #headericon {
@@ -169,7 +168,7 @@ span:target {
 
 #toc {
     margin-top: 5%;
-    max-height: 370px;
+    max-height: 35.3vh;
     overflow-y: scroll;
     scrollbar-color: var(--lighttext) var(--background);
     border: 2px var(--text) solid;
@@ -359,7 +358,7 @@ mjx-container {
 #description {
     padding-left: 5%;
     margin-top: 0;
-    margin-bottom: 20px;
+    margin-bottom: 1.91vh;
 }
 
 
@@ -385,10 +384,7 @@ mjx-container {
 
 #search {
   padding-left: 5%;
-}
-
-#search {
-  margin-bottom: 20px;
+  margin-bottom: 1.91vh;
 }
 
 /* global graph */

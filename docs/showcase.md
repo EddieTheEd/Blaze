@@ -39,6 +39,11 @@ Here are the essential features of Blaze.
 
 [Local serve](features/localserve.md)
 
+### The cool note series
+- [cool-note-1](features/cool-note-1.md)
+- [cool-note-2](features/cool-note-2.md)
+- [cool-note-3](features/cool-note-3.md)
+
 This is how the frontmatter for the draft file looks like:
 
 ```

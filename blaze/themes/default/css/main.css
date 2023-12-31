@@ -140,7 +140,6 @@ span:target {
 #pageh1{
     margin-bottom: 0;
     border-bottom: 3px var(--text) solid;
-    max-height: 40px;
 }
 
 
@@ -149,14 +148,13 @@ span:target {
 
 #page {
     display: grid;
-    grid-template-columns: 0.28fr 0.52fr;
+    grid-template-columns: 0.35fr 0.65fr;
     column-gap: 3%;
     margin: 0;
     padding-left: 5%;
     padding-right: 5%;
     width: 120%;
 }
-
 
 #leftside {
     display: grid;
@@ -361,6 +359,24 @@ mjx-container {
     margin-bottom: 1.91vh;
 }
 
+#nextpreviouslinks {
+  width: 65vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#nextpreviouslinks2 {
+  width: 65vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#nextpreviouslink {
+  margin-left: 5vw;
+  margin-right: 5vw;
+}
 
 /* toc scrollbar */
 

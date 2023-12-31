@@ -112,9 +112,31 @@
                 "source": false
               }
             }
+          },
+          {
+            "id": "5f4ad8fe19f6e5de",
+            "type": "leaf",
+            "pane-relief:history-v1": {
+              "pos": 0,
+              "stack": [
+                {
+                  "state": "{}",
+                  "eState": "{}"
+                }
+              ]
+            },
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "showcase.md",
+                "mode": "source",
+                "backlinks": false,
+                "source": false
+              }
+            }
           }
         ],
-        "currentTab": 2
+        "currentTab": 4
       }
     ],
     "direction": "vertical"
@@ -216,7 +238,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "setup/prerequisites.md",
+                "file": "showcase.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -242,7 +264,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "setup/prerequisites.md",
+                "file": "showcase.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -283,7 +305,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "setup/prerequisites.md"
+                "file": "showcase.md"
               }
             }
           },
@@ -327,12 +349,12 @@
       "omnisearch:Omnisearch": false
     }
   },
-  "active": "5007c1df86cc8881",
+  "active": "5f4ad8fe19f6e5de",
   "lastOpenFiles": [
+    "setup/prerequisites.md",
     "features/links.md",
     "setup/privaterepo.md",
     "subfolder/subfile.md",
-    "setup/prerequisites.md",
     "assets/domainsvercel.png",
     "assets/saveguys.png",
     "assets/maintomaster.png",

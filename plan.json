@@ -1,0 +1,1 @@
+{"nodes":[{"id":"plan","link":"/plan.html","linktype":"var(--root)"},{"id":"index","link":"/index.html","linktype":"var(--blnode)"}], "links":[{"source":"plan","target":"index","value":2}]}

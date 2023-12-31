@@ -1,0 +1,1 @@
+{"nodes":[{"id":"features/linebreaks","link":"/features/linebreaks.html","linktype":"var(--root)"},{"id":"showcase","link":"/showcase.html","linktype":"var(--blnode)"}], "links":[{"source":"features/linebreaks","target":"showcase","value":2}]}

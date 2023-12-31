@@ -1,0 +1,1 @@
+{"nodes":[{"id":"features/sidenotes","link":"/features/sidenotes.html","linktype":"var(--root)"},{"id":"showcase","link":"/showcase.html","linktype":"var(--blnode)"}], "links":[{"source":"features/sidenotes","target":"showcase","value":2}]}

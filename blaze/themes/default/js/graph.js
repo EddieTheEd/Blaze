@@ -50,7 +50,7 @@ let path = "/global.json";
 
     // Filter out duplicate nodes
     data.nodes.forEach(node => {
-      uniqueNodesMap.set(node.id, node);
+      uniqueNodesMap.set(node.id, JSON.parse(JSON.stringify(node).replace("}",',"color":"#2f459c"}')));
     });
 
     // Convert Map values back to an array of nodes
@@ -64,6 +64,7 @@ let path = "/global.json";
     const Graph = ForceGraph3D()(elem)
       .graphData(data)
       .nodeLabel(node => `${node.id}: ${node.link}`)
+      .nodeColor('color')
       .onNodeClick(node => window.open(`${window.location.origin}${node.link}`, '_blank'));
 }
 

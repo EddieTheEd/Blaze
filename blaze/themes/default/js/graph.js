@@ -32,6 +32,43 @@ event.subject.fy = null;
 }
 
 function globalgraph(){
+
+let path = "/global.json";
+
+    var request = new XMLHttpRequest();
+    request.open('GET', path, false);  
+    request.send(null);
+
+    if (request.status === 200) {
+      var graphdata = request.responseText;
+      } else {
+      console.error('Error fetching JSON:', request.statusText);
+    }
+
+    let data = JSON.parse(graphdata);
+    const uniqueNodesMap = new Map();
+
+    // Filter out duplicate nodes
+    data.nodes.forEach(node => {
+      uniqueNodesMap.set(node.id, node);
+    });
+
+    // Convert Map values back to an array of nodes
+    const uniqueNodesArray = Array.from(uniqueNodesMap.values());
+
+    // Update the graph object with unique nodes
+    data.nodes = uniqueNodesArray;
+
+    const elem = document.getElementById('3d-graph');
+
+    const Graph = ForceGraph3D()(elem)
+      .graphData(data)
+      .nodeLabel(node => `${node.id}: ${node.link}`)
+      .onNodeClick(node => window.open(`${window.location.origin}${node.link}`, '_blank'));
+}
+
+/*
+function globalgraph(){
   
   let path = "/global.json";
 
@@ -139,7 +176,7 @@ function globalgraph(){
     .on("zoom", zoomed);
 
   d3.select("#graph").call(zoom);
-}
+}*/
 
 function creategraph(textcolour){
   try {
@@ -293,6 +330,7 @@ function openglobalgraph(){
   if (!globalloaded){
     globalgraph();
     globalloaded = true;
+    document.getElementById("globalnavinfo").style.display = "block";
   }
   else {
 
@@ -305,13 +343,15 @@ function openglobalgraph(){
        .attr("height", updatedheight)
 
   }
-  document.getElementById("globalgraphbackground").style.display = "inline-block";
+  document.getElementById("3d-graph").style.display = "block";
+  document.getElementById("search").style.display = "none";
 }
 
 document.addEventListener('keydown', function(event) {
     if (event.key === 'Escape' || event.keyCode === 27) {
-      document.getElementById("globalgraphbackground").style.display = "none";
+      document.getElementById("3d-graph").style.display = "none";
+      document.getElementById("search").style.display = "block";
+
     }
 });
-
 

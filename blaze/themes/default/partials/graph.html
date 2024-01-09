@@ -8,17 +8,26 @@
     </div>
     <div id="graph">
     </div>
-    <
-    <div id="globalgraphbackground">
-      <div id="globalgraphcontainer">
+    
+  <script src="{{base_url}}js/3d-force-graph.js">
+      
+    </script>
+    <div id="3d-graph" style="width:'100px'; height: '100px'; top: 0px; right: 0px; display: block; position: fixed;">
+      <div style="position: relative;">
+        <div>
+          <div class="scene-container" style="position: relative;">
+            <div class="scene-nav-info" style="display: none;">
+              Left-click: rotate, Mouse-wheel/middle-click: zoom, Right-click: pan, Escape: close
+            </div>
+            <div class="scene-tooltip" style="top: 875px; left: 1458px; transform: translate(-75.9375%, 21px);">
+            </div>
+            <canvas data-engine="three.js r157"style="display: block; touch-action: none;" class=""></canvas>
+
+          </div>
+
+        </div>
+        <div class="graph-info-msg"></div>
       </div>
     </div>
-    <script>
-      document.getElementById("globalgraphcontainer").addEventListener("click", function(event) {
-        event.stopPropagation();
-      });
-      document.getElementById("globalgraphbackground").addEventListener('click', function() {
-        document.getElementById("globalgraphbackground").style.display = "none";
-      }); 
-  </script>
+
 </div>

@@ -540,7 +540,7 @@ fn compile_markdown (
                         }
                     }
 
-                    compiled_html = compiled_html.replace("&lt;", "<").replace("&gt;", ">");
+                    compiled_html = compiled_html.replace("&lt;", "<").replace("&gt;", ">").replace("&quot;", "\"");
 
                     // highlighting. turns out this breaks a ton of shit!!
 

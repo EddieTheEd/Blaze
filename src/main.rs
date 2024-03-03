@@ -11,6 +11,9 @@ use markdown::{to_html_with_options, Constructs};
 use regex::Regex;
 use toml;
 use std::fs::OpenOptions;
+use std::process::Command;
+use std::str;
+use chrono::{NaiveDateTime, DateTime, Local, TimeZone};
 
 #[derive(Deserialize, Debug)]
 struct Config {
@@ -875,6 +878,39 @@ fn generate_backlinks<'a> (things: &Vec<FsThing>, cfg: &Config,
         }
     }
 
+fn lastmod(folder_path: &str) -> String {
+    let mut outputstring = String::new(); // Declare outputstring as a mutable String
+    let entries = fs::read_dir(folder_path).expect("Failed to read directory");
+
+    for entry in entries {
+        let entry = entry.expect("Failed to read entry");
+        let path = entry.path();
+
+        if path.is_file() && path.extension().and_then(|s| s.to_str()) == Some("md") {
+            let output = Command::new("git")
+                .arg("log")
+                .arg("-1")
+                .arg("--pretty=format:%ci")
+                .arg(path.clone())
+                .output()
+                .expect("Failed to execute command");
+
+            let output_str = str::from_utf8(&output.stdout).expect("Output not UTF-8");
+            let naive_date_time = NaiveDateTime::parse_from_str(output_str.trim(), "%Y-%m-%d %H:%M:%S %z")
+                .expect("Failed to parse date");
+
+            // Convert NaiveDateTime to DateTime<Local> to include timezone information
+            let local_date_time: DateTime<Local> = Local.from_local_datetime(&naive_date_time).single().expect("Failed to convert to Local DateTime");
+
+            // Use format! macro to concatenate strings
+            outputstring.push_str(&format!("{}\n{}\n", path.display(), local_date_time.format("%Y-%m-%d %H:%M:%S %z")));
+        } else if path.is_dir() {
+            // Recursively call lastmod and append its output to outputstring
+            outputstring.push_str(&format!("{}\n", &lastmod(path.to_str().unwrap())));
+        }
+    }
+    outputstring
+}
 fn main() {
     // open blaze-config.toml
     let config_path = Path::new("blazeconfig.toml");
@@ -1020,7 +1056,19 @@ fn main() {
         let _ = fs::write("output/global.json", outputstring);
     }
 
-    println!("Blaze has finished compiling")
+    println!("Blaze has finished compiling");
 
 
+    // probably a bad implementation since there's a lastmod thing above, fix later!
+
+    let result = lastmod(&config.build.input).lines()
+                            .filter(|line| !line.trim().is_empty())
+                            .collect::<Vec<&str>>()
+                            .join("\n");
+
+    let mut file = File::create("output/lastmod.txt")
+        .expect("Failed to create file");
+
+    file.write_all(result.as_bytes())
+        .expect("Failed to write to file");
 }

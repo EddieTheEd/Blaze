@@ -879,7 +879,7 @@ fn generate_backlinks<'a> (things: &Vec<FsThing>, cfg: &Config,
     }
 
 fn lastmod(folder_path: &str, input: &str) -> String {
-    let mut outputstring = String::new(); // Declare outputstring as a mutable String
+    let mut outputstring = String::new();
     let entries = fs::read_dir(folder_path).expect("Failed to read directory");
 
     for entry in entries {
@@ -899,13 +899,10 @@ fn lastmod(folder_path: &str, input: &str) -> String {
             let naive_date_time = NaiveDateTime::parse_from_str(output_str.trim(), "%Y-%m-%d %H:%M:%S %z")
                 .expect("Failed to parse date");
 
-            // Convert NaiveDateTime to DateTime<Local> to include timezone information
             let local_date_time: DateTime<Local> = Local.from_local_datetime(&naive_date_time).single().expect("Failed to convert to Local DateTime");
 
-            // Use format! macro to concatenate strings
-            outputstring.push_str(&format!("{}\n{}\n", path.display(), local_date_time.format("%Y-%m-%d %H:%M:%S %z")));
+            outputstring.push_str(&format!("{}\n{}\n", path.display().replace(" ", "%20"), local_date_time.format("%Y-%m-%d %H:%M:%S %z")));
         } else if path.is_dir() {
-            // Recursively call lastmod and append its output to outputstring
             outputstring.push_str(&format!("{}\n", &lastmod(path.to_str().unwrap(), input)));
         }
     }

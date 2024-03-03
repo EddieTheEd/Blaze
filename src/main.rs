@@ -878,7 +878,7 @@ fn generate_backlinks<'a> (things: &Vec<FsThing>, cfg: &Config,
         }
     }
 
-fn lastmod(folder_path: &str) -> String {
+fn lastmod(folder_path: &str, input: &str) -> String {
     let mut outputstring = String::new(); // Declare outputstring as a mutable String
     let entries = fs::read_dir(folder_path).expect("Failed to read directory");
 
@@ -906,10 +906,10 @@ fn lastmod(folder_path: &str) -> String {
             outputstring.push_str(&format!("{}\n{}\n", path.display(), local_date_time.format("%Y-%m-%d %H:%M:%S %z")));
         } else if path.is_dir() {
             // Recursively call lastmod and append its output to outputstring
-            outputstring.push_str(&format!("{}\n", &lastmod(path.to_str().unwrap())));
+            outputstring.push_str(&format!("{}\n", &lastmod(path.to_str().unwrap(), input)));
         }
     }
-    outputstring
+    outputstring.replace(input, "")
 }
 fn main() {
     // open blaze-config.toml
@@ -1061,7 +1061,7 @@ fn main() {
 
     // probably a bad implementation since there's a lastmod thing above, fix later!
 
-    let result = lastmod(&config.build.input).lines()
+    let result = lastmod(&config.build.input, &config.build.input).lines()
                             .filter(|line| !line.trim().is_empty())
                             .collect::<Vec<&str>>()
                             .join("\n");

@@ -36,7 +36,7 @@ jobs:
 
       - name: Build and run Blaze
         run: |
-          git log -1 --pretty=format:%ci /docs/ 
+          git log -1 --pretty=format:%ci / 
           cargo run --release
 
       - name: Move output

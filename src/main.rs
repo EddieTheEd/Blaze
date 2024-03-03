@@ -901,7 +901,7 @@ fn lastmod(folder_path: &str, input: &str) -> String {
 
             let local_date_time: DateTime<Local> = Local.from_local_datetime(&naive_date_time).single().expect("Failed to convert to Local DateTime");
 
-            outputstring.push_str(&format!("{}\n{}\n", path.display().replace(" ", "%20"), local_date_time.format("%Y-%m-%d %H:%M:%S %z")));
+            outputstring.push_str(&format!("{}\n{}\n", path.replace(" ", "%20").display(), local_date_time.format("%Y-%m-%d %H:%M:%S %z")));
         } else if path.is_dir() {
             outputstring.push_str(&format!("{}\n", &lastmod(path.to_str().unwrap(), input)));
         }

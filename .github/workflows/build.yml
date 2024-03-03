@@ -12,6 +12,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
 
       - name: Set up Rust
         uses: actions-rs/toolchain@v1
@@ -36,7 +38,6 @@ jobs:
 
       - name: Build and run Blaze
         run: |
-          git log -1 --pretty=format:%ci /home/runner/work/Blaze/Blaze
           cargo run --release
 
       - name: Move output

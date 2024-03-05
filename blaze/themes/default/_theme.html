@@ -25,14 +25,24 @@
   </script>
   
   <div id="page">
-  {{ partial "body.html" .}}
+    {{ partial "body.html" .}}
   </div>
   
   
-  <div id="backlinks">
-    <h2 id="backlinkstitle">Backlinks</h2>
-    {{ partial "backlinks.html" . }}
+  <div id="footer">
+    <div id="backlinks">
+      <h2 id="backlinkstitle">Backlinks</h2>
+      {{ partial "backlinks.html" . }}
+    </div>
+    <div id="recent">
+      <h2 id="recenttitle">Recent pages</h2>
+      <i>Note that currently Blaze takes the filename instead of the title for recent pages. Will be fixed some day!</i>
+      <br>
+      <br>
+      <p id="recentdummytext">None found yet.</p>
+    </div>
   </div>
+  
     
   
   

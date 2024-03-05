@@ -178,9 +178,12 @@ span:target {
     margin-top: 0;
 }
 
-
-#backlinks{
-    padding-left: 5%;
+#footer{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  max-width: 85vw;
+  margin: auto;
+  padding: 5%;
 }
 
 /* graph */

@@ -878,6 +878,7 @@ fn generate_backlinks<'a> (things: &Vec<FsThing>, cfg: &Config,
         }
     }
 
+
 fn lastmod(folder_path: &str, input: &str) -> String {
     let mut outputstring = String::new();
     let entries = fs::read_dir(folder_path).expect("Failed to read directory");
@@ -895,8 +896,12 @@ fn lastmod(folder_path: &str, input: &str) -> String {
                 .output()
                 .expect("Failed to execute command");
 
-
             let output_str = str::from_utf8(&output.stdout).expect("Output not UTF-8");
+
+            if output_str.trim().is_empty() {
+                continue;
+            }
+
             let naive_date_time = NaiveDateTime::parse_from_str(output_str.trim(), "%Y-%m-%d %H:%M:%S %z")
                 .expect("Failed to parse date");
 
@@ -909,6 +914,7 @@ fn lastmod(folder_path: &str, input: &str) -> String {
     }
     outputstring.replace(input, "")
 }
+
 fn main() {
     // open blaze-config.toml
     let config_path = Path::new("blazeconfig.toml");

@@ -895,7 +895,9 @@ fn lastmod(folder_path: &str, input: &str) -> String {
                 .output()
                 .expect("Failed to execute command");
 
+
             let output_str = str::from_utf8(&output.stdout).expect("Output not UTF-8");
+            println!("{}\n{:#?}\n{}",path.display(), output, output_str);
             let naive_date_time = NaiveDateTime::parse_from_str(output_str.trim(), "%Y-%m-%d %H:%M:%S %z")
                 .expect("Failed to parse date");
 

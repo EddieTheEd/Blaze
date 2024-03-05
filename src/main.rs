@@ -1,3 +1,5 @@
+#[allow(dead_code)]
+
 use std::fs::{self, File, DirEntry};
 use std::time::UNIX_EPOCH;
 use std::io::prelude::*;
@@ -20,7 +22,7 @@ struct Config {
     settings: Settings,
     drafts: Drafts,
     deployment: Deployment,
-    development: Development,
+    _development: Development,
     build: Build,
 }
 
@@ -44,7 +46,7 @@ struct Deployment {
 
 #[derive(Deserialize, Debug)]
 struct Development {
-    liveserverconfig: Option<bool>,
+    _liveserverconfig: Option<bool>,
 }
 
 #[derive(Deserialize, Debug)]
@@ -60,7 +62,7 @@ struct Build {
 #[derive(Debug)]
 enum FsThing {
     File { path: String, content: String, metadata: Metadata },
-    Directory { path: String, contents: Vec<FsThing>, metadata: Metadata }
+    Directory { path: String, contents: Vec<FsThing>, _metadata: Metadata }
 }
 
 // static mut drafts = Vec::<T>::new();
@@ -104,8 +106,8 @@ struct LinkTarget {
 struct PageInfo {
     title: String,
     description: Option<String>,
-    created: u64,
-    accessed: u64,
+    _created: u64,
+    _accessed: u64,
     modified: u64,
 }
 
@@ -139,7 +141,7 @@ impl Metadata {
     }
 }
 
-fn format_path (path: &String) -> String {
+fn _format_path (path: &String) -> String {
     // replace \ with /
     let path = path.replace("\\", "/");
 
@@ -639,7 +641,7 @@ fn compile_markdown (
                 }
             }
                 
-            FsThing::Directory { path, contents, metadata: _ } => {
+            FsThing::Directory { path, contents, _metadata: _ } => {
                 let mut dir = cfg.build.output.clone();
                 dir.push('/');
                 dir.push_str(path.as_str());
@@ -677,7 +679,7 @@ fn copy_theme_files(things: &Vec<FsThing>, cfg: &Config, theme_path: &str) {
                     }
                 }
             }
-            FsThing::Directory { path, contents, metadata: _ } => {
+            FsThing::Directory { path, contents, _metadata: _ } => {
                 if path == "partials" { continue }
                 let mut dir = cfg.build.output.clone();
                 dir.push('/');
@@ -729,7 +731,7 @@ fn walk_directory(path: &str, cfg: &Config, ignore: &str) -> Vec<FsThing> {
                 Some(FsThing::Directory { 
                     path: entry.path().display().to_string().chars().skip(ignore.len() + 1).collect::<String>(), 
                     contents: walk_directory(entry.path().to_str().expect("should not fail"), cfg, ignore), 
-                    metadata
+                    _metadata: metadata
                 })
             } else {
                 let content = match std::fs::read_to_string(entry.path()) {
@@ -863,15 +865,15 @@ fn generate_backlinks<'a> (things: &Vec<FsThing>, cfg: &Config,
                             PageInfo { 
                                 title: frontmatter.title.unwrap(), 
                                 description: frontmatter.description, 
-                                created: metadata.created, 
-                                accessed: metadata.accessed, 
+                                _created: metadata.created, 
+                                _accessed: metadata.accessed, 
                                 modified: metadata.modified
                             }
                         );
                         
                     }
                 }
-                FsThing::Directory { path: _, contents, metadata: _ } => {
+                FsThing::Directory { path: _, contents, _metadata: _ } => {
                     generate_backlinks(contents, cfg, links, backlinks, infos);
                 }
             }
@@ -1031,32 +1033,32 @@ fn main() {
 
     if config.settings.graph.unwrap_or(false) {
         let globalgraphdata = fs::read_to_string("output/global.json").expect("REASON");
-        let trimmedString = globalgraphdata.trim_start_matches('{').trim_end_matches('}');
-        let objects: Vec<&str> = trimmedString.split("}{").collect();
+        let trimmed_string = globalgraphdata.trim_start_matches('{').trim_end_matches('}');
+        let objects: Vec<&str> = trimmed_string.split("}{").collect();
 
-        let mut nodesObjects: Vec<String> = Vec::new();
-        let mut linksObjects: Vec<String> = Vec::new();
-        let _linksArray: Vec<String> = Vec::new();
+        let mut nodes_objects: Vec<String> = Vec::new();
+        let mut links_objects: Vec<String> = Vec::new();
+        let _links_array: Vec<String> = Vec::new();
 
         for string in objects {
             let sections: Vec<&str> = string.split(", ").collect();
-            if let Some(nodesSection) = sections.iter().find(|s| s.starts_with("\"nodes\":[")) {
-                nodesObjects.push(nodesSection.replace("\"nodes\":[", "").replace("]",""));
+            if let Some(nodes_section) = sections.iter().find(|s| s.starts_with("\"nodes\":[")) {
+                nodes_objects.push(nodes_section.replace("\"nodes\":[", "").replace("]",""));
             } else {
                 println!("Nodes section not found");
             }    
 
-            if let Some(linksSection) = sections.iter().find(|s| s.starts_with("\"links\":[")) {
-                linksObjects.push(linksSection.replace("\"links\":[", "").replace("]",""));
+            if let Some(links_section) = sections.iter().find(|s| s.starts_with("\"links\":[")) {
+                links_objects.push(links_section.replace("\"links\":[", "").replace("]",""));
             } else {
                 println!("Links section not found");
             }
         }
 
-        let modifiedNodes = nodesObjects.concat().replace("}{", "}, {").replace("},{", "}, {");
-        let modifiedLinks = linksObjects.concat().replace("}{", "}, {").replace("},{", "}, {");
+        let modified_nodes = nodes_objects.concat().replace("}{", "}, {").replace("},{", "}, {");
+        let modified_links = _links_array.concat().replace("}{", "}, {").replace("},{", "}, {");
         
-        let outputstring = "{\"nodes\":[".to_owned() + &modifiedNodes + "], \"links\":[" + &modifiedLinks + "]}";
+        let outputstring = "{\"nodes\":[".to_owned() + &modified_nodes + "], \"links\":[" + &modified_links + "]}";
         let _ = fs::write("output/global.json", outputstring);
     }
 

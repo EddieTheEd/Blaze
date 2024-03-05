@@ -19,7 +19,7 @@ I'm not going to instruct you on how to make a Vercel account. So I'm going to a
 Now, we are going to select the `Add New` button, then choose `Project`.
 
 You should then get something like this:
-![](../assets/importrepo?.png)
+![](../assets/importrepo.png)
 
 Now, import your website's repository from Github. Follow the instructions on the screen.
 

@@ -17,7 +17,7 @@ message = "This is a draft file. This means that the owner of this website did n
 
 vercelcleanurl = false
 
-[development] #settings for a development configuration of blaze
+[_development] #settings for a development configuration of blaze
 
 liveserverconfig = true
 

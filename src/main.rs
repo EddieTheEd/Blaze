@@ -1,5 +1,3 @@
-#[allow(dead_code)]
-
 use std::fs::{self, File, DirEntry};
 use std::time::UNIX_EPOCH;
 use std::io::prelude::*;

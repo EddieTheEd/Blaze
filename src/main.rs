@@ -1140,7 +1140,6 @@ fn main() {
 
         let mut nodes_objects: Vec<String> = Vec::new();
         let mut links_objects: Vec<String> = Vec::new();
-        let _links_array: Vec<String> = Vec::new();
 
         for string in objects {
             let sections: Vec<&str> = string.split(", ").collect();
@@ -1161,7 +1160,7 @@ fn main() {
             .concat()
             .replace("}{", "}, {")
             .replace("},{", "}, {");
-        let modified_links = _links_array
+        let modified_links = links_objects
             .concat()
             .replace("}{", "}, {")
             .replace("},{", "}, {");
@@ -1169,6 +1168,7 @@ fn main() {
         let outputstring =
             "{\"nodes\":[".to_owned() + &modified_nodes + "], \"links\":[" + &modified_links + "]}";
         let _ = fs::write("output/global.json", outputstring);
+        
     }
 
     println!("Blaze has finished compiling");

@@ -51,7 +51,7 @@ fetch(baseUrl + "/lastmod.txt")
     recentdummy.remove();
     for (const page in mostRecentPages){
       let element = document.createElement("a");
-      element.innerHTML = mostRecentPages[page].replace(".md","").substring(mostRecentPages[page].replace(".md","").lastIndexOf('/') + 1).replace("%20", " "); // temp fix, shouldn't be necessary when using page title
+      element.innerHTML = mostRecentPages[page].replace(".md","").substring(mostRecentPages[page].replace(".md","").lastIndexOf('/') + 1).replaceAll("%20", " "); // temp fix, shouldn't be necessary when using page title
       element.href = baseUrl + mostRecentPages[page].replace(".md",".html");
       recent.appendChild(element);
       recent.appendChild(document.createElement("br"));

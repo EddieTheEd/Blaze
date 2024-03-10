@@ -39,6 +39,12 @@ Here are the essential features of Blaze.
 
 [Local serve](features/localserve.md)
 
+[Last modified](features/lastmod.md)
+
+[Recent pages](features/recent.md)
+
+[Custom page themes](features/wheattheme.md)
+
 ### The cool note series
 - [cool-note-1](features/cool-note-1.md)
 - [cool-note-2](features/cool-note-2.md)

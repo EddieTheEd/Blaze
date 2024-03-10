@@ -99,6 +99,7 @@ struct Frontmatter {
     title: Option<String>,
     description: Option<String>,
     draft: Option<String>,
+    theme: Option<String>,
 }
 
 #[derive(Clone, Debug)]
@@ -122,6 +123,7 @@ impl Frontmatter {
             title: None,
             description: None,
             draft: None,
+            theme: None,
         }
     }
 }
@@ -307,7 +309,12 @@ fn compile_markdown(
                                             }
                                         }
                                         "theme" => {
-                                            // Ignore for now
+                                            frontmatter.theme = Some(
+                                                val.trim()
+                                                    .trim_matches('\'')
+                                                    .trim_matches('\"')
+                                                    .to_string(),
+                                            );
                                         }
                                         _ => (),
                                     }
@@ -324,7 +331,7 @@ fn compile_markdown(
                         .replace("$$\\begin{align}", "$$\n\\begin{align}")
                         .replace("\\end{align}$$", "\\end{align}\n$$");
                     // cause obsidian and/or obsidian's latex suite are acting up. This is a
-                    // specific enough replace that I'm confident it will cause any erroneous
+                    // specific enough replace that I'm confident it will NOT cause any erroneous
                     // errors.
 
                     let compiled_markdown: String; // Declare the variable outside the match
@@ -382,6 +389,7 @@ fn compile_markdown(
                         }
                     }
 
+                    
                     let mut compiled_html = theme.clone();
 
                     let mut backlinks_partials = "".to_string();
@@ -453,6 +461,15 @@ fn compile_markdown(
                     }
 
                     compiled_html = compiled_html.replace("{{content}}", &compiled_markdown);
+
+                    match &frontmatter.theme {
+                        Some(theme) => {
+                           compiled_html = compiled_html.replace("{{theme}}", &format!("<link rel=\"preload\" href=\"{}themes/{}.css\" as=\"style\" onload=\"this.onload=null;this.rel='stylesheet'\">", "{{base_url}}", theme)); 
+                        }
+                        None => {
+                            compiled_html = compiled_html.replace("{{theme}}", "");
+                        }
+                    }
 
                     match &cfg.build.base_url {
                         Some(url) => compiled_html = compiled_html.replace("{{base_url}}", url),
@@ -865,6 +882,7 @@ fn generate_backlinks(
                             title: None,
                             description: None,
                             draft: None,
+                            theme: None,
                         };
                         // frontmatter
                         let mut c_iter = content.split('\n');
@@ -896,6 +914,7 @@ fn generate_backlinks(
                             title: None,
                             description: None,
                             draft: None,
+                            theme: None,
                         }
                     };
 

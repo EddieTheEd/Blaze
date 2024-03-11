@@ -50,6 +50,7 @@ try {
         goingtodiefootnotes[i].remove();
     }
     let sidenotesvalue = true;
+    rightside.style.maxWidth = "70%";
   }
   catch(err) {
     console.log("no footnotes");

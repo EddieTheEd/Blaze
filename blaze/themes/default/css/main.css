@@ -109,9 +109,6 @@ span:target {
   width: 100%;
   object-fit: contain;
 }
-#rightside {
-  max-width: 70%; 
-}
 
 
 /* header stuff */

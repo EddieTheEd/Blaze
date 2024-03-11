@@ -44,10 +44,4 @@ ignore = [
 # custom themes for specific pages will be setup else where!
 theme = 'default'
 
-temp_temp_temp_temp_temp_temp_base_url = '/'
-temp_temp_temp_temp_temp_base_url = '/'
-temp_temp_temp_temp_base_url = '/'
-temp_temp_temp_base_url = '/'
-temp_temp_base_url = '/'
-temp_base_url = '/'
 base_url = '/'

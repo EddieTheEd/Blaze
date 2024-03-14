@@ -52,7 +52,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "subfolder/subfile.md",
+                "file": "features/wheattheme.md",
                 "mode": "source",
                 "backlinks": false,
                 "source": false
@@ -126,7 +126,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "subfolder/subfile.md",
+                "file": "features/wheattheme.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -143,7 +143,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "subfolder/subfile.md",
+                "file": "features/wheattheme.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -166,7 +166,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "subfolder/subfile.md"
+                "file": "features/wheattheme.md"
               }
             }
           },
@@ -197,11 +197,11 @@
   },
   "active": "2b510790293988b5",
   "lastOpenFiles": [
+    "subfolder/subfile.md",
     "showcase.md",
     "setup/prerequisites.md",
     "features/links.md",
     "setup/privaterepo.md",
-    "subfolder/subfile.md",
     "assets/domainsvercel.png",
     "assets/saveguys.png",
     "assets/maintomaster.png",

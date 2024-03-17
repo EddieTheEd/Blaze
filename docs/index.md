@@ -25,6 +25,8 @@ Officially releasing soon. See the [repository](https://github.com/EddieTheEd/Bl
 
 [contributor list](contributors.md)
 
+[files fioes files](filesystem.md)
+
 > [!quote] Theogony, Hesiod
 >
 > He hid fire. But that fine son of Iapetos stole it

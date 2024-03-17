@@ -1,0 +1,1 @@
+{"nodes":[{"id":"features/localserve","link":"/features/localserve.html","linktype":"var(--root)"},{"id":"showcase","link":"/showcase.html","linktype":"var(--blnode)"}], "links":[{"source":"features/localserve","target":"showcase","value":2}]}

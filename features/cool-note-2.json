@@ -1,0 +1,1 @@
+{"nodes":[{"id":"features/cool-note-2","link":"/features/cool-note-2.html","linktype":"var(--root)"},{"id":"showcase","link":"/showcase.html","linktype":"var(--blnode)"}], "links":[{"source":"features/cool-note-2","target":"showcase","value":2}]}

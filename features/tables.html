@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!--meta tags, favicon-->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- HTML Meta Tags -->
+<meta name="description" content="A ""simple"" static site generator written in Rust.
+
+the reasoning: quartz == igneous == ignite == fire == blazingly fast™">
+
+<!-- Facebook Meta Tags -->
+<meta property="og:url" content="/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Blaze">
+<meta property="og:description" content="A &quot simple &quot static site generator written in Rust.
+
+the reasoning: quartz == igneous == ignite == fire == blazingly fast™">
+<meta property="og:image" content="/static/blazeog.png">
+
+<!-- Twitter Meta Tags -->
+<meta name="twitter:card" content="summary_large_image">
+<meta property="twitter:domain" content="/">
+<meta property="twitter:url" content="/">
+<meta name="twitter:title" content="Blaze">
+<meta name="twitter:description" content="A &quot simple &quot static site generator written in Rust.
+
+the reasoning: quartz == igneous == ignite == fire == blazingly fast™">
+<meta name="twitter:image" content="/static/blazeog.png">
+
+<!--to do later: make the baseurl thingy (will have to ask ossac(alongside logic for html partials(and forwardlinks)))-->
+
+<link rel="icon" type="image/x-icon" href="/static/blaze.ico">
+
+<title>Tables</title>
+
+<script src="/js/immediatedarkmode.js"></script>
+
+<link rel="preload" href="/css/main.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="/css/main.css"></noscript>
+
+<link rel="preload" href="/css/custom.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="/css/custom.css"></noscript>
+
+<link rel="preload" href="/css/pagefindcustom.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="/css/pagefindcustom.css"></noscript>
+
+<script src="/js/d3.v7.min.js" ></script>
+
+<script src="/js/graph.js"></script>
+
+<script>
+    MathJax = {
+        tex: {
+            inlineMath: [['$', '$'], ['$$', '$$'], ['\\(', '\\)']],
+            tags: "ams",
+        },
+        TeX: {
+            extensions: ['AMSmath.js'],
+            inlineMathDelimiters: [['$', '$'], ['\\(', '\\)']],
+            displayMathDelimiters: [['$$', '$$']],
+            processEnvironments: false,
+            processRefs: true,
+            indentalign: '\\left|',
+        },
+    };
+</script>
+<script type="text/javascript" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+
+<script src="/codeblocks/codeblocksmain.js"></script>
+
+<link rel="stylesheet" href="/codeblocks/codeblocks.css">
+
+<script src="/codeblocks/codeblocksextras.js"></script>
+
+
+<script src="/js/nextprevious.js"></script>
+
+<script src="/js/lastmod.js"></script>
+
+  
+</head>
+<header>
+  <div id="header">
+  <div>
+    <a id="headinglink" href="/">
+      <div id="insideheader">
+        <img id="headericon" src="/static/blaze.png" height="60" width="60">
+        <h1 id="pageh1">Tables</h1>
+      </div>
+    </a>
+  </div>
+  <div>
+    <img id = "darklightimg" src="/static/darkmode.svg" width="40px" height="40px"/>
+    <script defer src="/js/darkmode.js"></script>
+  </div>
+</div>
+
+<link href="/pagefind/pagefind-ui.css" rel="stylesheet">
+<script src="/pagefind/pagefind-ui.js"></script>
+
+
+</header>
+<body>
+  <div id="description">
+    <i>Tables in Blaze.</i>
+  </div>
+
+  <div id="search"></div>
+  <script>
+    window.addEventListener('DOMContentLoaded', (event) => {
+      new PagefindUI({ 
+        element: "#search", 
+        showSubResults: false, 
+        baseUrl: "/",
+        showImages: false,
+        debounceTimeoutMs: 0,
+      });
+    });
+  </script>
+  
+  <div id="page">
+    <div id="leftside">
+    <div id="toc">
+    <h2 id="toctitle">Table of Contents</h2>
+    <ol id="toccontent">
+      
+    </ol>
+<script defer src="/js/toc.js"></script>
+</div>
+
+
+
+
+    <div id="graphcontainer">
+    <div id="graphheader">
+      <h2 id="graphtitle">Graph</h2><button id="globalgraphbutton" onclick="openglobalgraph()"></button>
+      <script>
+        document.getElementById("globalgraphbutton").style.background = "url('/static/globalgraph.svg') no-repeat";
+      </script>
+
+    </div>
+    <div id="graph">
+    </div>
+    
+  <script src="/js/3d-force-graph.js">
+      
+    </script>
+    <div id="3d-graph" style="width:'100px'; height: '100px'; bottom: 0px; right: 50vw; display: block; position: fixed;">
+      <div style="position: relative;">
+        <div>
+          <div class="scene-container" style="position: relative;">
+            <div class="scene-nav-info" style="display: none;">
+              Left-click: rotate, Mouse-wheel/middle-click: zoom, Right-click: pan, Escape: close
+            </div>
+            <div class="scene-tooltip" style="top: 875px; left: 1458px; transform: translate(-75.9375%, 21px);">
+            </div>
+            <canvas data-engine="three.js r157"style="display: block; touch-action: none;" class=""></canvas>
+
+          </div>
+
+        </div>
+        <div class="graph-info-msg"></div>
+      </div>
+    </div>
+
+</div>
+
+</div>
+
+<div id="rightside">
+    <div id="nextpreviouslinks">
+      
+    </div>
+    <h2 id="sidenotetitle"></h2>
+    
+    <p>Blaze uses the <a href="https://github.github.com/gfm/">Github Flavoured Markdown</a> format for tables, thanks to <a href="https://docs.rs/markdown/1.0.0-alpha.11/markdown/struct.Constructs.html#structfield.gfm_table">Rust's Markdown parser</a>.</p>
+<p>Here is a table</p>
+<table>
+<thead>
+<tr>
+<th>Heading 1</th>
+<th>Heading 2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Item 1</td>
+<td>Item 2</td>
+</tr>
+<tr>
+<td>Item 3</td>
+<td>Item 4</td>
+</tr>
+</tbody>
+</table>
+<p>Bigger table</p>
+<table>
+<thead>
+<tr>
+<th>Characteristic</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Perfectionism</td>
+<td>Such as pointing out how a person or their work is inadequate. Instead, expect that everyone will make mistakes and that mistakes offer opportunities for learning.</td>
+</tr>
+<tr>
+<td>Sense of urgency</td>
+<td>Such as prioritising quick or highly visible results that can exclude potential allies. Instead, discuss what it means to set goals of inclusivity and diversity, particularly in terms of timing.</td>
+</tr>
+<tr>
+<td>Defensiveness</td>
+<td>Such as spending energy trying to protect power or defend against charges of racism. Instead, work on your own defensiveness and understand the link between defensiveness and fear.</td>
+</tr>
+<tr>
+<td>Valuing quantity over quality</td>
+<td>Such as directing organisational resources towards measurable goals. Instead, develop a values statement which expresses the ways in which you want to work, and make sure it is a living document that people apply to their daily work.</td>
+</tr>
+<tr>
+<td>Worshipping the written word</td>
+<td>Such as valuing strong documentation and writing skills. Instead, work to recognise the contributions and skills that every person brings to the organisation.</td>
+</tr>
+<tr>
+<td>Believing in only one right way</td>
+<td>Such as concluding something is wrong with people who refuse to adapt or change. Instead, never assume that you or your organisation know what's best.</td>
+</tr>
+<tr>
+<td>Paternalism</td>
+<td>Such as decision-making processes that are only understood by those with power and unclear to those without it. Instead, include people who are affected by decisions in decision-making.</td>
+</tr>
+<tr>
+<td>Either/or thinking</td>
+<td>Such as trying to simplify complex things. Instead, slow down, encourage people to do a deeper analysis, and sense that things can be both/and.</td>
+</tr>
+<tr>
+<td>Power hoarding</td>
+<td>Such as feeling threatened when anyone suggests organisational change. Instead, understand that change is inevitable and that challenges can be both healthy and productive.</td>
+</tr>
+<tr>
+<td>Fear of open conflict</td>
+<td>Such as equating the raising of difficult issues with being rude or impolite Instead, don't require those who raise difficult issues to do so in 'acceptable' ways, particularly if you're using the ways in which issues are raised as an excuse not to address them.</td>
+</tr>
+<tr>
+<td>Individualism</td>
+<td>Such as wanting individual recognition and credit. Instead, make sure credit is given to everyone who participates, not just the leaders.</td>
+</tr>
+<tr>
+<td>Believing I'm the only one</td>
+<td>Such as thinking that if something is going to get done right, then 'I' have to do it. Instead, evaluate people based on their ability to delegate to others.</td>
+</tr>
+<tr>
+<td>Believing progress is bigger and more</td>
+<td>Such as defining success as hiring more staff, developing more projects, or serving more people. Instead, make sure your goals speak to how you want to work, not just what you want to do.</td>
+</tr>
+<tr>
+<td>Believing in objectivity</td>
+<td>Such as considering emotions to be irrational and destructive to decision-making. Instead, push yourself to sit with discomfort when people express themselves in unfamiliar ways.</td>
+</tr>
+<tr>
+<td>Claiming a right to comfort</td>
+<td>Such as scapegoating those who cause emotional or psychological discomfort. Instead, welcome discomfort as much as you can and understand that it is the root of all growth and learning.</td>
+</tr>
+</tbody>
+</table>
+    <div id="nextpreviouslinks2">  
+    </div>
+    <script rel="preload" src="/js/sidenotes.js"></script>
+
+
+    <script defer src="/js/callouts.js"></script>
+
+</div>
+
+<script defer src="/js/mobilefriendly.js"></script>
+
+  </div>
+  
+  
+  <div id="footer">
+    <div id="backlinks">
+      <h2 id="backlinkstitle">Backlinks</h2>
+      <a href=" showcase.html">Showcase</a><br>
+
+
+    </div>
+    <div id="recent">
+      <h2 id="recenttitle">Recent pages</h2>
+      <i>Note that currently Blaze takes the filename instead of the title for recent pages. Will be fixed some day!</i>
+      <br>
+      <br>
+      <p id="recentdummytext">None found yet.</p>
+    </div>
+  </div>
+  
+    
+  
+  
+</body>
+
+</html>

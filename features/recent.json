@@ -1,0 +1,1 @@
+{"nodes":[{"id":"features/recent","link":"/features/recent.html","linktype":"var(--root)"},{"id":"showcase","link":"/showcase.html","linktype":"var(--blnode)"},{"id":"lastmod","link":"/lastmod.html","linktype":"var(--flnode)"}], "links":[{"source":"features/recent","target":"showcase","value":2},{"source":"features/recent","target":"lastmod","value":2}]}

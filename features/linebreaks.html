@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!--meta tags, favicon-->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- HTML Meta Tags -->
+<meta name="description" content="A ""simple"" static site generator written in Rust.
+
+the reasoning: quartz == igneous == ignite == fire == blazingly fast™">
+
+<!-- Facebook Meta Tags -->
+<meta property="og:url" content="/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Blaze">
+<meta property="og:description" content="A &quot simple &quot static site generator written in Rust.
+
+the reasoning: quartz == igneous == ignite == fire == blazingly fast™">
+<meta property="og:image" content="/static/blazeog.png">
+
+<!-- Twitter Meta Tags -->
+<meta name="twitter:card" content="summary_large_image">
+<meta property="twitter:domain" content="/">
+<meta property="twitter:url" content="/">
+<meta name="twitter:title" content="Blaze">
+<meta name="twitter:description" content="A &quot simple &quot static site generator written in Rust.
+
+the reasoning: quartz == igneous == ignite == fire == blazingly fast™">
+<meta name="twitter:image" content="/static/blazeog.png">
+
+<!--to do later: make the baseurl thingy (will have to ask ossac(alongside logic for html partials(and forwardlinks)))-->
+
+<link rel="icon" type="image/x-icon" href="/static/blaze.ico">
+
+<title>06-08-2023 The window</title>
+
+<script src="/js/immediatedarkmode.js"></script>
+
+<link rel="preload" href="/css/main.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="/css/main.css"></noscript>
+
+<link rel="preload" href="/css/custom.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="/css/custom.css"></noscript>
+
+<link rel="preload" href="/css/pagefindcustom.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="/css/pagefindcustom.css"></noscript>
+
+<script src="/js/d3.v7.min.js" ></script>
+
+<script src="/js/graph.js"></script>
+
+<script>
+    MathJax = {
+        tex: {
+            inlineMath: [['$', '$'], ['$$', '$$'], ['\\(', '\\)']],
+            tags: "ams",
+        },
+        TeX: {
+            extensions: ['AMSmath.js'],
+            inlineMathDelimiters: [['$', '$'], ['\\(', '\\)']],
+            displayMathDelimiters: [['$$', '$$']],
+            processEnvironments: false,
+            processRefs: true,
+            indentalign: '\\left|',
+        },
+    };
+</script>
+<script type="text/javascript" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+
+<script src="/codeblocks/codeblocksmain.js"></script>
+
+<link rel="stylesheet" href="/codeblocks/codeblocks.css">
+
+<script src="/codeblocks/codeblocksextras.js"></script>
+
+
+<script src="/js/nextprevious.js"></script>
+
+<script src="/js/lastmod.js"></script>
+
+  
+</head>
+<header>
+  <div id="header">
+  <div>
+    <a id="headinglink" href="/">
+      <div id="insideheader">
+        <img id="headericon" src="/static/blaze.png" height="60" width="60">
+        <h1 id="pageh1">06-08-2023 The window</h1>
+      </div>
+    </a>
+  </div>
+  <div>
+    <img id = "darklightimg" src="/static/darkmode.svg" width="40px" height="40px"/>
+    <script defer src="/js/darkmode.js"></script>
+  </div>
+</div>
+
+<link href="/pagefind/pagefind-ui.css" rel="stylesheet">
+<script src="/pagefind/pagefind-ui.js"></script>
+
+
+</header>
+<body>
+  <div id="description">
+    <i>A very short story meant to have a lot of symbolic meaning. No I'm not depressed. This is not about that. I'll give you a clue. Widjaja</i>
+  </div>
+
+  <div id="search"></div>
+  <script>
+    window.addEventListener('DOMContentLoaded', (event) => {
+      new PagefindUI({ 
+        element: "#search", 
+        showSubResults: false, 
+        baseUrl: "/",
+        showImages: false,
+        debounceTimeoutMs: 0,
+      });
+    });
+  </script>
+  
+  <div id="page">
+    <div id="leftside">
+    <div id="toc">
+    <h2 id="toctitle">Table of Contents</h2>
+    <ol id="toccontent">
+      
+    </ol>
+<script defer src="/js/toc.js"></script>
+</div>
+
+
+
+
+    <div id="graphcontainer">
+    <div id="graphheader">
+      <h2 id="graphtitle">Graph</h2><button id="globalgraphbutton" onclick="openglobalgraph()"></button>
+      <script>
+        document.getElementById("globalgraphbutton").style.background = "url('/static/globalgraph.svg') no-repeat";
+      </script>
+
+    </div>
+    <div id="graph">
+    </div>
+    
+  <script src="/js/3d-force-graph.js">
+      
+    </script>
+    <div id="3d-graph" style="width:'100px'; height: '100px'; bottom: 0px; right: 50vw; display: block; position: fixed;">
+      <div style="position: relative;">
+        <div>
+          <div class="scene-container" style="position: relative;">
+            <div class="scene-nav-info" style="display: none;">
+              Left-click: rotate, Mouse-wheel/middle-click: zoom, Right-click: pan, Escape: close
+            </div>
+            <div class="scene-tooltip" style="top: 875px; left: 1458px; transform: translate(-75.9375%, 21px);">
+            </div>
+            <canvas data-engine="three.js r157"style="display: block; touch-action: none;" class=""></canvas>
+
+          </div>
+
+        </div>
+        <div class="graph-info-msg"></div>
+      </div>
+    </div>
+
+</div>
+
+</div>
+
+<div id="rightside">
+    <div id="nextpreviouslinks">
+      
+    </div>
+    <h2 id="sidenotetitle"></h2>
+    
+    <p><em>It's cold outside.</em></p>
+<hr />
+<p>Winter time. Wet. Covered in snow. I walk down the chilled steps, seeking shelter from the breeze.</p>
+<p>The house front has stood the test of time. Ice may extrude from its ancient spruce, tearing at it, yet it remains.</p>
+<p>I reach out for the door handle. It's locked. Oh no.</p>
+<p>I'm not going to survive out here in the cold. I scurry to the windowsill. The glass of the window is embalmed with a thin sheet of frost.</p>
+<p>I peer inside. There's nothing but a scattered arrangement of two chairs and a table. A fireplace located to the side keeps the room at a cosy temperature, to my envy.</p>
+<p>A figure emerges from the window's blind-spot, taking a seat and haphazardly resting their legs on the table. Squinting through the white-ish filter of the window, I recognise the figure to be... me?</p>
+<p>I squint again. I was mistaken. The figure is familiar, but no names come to mind.</p>
+<p>Yet another figure appears. They too are familiar. Like a lost friend, whose friendship had kindled and blazed in the past, yet burnt out long ago. Swept under the blanket of the cold.</p>
+<p>They are chatting. It's inaudible. But it feels... empty. There's no inflecting in either person's voice. It's distant. Polite, but unfeeling. Genial, but deceitful.</p>
+<p>I rush back to the front, and knock. Silence.</p>
+<p>I knock again. More silence.</p>
+<p>Returning back to the window, I can see them shaking hands. The first figure exits the room. There's a foreboding silence as the other person waits patiently.</p>
+<p>They walk back to the chairs. They sit in the first person's chair, loosely placing their feet on the table.</p>
+<p>I'm out of energy. I knock on the window, with a slight force of wrath, but too weakened by the cold to cause damage. This time the noise is more pronounced. We make eye contact.</p>
+<p>But I am ignored. The person pulls out a newspaper and starts reading, warming themselves with the fire place.</p>
+<p>Feeling the frostbite on my skin, I crawl through the snow towards the door. Struggling against the might of the ice, I wrench the doormat upwards. There's a key. But it's too late. The cold is endlessly hovering over me, like a vulture waiting for another carcass.</p>
+<p>I hold onto the key with all the tension I can muster. My muscles lift me up in a final, desperate attempt. It's too late.</p>
+<p>I let the breeze carry my body back to the snow-carpet floor. I clench the key as the snow piles on.</p>
+<hr />
+<p>There's more to the story. But that's for another time (this may become a series).</p>
+
+    <div id="nextpreviouslinks2">  
+    </div>
+    <script rel="preload" src="/js/sidenotes.js"></script>
+
+
+    <script defer src="/js/callouts.js"></script>
+
+</div>
+
+<script defer src="/js/mobilefriendly.js"></script>
+
+  </div>
+  
+  
+  <div id="footer">
+    <div id="backlinks">
+      <h2 id="backlinkstitle">Backlinks</h2>
+      <a href=" showcase.html">Showcase</a><br>
+
+
+    </div>
+    <div id="recent">
+      <h2 id="recenttitle">Recent pages</h2>
+      <i>Note that currently Blaze takes the filename instead of the title for recent pages. Will be fixed some day!</i>
+      <br>
+      <br>
+      <p id="recentdummytext">None found yet.</p>
+    </div>
+  </div>
+  
+    
+  
+  
+</body>
+
+</html>

@@ -1,0 +1,29 @@
+:root[data-theme="light"] {
+    --background: #F5DEB3;
+    --lightbackground: #FFE4B2;
+    --lighterbackground: #FFF8DC;
+    --text: #8B4513;
+    --lighttext: #D2B48C;
+    --strikethrough: #A0522D;
+    --textlink: #FFD700;
+    --textlinkvisited: #DAA520;
+    --secondary: #DAA520;
+    --tertiary: #CD853F;
+    --quaternary: #A0522D;
+    --mark: #D2B48C;
+    --lightblue: #ADD8E6;
+    --darkerlightblue: #87CEEB;
+    --lightestblue: #B0E0E6;
+    --green: #556B2F;
+    --yellow: #FFD700;
+    --red: #CD5C5C;
+    --orange: #FFA500;
+    --purple: #800080;
+    --codebase: #FAFAD2;
+    --bold: #8B4513;
+    --italics: #DAA520;
+    --peach: #FFDAB9;
+    --root: var(--secondary);
+    --flnode: var(--red);
+    --blnode: var(--yellow);
+}
